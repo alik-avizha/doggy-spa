@@ -1,0 +1,91 @@
+{
+  "extends": [
+    "next",
+    "airbnb",
+    "airbnb-typescript",
+    "next/core-web-vitals",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "browser": true,
+    "es2020": true,
+    "node": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "project": "./tsconfig.eslint.json"
+  },
+  "plugins": ["@typescript-eslint", "import", "unused-imports", "prettier"],
+  "rules": {
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-unused-expressions": "off",
+    "class-methods-use-this": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "prettier/prettier": "error",
+    "react/jsx-props-no-spreading": "off",
+    "import/prefer-default-export": "off",
+    "react/no-unescaped-entities": "off",
+    "import/no-anonymous-default-export": "off",
+    "react/display-name": "off",
+    "consistent-return": "off",
+    "prefer-destructuring": "off",
+    "no-param-reassign": "off",
+    "react/no-array-index-key": "off",
+    "react/destructuring-assignment": "off",
+    "import/no-named-as-default": 0,
+    "@typescript-eslint/no-shadow": "off",
+    "@typescript-eslint/consistent-type-exports": "warn",
+    "@typescript-eslint/consistent-type-imports": "warn",
+    "import/order": [
+      "error",
+      {
+        "pathGroups": [
+          {
+            "pattern": "@/**",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "./**",
+            "group": "internal",
+            "position": "after"
+          }
+        ],
+        "newlines-between": "always",
+        "pathGroupsExcludedImportTypes": ["builtin"],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "import/no-default-export": "off",
+    "@typescript-eslint/lines-between-class-members": "off",
+    "@typescript-eslint/no-throw-literal": "off",
+    "react/function-component-definition": "off"
+  },
+  "overrides": [
+    {
+      "files": [
+        "dynamic-components/**/*.{js,jsx,ts,tsx}",
+        "pages/**/*.{js,jsx,ts,tsx}",
+        "**/*.d.ts",
+        "playwright.config.ts"
+      ],
+      "rules": {
+        "import/no-default-export": "off"
+      }
+    }
+  ],
+  "ignorePatterns": ["node_modules/", ".next/", "docs", "public"]
+}
