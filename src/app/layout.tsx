@@ -1,17 +1,22 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
-
 import './globals.css'
+import { Cinzel_Decorative, Tangerine, Cormorant } from 'next/font/google'
+
 import { Header } from '@/components/header'
 import { InfoPlate } from '@/components/info-plate'
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const cinzelDecorative = Cinzel_Decorative({
+  weight: ['400', '700', '900'],
   subsets: ['latin'],
 })
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const tangerine = Tangerine({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+})
+
+const cormorant = Cormorant({
+  weight: ['400', '700'],
   subsets: ['latin'],
 })
 
@@ -27,7 +32,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body
+        className={`${cinzelDecorative.className} ${tangerine.className} ${cormorant.className}`}
+      >
         <Header />
         <InfoPlate />
         {children}
