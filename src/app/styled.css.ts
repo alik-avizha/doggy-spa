@@ -1,5 +1,7 @@
 import styled from '@emotion/styled'
 
+import { Typography } from '@/components/typography'
+
 export const Wrapper = styled.div`
   height: 768px;
   background-image: url('/images/doggy.webp');
@@ -19,13 +21,14 @@ export const InfoBlock = styled.div`
   align-items: center;
 `
 
-export const Text = styled.p`
-  font-family: Cormorant sans-serif;
-  font-weight: 700;
-  font-size: 63px;
-  line-height: 76.29px;
-  letter-spacing: 0;
+export const Text = styled(Typography)`
   text-align: center;
-  color: #4c4c4b;
+  margin-bottom: 50px;
+`
+
+export const SignUpWrapper = styled.div`
+  padding: 0 100px;
+  position: relative;
+  margin-top: 200px;
   margin-bottom: 50px;
 `

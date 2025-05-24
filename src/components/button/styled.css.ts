@@ -1,14 +1,12 @@
 import styled from '@emotion/styled'
 
 export const StyledButton = styled.button`
-  width: 218px;
-  height: 49px;
   border-radius: 30px;
-  padding: 10px 16px;
+  padding: 15px 30px;
   background-color: #e89b93;
   border: none;
 
-  font-family: Corporant, Helvetica, sans-serif;
+  font-family: Corporant, sans-serif;
   font-weight: 700;
   font-size: 20px;
   line-height: 21px;
