@@ -1,9 +1,11 @@
 import React from 'react'
 
 import { InfoBlock, SignUpWrapper, Text, Wrapper } from '@/app/styled.css'
+import { AnimalInfoList } from '@/components/animal-info-list'
 import { Button } from '@/components/button'
 import { Card } from '@/components/card'
 import { SignUp } from '@/components/sign-up'
+import { ANIMAL_LIST } from '@/contstants/constants'
 
 export const HomePage = () => (
   <div>
@@ -19,5 +21,15 @@ export const HomePage = () => (
       <Card width={552} height={552} url="/images/doggy.webp" />
       <SignUp />
     </SignUpWrapper>
+    <AnimalInfoList
+      title="Dog Collars"
+      titleButton="See More Dog Collars"
+      items={ANIMAL_LIST}
+    />
+    <AnimalInfoList
+      title="Dog Collars"
+      titleButton="See More Dog Collars"
+      items={ANIMAL_LIST}
+    />
   </div>
 )

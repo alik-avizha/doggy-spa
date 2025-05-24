@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { Cinzel_Decorative, Tangerine, Cormorant } from 'next/font/google'
 
+import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
 import { InfoPlate } from '@/components/info-plate'
 
@@ -38,6 +39,7 @@ export default function RootLayout({
         <Header />
         <InfoPlate />
         {children}
+        <Footer />
       </body>
     </html>
   )

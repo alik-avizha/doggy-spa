@@ -27,7 +27,8 @@ export const Text = styled(Typography)`
 `
 
 export const SignUpWrapper = styled.div`
-  margin-left: 100px;
+  padding: 0 100px;
   position: relative;
   margin-top: 200px;
+  margin-bottom: 50px;
 `

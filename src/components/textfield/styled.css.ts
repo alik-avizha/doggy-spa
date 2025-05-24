@@ -59,7 +59,7 @@ export const InputField = styled.input<FieldProps>`
   letter-spacing: 0;
   color: #959fa8;
 
-  background: transparent;
+  background: white;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   outline: 0;

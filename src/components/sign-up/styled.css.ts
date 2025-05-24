@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
   position: absolute;
   z-index: 1;
   top: -150px;
-  left: 200px;
+  left: 250px;
   background-color: #ffffff;
 `
 export const SignBlock = styled.div`
