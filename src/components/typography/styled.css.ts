@@ -21,10 +21,16 @@ export const StyledTypography = styled.p<{
 }>`
   ${({ variant }) => {
     switch (variant) {
+      case 'size_70':
+        return typography('70px', '100%', '700', '#4C4C4B')
       case 'size_66':
         return typography('66px', '100%', '700', '#4C4C4B')
+      case 'size_64':
+        return typography('64px', '100%', '700', '#000000')
       case 'size_63':
         return typography('63px', '100%', '700', '#4C4C4B')
+      case 'size_40':
+        return typography('40px', '100%', '700', '#4C4C4B')
       case 'size_32':
         return typography('32px', '100%', '700', '#4C4C4B')
       case 'size_30':

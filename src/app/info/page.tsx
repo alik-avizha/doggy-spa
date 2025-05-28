@@ -1,3 +1,7 @@
+'use client'
+
+import { InfoPage } from '@/components/pages/info-page/info-page'
+
 export default function Info() {
-  return <h1>Info</h1>
+  return <InfoPage />
 }
