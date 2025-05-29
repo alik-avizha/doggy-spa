@@ -1,3 +1,7 @@
+'use client'
+
+import { BlogPage } from '@/components/pages/blog-page/blog-page'
+
 export default function Blog() {
-  return <h1>Blog</h1>
+  return <BlogPage />
 }
