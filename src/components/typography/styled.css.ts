@@ -31,6 +31,8 @@ export const StyledTypography = styled.p<{
         return typography('63px', '100%', '700', '#4C4C4B')
       case 'size_40':
         return typography('40px', '100%', '700', '#4C4C4B')
+      case 'size_35':
+        return typography('35px', '100%', '700', '#4C4C4B')
       case 'size_32':
         return typography('32px', '100%', '700', '#4C4C4B')
       case 'size_30':
