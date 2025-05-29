@@ -1,3 +1,7 @@
+'use client'
+
+import { AboutUsPage } from '@/components/pages/about-us-page/about-us-page'
+
 export default function AboutUs() {
-  return <h1>About Us</h1>
+  return <AboutUsPage />
 }
