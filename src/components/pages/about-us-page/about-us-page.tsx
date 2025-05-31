@@ -1,26 +1,31 @@
 import React from 'react'
 
 import { Card } from '@/components/card'
+import { Gap } from '@/components/gap/gap'
+import { Typography } from '@/components/typography'
 
 import {
   CardTextWrapper,
   Description,
   Text,
   TextBlock,
-  Title,
   Wrapper,
 } from './styled.css'
 
 export const AboutUsPage = () => (
   <Wrapper>
-    <Title variant="size_70">About Us</Title>
-    <Description variant="size_40" as="h3">
+    <Typography variant="size_70" textAlign="center">
+      About Us
+    </Typography>
+    <Gap size={20} />
+    <Description variant="size_40" as="h3" textAlign="center">
       Our Owners Love Dogs and Cats Only
     </Description>
+    <Gap size={140} />
     <CardTextWrapper>
       <Card width={427} height={460} url="/images/doggy.webp" />
       <TextBlock>
-        <Text variant="size_30">
+        <Text variant="size_30" textAlign="center">
           Here at Luxe Animal Spa we aim to provide you with the best service
           possible for both you and your pet! We pride ourselves in offering a
           true first-class experience.
@@ -33,7 +38,7 @@ export const AboutUsPage = () => (
     </CardTextWrapper>
     <CardTextWrapper>
       <TextBlock>
-        <Text variant="size_30">
+        <Text variant="size_30" textAlign="center">
           All animals deserve a special spa pampering treatment, but mostly cats
           and dogs. Luxe Animal Spa offers the best spa treatments to leave your
           pets feeling amazing!

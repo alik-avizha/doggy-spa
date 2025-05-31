@@ -1,13 +1,14 @@
 import React from 'react'
 
+import { Gap } from '@/components/gap/gap'
 import { TextAreaField } from '@/components/textarea'
 import { TextField } from '@/components/textfield'
+import { Typography } from '@/components/typography'
 
 import {
   Border,
   Description,
   StyledLink,
-  Title,
   Wrapper,
   FieldBlock,
   SubmitForm,
@@ -17,25 +18,33 @@ import {
 
 export const ContactUsPage = () => (
   <Wrapper>
-    <Title variant="size_70">Contact</Title>
+    <Typography variant="size_70" textAlign="center">
+      Contact
+    </Typography>
+    <Gap size={20} />
     <Border />
-    <Description variant="size_30" as="h3">
+    <Gap size={40} />
+    <Description variant="size_30" as="h3" textAlign="center">
       For customer service inquiries, please email us at{' '}
       <StyledLink>customerservice@luxeanimalspa.ca.</StyledLink> For spa
       inquiries, please include your animal’s name for faster service. For your
       protection, please do not include your credit card or banking information
       details in your email.
     </Description>
+    <Gap size={140} />
     <SubmitForm>
       <FieldBlock>
         <TextField placeholder="First Name" />
         <TextField placeholder="Last Name" />
       </FieldBlock>
+      <Gap size={70} />
       <FieldBlock>
         <TextField placeholder="Email" />
         <TextField placeholder="Phone number" />
       </FieldBlock>
-      <TextAreaField placeholder="Your message goes here ..." />
+      <Gap size={70} />
+      <TextAreaField placeholder="Your message goes here ..." height={317} />
+      <Gap size={100} />
       <SubmitAction>
         <ButtonStyled>Submit</ButtonStyled>
       </SubmitAction>

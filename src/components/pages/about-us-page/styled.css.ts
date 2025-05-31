@@ -7,18 +7,10 @@ export const Wrapper = styled.div`
   width: 1229px;
   margin: 0 auto;
 `
-
-export const Title = styled(Typography)`
-  text-align: center;
-  margin-bottom: 20px;
-`
 export const Description = styled(Typography)`
-  text-align: center;
   font-family: Tangerine, sans-serif;
   font-weight: 400;
-  margin-bottom: 140px;
 `
-
 export const CardTextWrapper = styled.div`
   display: flex;
   justify-content: space-between;

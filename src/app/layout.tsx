@@ -1,10 +1,20 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import { Cinzel_Decorative, Tangerine, Cormorant } from 'next/font/google'
+import {
+  Cinzel_Decorative,
+  Tangerine,
+  Cormorant,
+  Poppins,
+} from 'next/font/google'
 
 import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
 import { InfoPlate } from '@/components/info-plate'
+
+const poppins = Poppins({
+  weight: ['500'],
+  subsets: ['latin'],
+})
 
 const cinzelDecorative = Cinzel_Decorative({
   weight: ['400', '700', '900'],
@@ -34,7 +44,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${cinzelDecorative.className} ${tangerine.className} ${cormorant.className}`}
+        className={`${poppins.className} ${cinzelDecorative.className} ${tangerine.className} ${cormorant.className}`}
       >
         <Header />
         <InfoPlate />

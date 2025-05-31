@@ -5,19 +5,9 @@ import { Typography } from '@/components/typography'
 export const Wrapper = styled.div`
   padding: 70px 50px 200px 50px;
 `
-
-export const Title = styled(Typography)`
-  text-align: center;
-  margin-bottom: 20px;
-`
 export const Description = styled(Typography)`
-  text-align: center;
   font-family: Tangerine, sans-serif;
   font-weight: 400;
-  margin-bottom: 40px;
-`
-export const AboutTitle = styled(Typography)`
-  margin-bottom: 40px;
 `
 export const CardTextWrapper = styled.div`
   display: flex;
@@ -28,6 +18,5 @@ export const TextBlock = styled.div`
   width: 720px;
 `
 export const Text = styled(Typography)`
-  text-align: center;
   font-family: Cormorant, sans-serif;
 `

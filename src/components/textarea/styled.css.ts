@@ -8,11 +8,10 @@ export const Container = styled.div`
   justify-content: flex-start;
 `
 
-export const TextAreaStyled = styled.textarea`
+export const TextAreaStyled = styled.textarea<{ height: number }>`
   resize: none;
 
-  min-height: 84px;
-  height: 317px;
+  height: ${({ height }) => height}px;
   padding: 20px;
   width: 100%;
 

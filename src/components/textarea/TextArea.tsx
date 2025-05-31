@@ -7,17 +7,20 @@ export type TextAreaProps = {
   errorMessage?: string
   placeholder?: string
   disabled?: boolean
+  height: number
 } & ComponentPropsWithoutRef<'textarea'>
 
 export const TextAreaField = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   (props, ref) => {
-    const { className, errorMessage, placeholder, disabled, ...rest } = props
+    const { className, errorMessage, placeholder, disabled, height, ...rest } =
+      props
 
     return (
       <Container>
         <TextAreaStyled
           placeholder={placeholder}
           disabled={disabled}
+          height={height}
           {...rest}
           ref={ref}
         />
