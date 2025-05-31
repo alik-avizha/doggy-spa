@@ -1,3 +1,4 @@
+import { Gap } from '@/components/gap/gap'
 import { TextField } from '@/components/textfield'
 import { Typography } from '@/components/typography'
 
@@ -10,22 +11,26 @@ import {
   SearchCurrentDog,
   SelectionBlock,
   TextFieldWrapper,
-  Title,
   Wrapper,
 } from './styled.css'
 
 export const InfoPage = () => (
   <Wrapper>
-    <Title variant="size_70">INFO DOG</Title>
+    <Typography variant="size_70" textAlign="center">
+      INFO DOG
+    </Typography>
+    <Gap size={100} />
     <SearchBlock>
       <SelectionBlock>
         <Description variant="size_30">Current Selection:</Description>
+        <Gap direction="horizontal" size={10} />
         <SearchCurrentDog variant="size_30">Beds & Cushions</SearchCurrentDog>
       </SelectionBlock>
       <TextFieldWrapper>
         <TextField placeholder="Search" type="searchType" />
       </TextFieldWrapper>
     </SearchBlock>
+    <Gap size={150} />
     <PhotoBlock>
       <ImageStyled
         src="/images/doggy.webp"
@@ -33,8 +38,10 @@ export const InfoPage = () => (
         width={200}
         height={200}
       />
+      <Gap size={30} />
       <Typography variant="size_64">Siberian Husky</Typography>
     </PhotoBlock>
+    <Gap size={100} />
     <DescriptionWrapper>
       <Typography variant="size_40">Energy: 5</Typography>
       <Typography variant="size_40">Min life expectancy: 5</Typography>

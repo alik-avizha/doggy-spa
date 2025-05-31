@@ -1,3 +1,4 @@
+import type { Property } from 'csstype'
 import type { ComponentPropsWithoutRef, ElementType } from 'react'
 
 import { StyledTypography } from './styled.css'
@@ -17,13 +18,32 @@ export type TypographyProps<T extends ElementType = 'p'> = {
     | 'size_64'
     | 'size_40'
     | 'size_35'
+    | 'size_15'
+    | 'size_18'
+    | 'size_16'
+  textAlign?: Property.TextAlign
+  textTransForm?: Property.TextTransform
 } & ComponentPropsWithoutRef<T>
 
 export const Typography = <T extends ElementType = 'p'>(
   props: TypographyProps<T> &
     Omit<ComponentPropsWithoutRef<T>, keyof TypographyProps<T>>
 ) => {
-  const { variant = 'size_26', as: Component = 'p', ...rest } = props
+  const {
+    variant = 'size_26',
+    as: Component = 'p',
+    textAlign = 'left',
+    textTransForm = 'inherit',
+    ...rest
+  } = props
 
-  return <StyledTypography as={Component} variant={variant} {...rest} />
+  return (
+    <StyledTypography
+      as={Component}
+      variant={variant}
+      textAlign={textAlign}
+      textTransForm={textTransForm}
+      {...rest}
+    />
+  )
 }

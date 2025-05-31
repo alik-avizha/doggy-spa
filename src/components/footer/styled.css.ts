@@ -27,11 +27,9 @@ export const NavigationItem = styled(Typography)`
   margin-bottom: 20px;
   font-weight: 400;
 `
-
 export const RightBlock = styled.div`
   width: 251px;
 `
-
 export const CenterBlock = styled.div`
   width: 650px;
 `
@@ -50,7 +48,6 @@ export const IconsBlock = styled.div`
   display: flex;
   justify-content: space-between;
 `
-
 export const BottomBlock = styled.div`
   height: 52px;
   background-color: #dfb2a9;
@@ -64,7 +61,6 @@ export const CookiesBlock = styled.div`
   display: flex;
   justify-content: space-between;
 `
-
 export const PrivacyBlock = styled.div`
   width: 300px;
   display: flex;

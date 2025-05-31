@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
 
 import { Button } from '@/components/button'
-import { Typography } from '@/components/typography'
 
 export const Wrapper = styled.div`
   width: 970px;
@@ -25,24 +24,15 @@ export const SignBlock = styled.div`
 export const LeftBlock = styled.div`
   display: flex;
   flex-direction: column;
-`
-export const Title = styled(Typography)`
-  text-transform: uppercase;
-  width: 200px;
-  margin-bottom: 40px;
-`
-export const Description = styled(Typography)`
   width: 280px;
-  margin-bottom: 40px;
+`
+export const TitleBlock = styled.div`
+  width: 200px;
 `
 export const StyledButton = styled(Button)`
-  width: 138px;
   padding-top: 10px;
   padding-bottom: 5px;
-  margin-top: 40px;
-  margin-bottom: 40px;
 `
-export const Text = styled(Typography)`
+export const DescriptionBlock = styled.div`
   width: 230px;
-  text-align: center;
 `
