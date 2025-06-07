@@ -10,6 +10,6 @@ jobs:
   update-preview:
     runs-on: ubuntu-latest
     steps:
-      - name: Call updateDogs API on Preview
+      - name: Call updateDogs for Production
         run: |
-          curl -X GET https://preview-doggy-spa-one.vercel.app/api/updateDogs
+          curl -X GET https://doggy-spa-one.vercel.app/api/updateDogs
