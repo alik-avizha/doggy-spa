@@ -1,10 +1,13 @@
 'use client'
 
 import type { ChangeEvent } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Gap } from '@/components/gap/gap'
 import { TextField } from '@/components/textfield'
 import { Typography } from '@/components/typography'
+import type { Dog } from '@/contstants/types'
+import { useDebounce } from '@/hooks'
 
 import {
   Description,
@@ -19,27 +22,33 @@ import {
 } from './styled'
 
 export const InfoPage = () => {
-  // const [dogs, setDogs] = useState([])
-  // const [loading, setLoading] = useState(false)
+  const [data, setData] = useState<null | Dog>(null)
+  const [search, setSearch] = useState('')
+  const debouncedSearch = useDebounce(search, 300)
 
-  // const handleUpdate = async () => {
-  //   setLoading(true)
-  //   await fetch('/api/updateDogs')
-  //   setLoading(false)
-  // }
+  useEffect(() => {
+    if (debouncedSearch.trim() === '') {
+      return
+    }
 
-  // useEffect(() => {
-  //   handleUpdate()
-  // }, [])
+    const fetchDogs = async () => {
+      const res = await fetch(
+        `/api/dogs?name=${encodeURIComponent(debouncedSearch)}`
+      )
+      const result = await res.json()
 
-  const handleSearch = async (e: ChangeEvent<HTMLInputElement>) => {
-    // setLoading(true)
-    const res = await fetch(`/api/dogs?name=${e.currentTarget.value}`)
-    const data = await res.json()
+      if (Array.isArray(result) && result.length > 0) {
+        setData(result[0])
+      } else {
+        setData(null)
+      }
+    }
 
-    console.log('dogs', data)
-    // setDogs(data)
-    // setLoading(false)
+    fetchDogs()
+  }, [debouncedSearch])
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.currentTarget.value)
   }
 
   return (
@@ -52,34 +61,49 @@ export const InfoPage = () => {
         <SelectionBlock>
           <Description variant="size_30">Current Selection:</Description>
           <Gap direction="horizontal" size={10} />
-          <SearchCurrentDog variant="size_30">Beds & Cushions</SearchCurrentDog>
+          {data && (
+            <SearchCurrentDog variant="size_30">
+              {data?.breed_group}
+            </SearchCurrentDog>
+          )}
         </SelectionBlock>
         <TextFieldWrapper>
           <TextField
             placeholder="Search"
             type="searchType"
-            onChange={handleSearch}
+            onChange={handleChange}
           />
         </TextFieldWrapper>
       </SearchBlock>
       <Gap size={150} />
-      <PhotoBlock>
-        <ImageStyled
-          src="/images/doggy.webp"
-          alt="собака"
-          width={200}
-          height={200}
-        />
-        <Gap size={30} />
-        <Typography variant="size_64">Siberian Husky</Typography>
-      </PhotoBlock>
-      <Gap size={100} />
-      <DescriptionWrapper>
-        <Typography variant="size_40">Energy: 5</Typography>
-        <Typography variant="size_40">Min life expectancy: 5</Typography>
-        <Typography variant="size_40">Good with strangers: 5</Typography>
-        <Typography variant="size_40">Good with other dogs: 5</Typography>
-      </DescriptionWrapper>
+      {data ? (
+        <>
+          <PhotoBlock>
+            <ImageStyled
+              src={data.image?.url}
+              alt={data.name}
+              width={200}
+              height={200}
+            />
+            <Gap size={30} />
+            <Typography variant="size_64">{data.name}</Typography>
+          </PhotoBlock>
+          <Gap size={100} />
+          <DescriptionWrapper>
+            <Typography variant="size_40">Bred for: {data.bred_for}</Typography>
+            <Typography variant="size_40">
+              Temperament: {data.temperament}
+            </Typography>
+            <Typography variant="size_40">
+              Life span: {data.life_span}
+            </Typography>
+          </DescriptionWrapper>
+        </>
+      ) : (
+        <Typography variant="size_40" textAlign="center">
+          Try to find dog
+        </Typography>
+      )}
     </Wrapper>
   )
 }
