@@ -2,11 +2,11 @@ import type { FC } from 'react'
 
 import { Button } from '@/components/button'
 import { Card } from '@/components/card'
-import { Gap } from '@/components/gap/gap'
+import { Gap } from '@/components/gap'
 import { Typography } from '@/components/typography'
 import type { AnimalItem } from '@/contstants/types'
 
-import { CardWrapper, InfoBlock, List, Price, Wrapper } from './styled.css'
+import { CardWrapper, InfoBlock, List, Price, Wrapper } from './styled'
 
 type Props = {
   title: string

@@ -1,7 +1,7 @@
 import type { ComponentPropsWithoutRef } from 'react'
 import { forwardRef } from 'react'
 
-import { Container, ErrorMessage, TextAreaStyled } from './styled.css'
+import { Container, ErrorMessage, TextAreaStyled } from './styled'
 
 export type TextAreaProps = {
   errorMessage?: string

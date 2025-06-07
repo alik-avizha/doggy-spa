@@ -1,6 +1,4 @@
-'use client'
-
-import { HomePage } from '@/components/pages/home-page/home-page'
+import { HomePage } from '@/components/pages'
 
 function Home() {
   return <HomePage />

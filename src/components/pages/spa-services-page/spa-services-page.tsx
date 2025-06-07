@@ -1,4 +1,6 @@
-import { Gap } from '@/components/gap/gap'
+'use client'
+
+import { Gap } from '@/components/gap'
 import { Typography } from '@/components/typography'
 
 import {
@@ -8,7 +10,7 @@ import {
   ServicePrice,
   ServiceTitle,
   Wrapper,
-} from './styled.css'
+} from './styled'
 
 export const SpaServicesPage = () => (
   <Wrapper>

@@ -1,6 +1,9 @@
 'use client'
 
-import { InstagramIcon } from '@/assets/instagram'
+import { InstagramIcon } from '@/components/icons'
+import { TextField } from '@/components/textfield'
+import { Typography } from '@/components/typography'
+
 import {
   BottomBlock,
   CenterBlock,
@@ -15,9 +18,7 @@ import {
   SubmitForm,
   Title,
   Wrapper,
-} from '@/components/footer/styled.css'
-import { TextField } from '@/components/textfield'
-import { Typography } from '@/components/typography'
+} from './styled'
 
 export const Footer = () => (
   <Wrapper>

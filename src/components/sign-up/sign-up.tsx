@@ -1,5 +1,8 @@
 import { Card } from '@/components/card'
-import { Gap } from '@/components/gap/gap'
+import { Gap } from '@/components/gap'
+import { TextField } from '@/components/textfield'
+import { Typography } from '@/components/typography'
+
 import {
   DescriptionBlock,
   LeftBlock,
@@ -7,9 +10,7 @@ import {
   StyledButton,
   TitleBlock,
   Wrapper,
-} from '@/components/sign-up/styled.css'
-import { TextField } from '@/components/textfield'
-import { Typography } from '@/components/typography'
+} from './styled'
 
 export const SignUp = () => (
   <Wrapper>

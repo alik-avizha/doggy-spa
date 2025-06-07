@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes, FC, PropsWithChildren } from 'react'
 
-import { StyledButton } from '@/components/button/styled.css'
+import { StyledButton } from './styled'
 
 export const Button: FC<
   PropsWithChildren & ButtonHTMLAttributes<HTMLButtonElement>

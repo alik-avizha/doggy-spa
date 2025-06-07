@@ -1,6 +1,4 @@
-'use client'
-
-import { BlogPage } from '@/components/pages/blog-page/blog-page'
+import { BlogPage } from '@/components/pages'
 
 export default function Blog() {
   return <BlogPage />

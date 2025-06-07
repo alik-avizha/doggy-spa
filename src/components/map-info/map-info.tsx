@@ -1,6 +1,6 @@
 import GoogleMapReact from 'google-map-react'
 
-import { MarkerIcon } from '@/assets/markerIcon'
+import { MarkerIcon } from '@/components/icons'
 import { Typography } from '@/components/typography'
 
 import {
@@ -10,7 +10,7 @@ import {
   LeftInfoBlock,
   MapWrapper,
   RightInfoBlock,
-} from './styled.css'
+} from './styled'
 
 const DEFAULT_POSITION = {
   center: {

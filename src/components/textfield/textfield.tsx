@@ -5,15 +5,15 @@ import type {
 } from 'react'
 import { forwardRef } from 'react'
 
-import { DeleteIcon } from '@/assets/deleteIcon'
-import { Search } from '@/assets/search'
+import { DeleteIcon, SearchIcon } from '@/components/icons'
+
 import {
   ButtonAction,
   ErrorMessage,
   FieldContainer,
   InputField,
   SearchIconWrapper,
-} from '@/components/textfield/styled.css'
+} from './styled'
 
 export type TextFieldProps = {
   type?: 'default' | 'searchType'
@@ -60,7 +60,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         <FieldContainer>
           {type === 'searchType' && (
             <SearchIconWrapper>
-              <Search />
+              <SearchIcon />
             </SearchIconWrapper>
           )}
           <InputField

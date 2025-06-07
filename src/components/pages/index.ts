@@ -1,0 +1,7 @@
+export * from './about-us-page'
+export * from './blog-page'
+export * from './book-appointment-page'
+export * from './contact-us-page'
+export * from './home-page'
+export * from './info-page'
+export * from './spa-services-page'

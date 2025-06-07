@@ -1,5 +1,6 @@
 import { css } from '@emotion/css'
 
+// TO-DO перписать на emotion styled и удалить библу css
 export const defaultLink = (isActive: boolean) => css`
   color: #4c4c4b;
   text-decoration: none;

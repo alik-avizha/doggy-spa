@@ -1,7 +1,7 @@
 import type { Property } from 'csstype'
 import type { ComponentPropsWithoutRef, ElementType } from 'react'
 
-import { StyledTypography } from './styled.css'
+import { StyledTypography } from './styled'
 
 export type TypographyProps<T extends ElementType = 'p'> = {
   as?: T
