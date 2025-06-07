@@ -2,11 +2,10 @@ name: Update Dogs Data
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # запускать каждый день в полночь UTC
+    - cron: '0 0 * * 1'  # запускать каждую неделю в понедельник в полночь UTC
   workflow_dispatch:
 
 jobs:
-
   update-preview:
     runs-on: ubuntu-latest
     steps:

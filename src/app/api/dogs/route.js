@@ -18,7 +18,12 @@ export async function GET(request) {
       index: 'dogs',
       body: {
         query: {
-          match: { name },
+          match: {
+            name: {
+              query: name,
+              fuzziness: 'AUTO',
+            },
+          },
         },
       },
     })
