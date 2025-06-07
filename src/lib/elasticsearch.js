@@ -1,5 +1,8 @@
 import { Client } from '@elastic/elasticsearch'
 
-export const esClient = new Client({
-  node: 'http://localhost:8080',
-})
+const node =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:8080'
+    : process.env.NEXT_PUBLIC_ELASTICSEARCH_URL
+
+export const esClient = new Client({ node })
