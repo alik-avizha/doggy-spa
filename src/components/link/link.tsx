@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import type { FC, PropsWithChildren } from 'react'
-import React from 'react'
 
-import { defaultLink } from './styled.css'
+import { defaultLink } from './styled'
 
 type Props = {
   href: string

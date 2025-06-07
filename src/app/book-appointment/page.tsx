@@ -1,6 +1,4 @@
-'use client'
-
-import { BookAppointmentPage } from '@/components/pages/book-appointment-page/book-appointment-page'
+import { BookAppointmentPage } from '@/components/pages'
 
 export default function BookAppointment() {
   return <BookAppointmentPage />

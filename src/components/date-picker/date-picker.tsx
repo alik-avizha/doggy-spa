@@ -3,7 +3,9 @@ import DatePicker from 'react-datepicker'
 
 import 'react-datepicker/dist/react-datepicker.css'
 
-import { CustomHeaderDatePicker } from '@/components/custom-header-date-picker/custom-header-date-picker'
+import { CustomHeaderDatePicker } from '@/components/custom-header-date-picker'
+import { Typography } from '@/components/typography'
+
 import {
   Checkbox,
   Container,
@@ -12,8 +14,7 @@ import {
   SlotsTitle,
   SlotsWrapper,
   TimeslotLabel,
-} from '@/components/date-picker/styled.css'
-import { Typography } from '@/components/typography'
+} from './styled'
 
 const TIMESLOTS = [
   '11 am - 12 pm',

@@ -1,12 +1,14 @@
+'use client'
+
 import { AnimalInfoList } from '@/components/animal-info-list'
 import { Button } from '@/components/button'
 import { Card } from '@/components/card'
-import { Gap } from '@/components/gap/gap'
+import { Gap } from '@/components/gap'
 import { SignUp } from '@/components/sign-up'
 import { Typography } from '@/components/typography'
 import { ANIMAL_LIST } from '@/contstants/constants'
 
-import { InfoBlock, SignUpWrapper, Wrapper } from './styled.css'
+import { InfoBlock, SignUpWrapper, Wrapper } from './styled'
 
 export const HomePage = () => (
   <>

@@ -1,0 +1,15 @@
+name: Update Dogs Data
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # запускать каждый день в полночь UTC
+  workflow_dispatch:
+
+jobs:
+
+  update-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call updateDogs API on Preview
+        run: |
+          curl -X GET https://preview-doggy-spa-one.vercel.app/api/updateDogs

@@ -1,7 +1,8 @@
-import React from 'react'
+'use client'
 
-import { Gap } from '@/components/gap/gap'
-import { TextAreaField } from '@/components/textarea'
+import { TextAreaField } from '../../textarea'
+
+import { Gap } from '@/components/gap'
 import { TextField } from '@/components/textfield'
 import { Typography } from '@/components/typography'
 
@@ -14,7 +15,7 @@ import {
   SubmitForm,
   SubmitAction,
   ButtonStyled,
-} from './styled.css'
+} from './styled'
 
 export const ContactUsPage = () => (
   <Wrapper>

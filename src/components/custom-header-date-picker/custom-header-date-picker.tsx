@@ -1,13 +1,13 @@
 import type { FC } from 'react'
 
-import { LeftIcon } from '@/assets/leftIcon'
-import { RightIcon } from '@/assets/rightIcon'
+import { LeftIcon, RightIcon } from '@/components/icons'
+import { Typography } from '@/components/typography'
+
 import {
   HeaderWrapper,
   NavigationBlock,
   StyledButtonNavigation,
-} from '@/components/custom-header-date-picker/styled.css'
-import { Typography } from '@/components/typography'
+} from './styled'
 
 type Props = {
   date: Date

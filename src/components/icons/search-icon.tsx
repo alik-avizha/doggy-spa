@@ -21,4 +21,4 @@ const SvgComponent = (
 )
 const ForwardRef = forwardRef(SvgComponent)
 
-export const Search = memo(ForwardRef)
+export const SearchIcon = memo(ForwardRef)

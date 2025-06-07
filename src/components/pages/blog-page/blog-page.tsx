@@ -1,4 +1,4 @@
-import React from 'react'
+'use client'
 
 import { Card } from '@/components/card'
 import { Gap } from '@/components/gap/gap'
@@ -10,7 +10,7 @@ import {
   Text,
   TextBlock,
   Wrapper,
-} from './styled.css'
+} from './styled'
 
 export const BlogPage = () => (
   <Wrapper>

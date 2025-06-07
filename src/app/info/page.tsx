@@ -1,6 +1,4 @@
-'use client'
-
-import { InfoPage } from '@/components/pages/info-page/info-page'
+import { InfoPage } from '@/components/pages'
 
 export default function Info() {
   return <InfoPage />

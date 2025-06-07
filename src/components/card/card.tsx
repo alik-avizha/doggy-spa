@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import type { FC } from 'react'
 
-import { CardContainer } from '@/components/card/styled.css'
+import { CardContainer } from './styled'
 
 type Props = {
   width: number

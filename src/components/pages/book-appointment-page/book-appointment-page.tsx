@@ -1,14 +1,17 @@
-import React from 'react'
+'use client'
 
-import { AmazonIcon } from '@/assets/amazonIcon'
-import { ApplePayIcon } from '@/assets/applePayIcon'
-import { GooglePayIcon } from '@/assets/googlePayIcon'
-import { MasterCardIcon } from '@/assets/masterCardIcon'
-import { VisaIcon } from '@/assets/visaIcon'
-import { DateTimePicker } from '@/components/date-picker/date-picker'
-import { Gap } from '@/components/gap/gap'
-import { MapInfo } from '@/components/map-info/map-info'
-import { TextAreaField } from '@/components/textarea'
+import { TextAreaField } from '../../textarea'
+
+import { DateTimePicker } from '@/components/date-picker'
+import { Gap } from '@/components/gap'
+import {
+  AmazonIcon,
+  ApplePayIcon,
+  GooglePayIcon,
+  MasterCardIcon,
+  VisaIcon,
+} from '@/components/icons'
+import { MapInfo } from '@/components/map-info'
 import { Typography } from '@/components/typography'
 
 import {
@@ -26,7 +29,7 @@ import {
   TextFieldsBlock,
   TextFieldsStyled,
   Wrapper,
-} from './styled.css'
+} from './styled'
 
 export const BookAppointmentPage = () => (
   <>
