@@ -6,7 +6,7 @@ import { Card } from '@/components/card'
 import { Gap } from '@/components/gap'
 import { SignUp } from '@/components/sign-up'
 import { Typography } from '@/components/typography'
-import { ANIMAL_LIST } from '@/contstants/constants'
+import { ANIMAL_ITEMS, ANIMALS } from '@/contstants/constants'
 
 import { InfoBlock, SignUpWrapper, Wrapper } from './styled'
 
@@ -27,20 +27,20 @@ export const HomePage = () => (
     </Wrapper>
     <Gap size={200} />
     <SignUpWrapper>
-      <Card width={552} height={552} url="/images/doggy.webp" />
+      <Card width={552} height={552} url="/images/anthony.webp" />
       <SignUp />
     </SignUpWrapper>
     <Gap size={50} />
     <AnimalInfoList
       title="Dog Collars"
       titleButton="See More Dog Collars"
-      items={ANIMAL_LIST}
+      items={ANIMAL_ITEMS}
     />
     <Gap size={50} />
     <AnimalInfoList
-      title="Dog Collars"
-      titleButton="See More Dog Collars"
-      items={ANIMAL_LIST}
+      title="Animal Carry Ons"
+      titleButton="See More Carry Ons"
+      items={ANIMALS}
     />
     <Gap size={50} />
   </>

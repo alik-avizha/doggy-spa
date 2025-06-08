@@ -38,6 +38,6 @@ export const SignUp = () => (
         </DescriptionBlock>
       </SignBlock>
     </LeftBlock>
-    <Card width={466} height={430} url="/images/doggy.webp" />
+    <Card width={466} height={430} url="/images/kisa.webp" />
   </Wrapper>
 )
