@@ -3,6 +3,7 @@
 import { InstagramIcon } from '@/components/icons'
 import { TextField } from '@/components/textfield'
 import { Typography } from '@/components/typography'
+import { Routes } from '@/contstants/routes'
 
 import {
   BottomBlock,
@@ -25,13 +26,13 @@ export const Footer = () => (
     <MainBlock>
       <LeftBlock>
         <Title variant="size_32">Customer Service</Title>
-        <NavigationItem variant="size_26">Blog</NavigationItem>
-        <NavigationItem variant="size_26">Cancellations</NavigationItem>
-        <NavigationItem variant="size_26">Track Your Animal</NavigationItem>
-        <NavigationItem variant="size_26">
+        <NavigationItem href={Routes[4].href}>Blog</NavigationItem>
+        <NavigationItem href={Routes[0].href}>Cancellations</NavigationItem>
+        <NavigationItem href={Routes[0].href}>Track Your Animal</NavigationItem>
+        <NavigationItem href={Routes[0].href}>
           Luxe’s Annual Spa Day 2021
         </NavigationItem>
-        <NavigationItem variant="size_26">Payment Options</NavigationItem>
+        <NavigationItem href={Routes[0].href}>Payment Options</NavigationItem>
       </LeftBlock>
       <CenterBlock>
         <Title variant="size_32">Subscribe to our Newsletter</Title>
@@ -50,11 +51,13 @@ export const Footer = () => (
       </CenterBlock>
       <RightBlock>
         <Title variant="size_32">Navigation</Title>
-        <NavigationItem variant="size_26">Home</NavigationItem>
-        <NavigationItem variant="size_26">About Us</NavigationItem>
-        <NavigationItem variant="size_26">Contact Us</NavigationItem>
-        <NavigationItem variant="size_26">FAQs</NavigationItem>
-        <NavigationItem variant="size_26">Help with navigation</NavigationItem>
+        <NavigationItem href={Routes[0].href}>Home</NavigationItem>
+        <NavigationItem href={Routes[5].href}>About Us</NavigationItem>
+        <NavigationItem href={Routes[6].href}>Contact Us</NavigationItem>
+        <NavigationItem href={Routes[0].href}>FAQs</NavigationItem>
+        <NavigationItem href={Routes[0].href}>
+          Help with navigation
+        </NavigationItem>
       </RightBlock>
     </MainBlock>
     <BottomBlock>

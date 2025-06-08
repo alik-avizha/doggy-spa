@@ -1,26 +1,50 @@
 import type { AnimalItem } from '@/contstants/types'
 
-export const ANIMAL_LIST: AnimalItem[] = [
+export const ANIMAL_ITEMS: AnimalItem[] = [
   {
     id: 1,
-    url: '/images/doggy.webp',
+    url: '/images/il_340.webp',
     description: 'Leather Dog Collars with Gold Name Tag',
     category: 'Luxe Animal Spa',
     price: 'CA $325.00',
   },
   {
     id: 2,
-    url: '/images/doggy.webp',
+    url: '/images/il_158.webp',
     description: 'Pink & White Diamond Encrusted Dog Collar',
     category: 'Luxe Animal Spa',
     price: 'CA $1225.00',
   },
   {
     id: 3,
-    url: '/images/doggy.webp',
+    url: '/images/il_1588.webp',
     description: 'Large 3000kt Silver Diamond Collar',
     category: 'Luxe Animal Spa',
     price: 'CA $1500.00',
+  },
+]
+
+export const ANIMALS: AnimalItem[] = [
+  {
+    id: 1,
+    url: '/images/3304288.webp',
+    description: 'Leather Dog Collars with Gold Name Tag',
+    category: 'Luxe Animal Spa',
+    price: 'CA $125.00',
+  },
+  {
+    id: 2,
+    url: '/images/fa017fc.webp',
+    description: 'Pink & White Diamond Encrusted Dog Collar',
+    category: 'Luxe Animal Spa',
+    price: 'CA $135.00',
+  },
+  {
+    id: 3,
+    url: '/images/Pet-Carrier.webp',
+    description: 'Large 3000kt Silver Diamond Collar',
+    category: 'Luxe Animal Spa',
+    price: 'CA $95.00',
   },
 ]
 

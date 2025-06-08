@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 
-import { TitleLink } from '@/components/link'
+import { NavigationLink } from '@/components/navigation-link'
 import { Typography } from '@/components/typography'
 import { Routes } from '@/contstants/routes'
 
@@ -14,9 +14,9 @@ export function Header() {
     <>
       <HeaderBlock>
         {Routes.map(({ href, label }) => (
-          <TitleLink key={href} href={href} isActive={pathname === href}>
+          <NavigationLink key={href} href={href} isActive={pathname === href}>
             {label}
-          </TitleLink>
+          </NavigationLink>
         ))}
       </HeaderBlock>
       <InfoPlateBlock>

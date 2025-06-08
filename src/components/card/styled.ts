@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 interface CardContainerProps {
   width: number
   height: number
+  border: number
 }
 
 export const CardContainer = styled.div<CardContainerProps>`
@@ -10,5 +11,5 @@ export const CardContainer = styled.div<CardContainerProps>`
   height: ${({ height }) => height}px;
   position: relative;
   overflow: hidden;
-  border: 10px solid #dfb2a9;
+  border: ${({ border }) => border}px solid #dfb2a9;
 `

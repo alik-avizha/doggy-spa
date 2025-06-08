@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import Link from 'next/link'
 
 import { Button } from '@/components/button'
 import { Typography } from '@/components/typography'
@@ -23,9 +24,19 @@ export const Title = styled(Typography)`
   margin-bottom: 30px;
   font-weight: 700;
 `
-export const NavigationItem = styled(Typography)`
+export const NavigationItem = styled(Link)`
+  display: block;
+  text-decoration: none;
   margin-bottom: 20px;
+  font-size: 26px;
+  line-height: 100%;
   font-weight: 400;
+  color: #4c4c4b;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateX(10px);
+  }
 `
 export const RightBlock = styled.div`
   width: 251px;
