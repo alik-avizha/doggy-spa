@@ -1,3 +1,10 @@
+import type * as yup from 'yup'
+
+import type {
+  validationSubscribeToLetterSchema,
+  validationContactUsSchema,
+} from './validation'
+
 export type AnimalItem = {
   id: number
   url: string
@@ -30,3 +37,11 @@ export type Dog = {
   height: DogWeightHeight
   weight: DogWeightHeight
 }
+
+export type ValidationSubscribeToLettersSchemaType = yup.InferType<
+  typeof validationSubscribeToLetterSchema
+>
+
+export type ValidationContactUsSchemaType = yup.InferType<
+  typeof validationContactUsSchema
+>

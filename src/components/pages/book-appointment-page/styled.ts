@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 
-import { Button } from '@/components/button'
 import { TextField } from '@/components/textfield'
 import { Typography } from '@/components/typography'
 
@@ -63,7 +62,4 @@ export const PaymentsTypesBlock = styled.div`
   display: flex;
   justify-content: center;
   gap: 10px;
-`
-export const StyledButton = styled(Button)`
-  padding: 10px 60px;
 `

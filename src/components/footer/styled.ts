@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
 import Link from 'next/link'
 
-import { Button } from '@/components/button'
 import { Typography } from '@/components/typography'
 
 export const Wrapper = styled.div`
@@ -44,15 +43,13 @@ export const RightBlock = styled.div`
 export const CenterBlock = styled.div`
   width: 650px;
 `
-export const SubmitForm = styled.div`
+export const SubmitForm = styled.form`
   display: flex;
   gap: 24px;
-  align-items: center;
+  align-items: start;
   margin-bottom: 20px;
 `
-export const SubmitButton = styled(Button)`
-  padding: 10px 36px;
-`
+
 export const IconsBlock = styled.div`
   width: 450px;
   padding: 0 40px;

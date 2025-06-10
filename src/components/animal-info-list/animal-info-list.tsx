@@ -30,7 +30,7 @@ export const AnimalInfoList: FC<Props> = ({ titleButton, title, items }) => {
       <List>
         {items.map(({ url, description, id, price, category }) => (
           <CardWrapper key={id}>
-            <Card width={452} height={452} url={url} border={6} />
+            <Card width={435} height={445} url={url} border={6} />
             <InfoBlock>
               <Typography variant="size_20">{description}</Typography>
               <Gap size={5} />

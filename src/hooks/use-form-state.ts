@@ -1,0 +1,100 @@
+import type { ChangeEvent } from 'react'
+import { useState } from 'react'
+import { useFormState, useFormStatus } from 'react-dom'
+import type { ObjectSchema } from 'yup'
+import { ValidationError } from 'yup'
+
+interface FormProps<T> {
+  formAction: () => void
+  pending: boolean
+  formState: T
+  formData: T
+  touched: Record<keyof T, boolean>
+  errors: Record<keyof T, string>
+  register: (name: keyof T) => {
+    name: keyof T
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void
+    onBlur: (e: ChangeEvent<HTMLInputElement>) => void
+  }
+}
+
+export function useForm<T extends Record<string, any>>(
+  handleSubmit: (data: T, errors: Record<keyof T, string>) => void,
+  initialState: T,
+  validationSchema?: ObjectSchema<T>
+): FormProps<T> {
+  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/no-use-before-define
+  const [formState, formAction] = useFormState<T>(onSubmit, initialState)
+  const { pending } = useFormStatus()
+  const [touched, setTouched] = useState<Record<keyof T, boolean>>(
+    {} as Record<keyof T, boolean>
+  )
+  const [formData, setFormData] = useState(initialState)
+  const [errors, setErrors] = useState<Record<keyof T, string>>(
+    {} as Record<keyof T, string>
+  )
+
+  const validate = async (data: T) => {
+    let errors = {}
+    try {
+      await validationSchema?.validate(data, { abortEarly: false })
+    } catch (err) {
+      if (err instanceof ValidationError) {
+        const newErrors: Record<string, string> = {}
+        err.inner.forEach(error => {
+          if (error.path) newErrors[error.path] = error.message
+        })
+        errors = newErrors
+      }
+    }
+    return errors as Record<keyof T, string>
+  }
+
+  async function onSubmit(previousState: T, formData: FormData): Promise<T> {
+    const fieldValues = Object.fromEntries(formData) as T
+    const errors = await validate(fieldValues)
+    setErrors(errors)
+    await handleSubmit(fieldValues, errors)
+    return fieldValues
+  }
+
+  const handleChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = event.target
+    setFormData(prev => ({ ...prev, [name]: value }))
+  }
+
+  const handleBlur = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = event.target
+    if (validationSchema) {
+      const fieldSchema = validationSchema.pick([name])
+      fieldSchema
+        .validate({ [name]: value })
+        .then(() => setErrors(currErrors => ({ ...currErrors, [name]: '' })))
+        .catch(err =>
+          setErrors(currErrors => ({ ...currErrors, [name]: err.message }))
+        )
+    }
+    setTouched(prev => ({ ...prev, [name]: true }))
+  }
+
+  const register = (name: keyof T) => ({
+    name,
+    onChange: handleChange,
+    onBlur: handleBlur,
+  })
+
+  return {
+    pending,
+    formState,
+    touched,
+    errors,
+    formData,
+    formAction,
+    register,
+  }
+}

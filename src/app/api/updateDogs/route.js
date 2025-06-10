@@ -7,18 +7,20 @@ export async function GET() {
   try {
     try {
       await esClient.indices.delete({ index: 'dogs' })
-      console.log('Index "dogs" deleted')
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      console.log('Index "dogs" does not exist or could not be deleted')
+      console.error(
+        'Index "dogs" does not exist or could not be deleted',
+        error
+      )
     }
 
     try {
       await esClient.indices.create({ index: 'dogs' })
-      console.log('Index "dogs" created')
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      console.log('Index "dogs" already exists or could not be created')
+      console.error(
+        'Index "dogs" already exists or could not be created',
+        error
+      )
     }
 
     const response = await fetch(`https://api.thedogapi.com/v1/breeds`, {
@@ -36,8 +38,6 @@ export async function GET() {
       { index: { _index: 'dogs', _id: dog.id } },
       dog,
     ])
-
-    console.log('body', body)
 
     await esClient.bulk({ refresh: true, body })
 

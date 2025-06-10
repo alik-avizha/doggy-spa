@@ -1,6 +1,5 @@
 export * from './amazon-icon'
 export * from './apple-pay-icon'
-export * from './delete-icon'
 export * from './google-pay-icon'
 export * from './instagram-icon'
 export * from './left-icon'

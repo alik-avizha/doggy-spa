@@ -2,6 +2,7 @@
 
 import { TextAreaField } from '../../textarea'
 
+import { Button } from '@/components/button'
 import { DateTimePicker } from '@/components/date-picker'
 import { Gap } from '@/components/gap'
 import {
@@ -24,7 +25,6 @@ import {
   PaymentsContainer,
   PaymentsTypesBlock,
   RightBlock,
-  StyledButton,
   TextFieldPayment,
   TextFieldsBlock,
   TextFieldsStyled,
@@ -80,7 +80,7 @@ export const BookAppointmentPage = () => (
                 appointment will result in a cancellation fee of $300.00.
               </Typography>
               <Gap size={30} />
-              <StyledButton>Book Appointment</StyledButton>
+              <Button>Book Appointment</Button>
             </PaymentsBlock>
           </PaymentsContainer>
         </LeftBlock>

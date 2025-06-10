@@ -27,7 +27,7 @@ export const BlogPage = () => (
     </Typography>
     <Gap size={40} />
     <CardTextWrapper>
-      <Card width={627} height={562} url="/images/doggy.webp" />
+      <Card width={627} height={562} url="/images/darinka.webp" border={6} />
       <TextBlock>
         <Text variant="size_30" textAlign="center">
           Sometimes it is difficult to get dogs interested in the toys you buy
@@ -53,7 +53,7 @@ export const BlogPage = () => (
           We love you Rex.
         </Text>
       </TextBlock>
-      <Card width={644} height={584} url="/images/doggy.webp" />
+      <Card width={644} height={584} url="/images/matthew.webp" border={6} />
     </CardTextWrapper>
   </Wrapper>
 )
