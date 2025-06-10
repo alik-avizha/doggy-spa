@@ -1,7 +1,5 @@
 import styled from '@emotion/styled'
 
-import { Button } from '@/components/button'
-
 export const Wrapper = styled.div`
   width: 970px;
   height: 650px;
@@ -15,7 +13,7 @@ export const Wrapper = styled.div`
   left: 250px;
   background-color: #ffffff;
 `
-export const SignBlock = styled.div`
+export const FormBlock = styled.form`
   width: 270px;
   display: flex;
   flex-direction: column;
@@ -28,10 +26,6 @@ export const LeftBlock = styled.div`
 `
 export const TitleBlock = styled.div`
   width: 200px;
-`
-export const StyledButton = styled(Button)`
-  padding-top: 10px;
-  padding-bottom: 5px;
 `
 export const DescriptionBlock = styled.div`
   width: 230px;

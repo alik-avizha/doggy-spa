@@ -1,6 +1,5 @@
 'use client'
 
-import type { ChangeEvent } from 'react'
 import { useEffect, useState } from 'react'
 
 import { Gap } from '@/components/gap/gap'
@@ -8,6 +7,7 @@ import { TextField } from '@/components/textfield'
 import { Typography } from '@/components/typography'
 import type { Dog } from '@/contstants/types'
 import { useDebounce } from '@/hooks'
+import { getDogByNameService } from '@/services'
 
 import {
   Description,
@@ -32,23 +32,15 @@ export const InfoPage = () => {
     }
 
     const fetchDogs = async () => {
-      const res = await fetch(
-        `/api/dogs?name=${encodeURIComponent(debouncedSearch)}`
-      )
-      const result = await res.json()
-
-      if (Array.isArray(result) && result.length > 0) {
-        setData(result[0])
-      } else {
-        setData(null)
-      }
+      const dog = await getDogByNameService(debouncedSearch)
+      setData(dog)
     }
 
     fetchDogs()
   }, [debouncedSearch])
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.currentTarget.value)
+  const handleChange = (value: string) => {
+    setSearch(value)
   }
 
   return (
@@ -71,7 +63,7 @@ export const InfoPage = () => {
           <TextField
             placeholder="Search"
             type="searchType"
-            onChange={handleChange}
+            onChangeText={handleChange}
           />
         </TextFieldWrapper>
       </SearchBlock>

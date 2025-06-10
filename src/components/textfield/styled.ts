@@ -1,5 +1,7 @@
 import styled from '@emotion/styled'
 
+import { Typography } from '@/components/typography'
+
 export const FieldContainer = styled.div`
   position: relative;
   width: 100%;
@@ -17,35 +19,6 @@ export const SearchIconWrapper = styled.span`
   }
 `
 
-export const ButtonAction = styled.button<{ disabled?: boolean }>`
-  cursor: pointer;
-
-  position: absolute;
-  top: 50%;
-  right: 0.75rem;
-  transform: translateY(-50%);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 24px;
-  height: 24px;
-  padding: 0;
-
-  background: transparent;
-  border: 0;
-  outline: 0;
-
-  svg {
-    fill: ${({ disabled }) => (disabled ? '#4c4c4c' : '#808080')};
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-  }
-`
-
 interface FieldProps {
   hasError?: boolean
   typeStyle: 'default' | 'searchType'
@@ -56,7 +29,6 @@ export const InputField = styled.input<FieldProps>`
   padding: 14px 12px;
   font-size: 14px;
   font-weight: 400;
-  letter-spacing: 0;
   color: #959fa8;
 
   background: white;
@@ -83,8 +55,9 @@ export const InputField = styled.input<FieldProps>`
   `}
 `
 
-export const ErrorMessage = styled.p`
+export const ErrorMessage = styled(Typography)`
   color: red;
   margin: 4px 0 0 0;
-  font-size: 0.875rem;
+  font-size: 14px;
+  font-weight: 400;
 `

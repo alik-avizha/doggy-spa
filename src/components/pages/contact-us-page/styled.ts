@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-import { Button } from '@/components/button'
+import { TextField } from '@/components/textfield'
 import { Typography } from '@/components/typography'
 
 export const Wrapper = styled.div`
@@ -21,7 +21,7 @@ export const StyledLink = styled.span`
   color: #e89b93;
   text-decoration: underline;
 `
-export const SubmitForm = styled.div`
+export const SubmitForm = styled.form`
   width: 1285px;
 `
 export const FieldBlock = styled.div`
@@ -33,6 +33,7 @@ export const SubmitAction = styled.div`
   display: flex;
   justify-content: center;
 `
-export const ButtonStyled = styled(Button)`
-  padding: 12px 60px;
+
+export const TextFieldsStyled = styled(TextField)`
+  height: 60px;
 `

@@ -23,7 +23,12 @@ export const AboutUsPage = () => (
     </Description>
     <Gap size={140} />
     <CardTextWrapper>
-      <Card width={427} height={460} url="/images/doggy.webp" />
+      <Card
+        width={427}
+        height={460}
+        url="/images/rectangle_224.webp"
+        border={6}
+      />
       <TextBlock>
         <Text variant="size_30" textAlign="center">
           Here at Luxe Animal Spa we aim to provide you with the best service
@@ -49,7 +54,12 @@ export const AboutUsPage = () => (
           never forget!
         </Text>
       </TextBlock>
-      <Card width={507} height={487} url="/images/doggy.webp" />
+      <Card
+        width={507}
+        height={487}
+        url="/images/rectangle_225.webp"
+        border={6}
+      />
     </CardTextWrapper>
   </Wrapper>
 )

@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  update-preview:
+  update-production:
     runs-on: ubuntu-latest
     steps:
       - name: Call updateDogs for Production

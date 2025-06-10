@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes, FC, PropsWithChildren } from 'react'
+import { useFormStatus } from 'react-dom'
 
 import { StyledButton } from './styled'
 
@@ -8,4 +9,12 @@ export const Button: FC<
   children,
 
   ...buttonsProps
-}) => <StyledButton {...buttonsProps}>{children}</StyledButton>
+}) => {
+  const { pending } = useFormStatus()
+
+  return (
+    <StyledButton {...buttonsProps} disabled={pending}>
+      {!pending ? children : 'Loading'}
+    </StyledButton>
+  )
+}

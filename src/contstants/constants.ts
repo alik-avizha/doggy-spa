@@ -1,6 +1,10 @@
-import type { AnimalItem } from '@/contstants/types'
+import type {
+  AnimalItem,
+  ValidationSubscribeToLettersSchemaType,
+  ValidationContactUsSchemaType,
+} from './types'
 
-export const ANIMAL_ITEMS: AnimalItem[] = [
+export const DOG_COLLARS: AnimalItem[] = [
   {
     id: 1,
     url: '/images/il_340.webp',
@@ -24,7 +28,7 @@ export const ANIMAL_ITEMS: AnimalItem[] = [
   },
 ]
 
-export const ANIMALS: AnimalItem[] = [
+export const ANIMAL_CARRY: AnimalItem[] = [
   {
     id: 1,
     url: '/images/3304288.webp',
@@ -47,6 +51,19 @@ export const ANIMALS: AnimalItem[] = [
     price: 'CA $95.00',
   },
 ]
+
+export const SUBSCRIBE_TO_LETTER_DEFAULT_VALUES: ValidationSubscribeToLettersSchemaType =
+  {
+    email: '',
+  }
+
+export const CONTACT_US_DEFAULT_VALUES: ValidationContactUsSchemaType = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  phoneNumber: '',
+  message: '',
+}
 
 // export const commonTheme = {
 //   dimensions: {

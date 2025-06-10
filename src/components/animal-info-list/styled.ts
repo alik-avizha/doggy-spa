@@ -17,7 +17,6 @@ export const List = styled.div`
 export const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 423px;
   gap: 50px;
 `
 export const InfoBlock = styled.div`

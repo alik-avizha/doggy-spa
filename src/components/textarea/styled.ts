@@ -8,7 +8,10 @@ export const Container = styled.div`
   justify-content: flex-start;
 `
 
-export const TextAreaStyled = styled.textarea<{ height: number }>`
+export const TextAreaStyled = styled.textarea<{
+  height: number
+  hasError: boolean
+}>`
   resize: none;
 
   height: ${({ height }) => height}px;
@@ -25,8 +28,18 @@ export const TextAreaStyled = styled.textarea<{ height: number }>`
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   outline: none;
+
+  ${({ hasError }) =>
+    hasError &&
+    `
+    color: red;
+    border-color: red;
+  `}
 `
 
 export const ErrorMessage = styled(Typography)`
-  color: var(--color-dark-100);
+  color: red;
+  margin: 4px 0 0 0;
+  font-size: 14px;
+  font-weight: 400;
 `
