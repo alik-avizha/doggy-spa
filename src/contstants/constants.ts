@@ -46,7 +46,7 @@ export const ANIMAL_CARRY: AnimalItem[] = [
   },
   {
     id: 3,
-    url: '/images/Pet-Carrier.webp',
+    url: ['/images/Pet-Carrier.webp', '/images/fa017fc.webp'],
     description: 'Large 3000kt Silver Diamond Collar',
     category: 'Luxe Animal Spa',
     price: 'CA $95.00',
