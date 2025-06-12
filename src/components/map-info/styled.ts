@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { MapContainer } from 'react-leaflet'
 
 import { Typography } from '@/components/typography'
 
@@ -11,6 +12,10 @@ export const MapWrapper = styled.div`
   width: 100%;
   height: 500px;
   border: 8px solid #dfb2a9;
+`
+export const Map = styled(MapContainer)`
+  width: 100%;
+  height: 100%;
 `
 
 export const AddressInfoBlock = styled.div`

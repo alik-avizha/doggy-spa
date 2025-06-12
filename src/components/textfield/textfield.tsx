@@ -1,13 +1,9 @@
 import type { ChangeEvent, KeyboardEvent } from 'react'
 
+import { ErrorMessage } from '@/components/errror-message'
 import { SearchIcon } from '@/components/icons'
 
-import {
-  ErrorMessage,
-  FieldContainer,
-  InputField,
-  SearchIconWrapper,
-} from './styled'
+import { FieldContainer, InputField, SearchIconWrapper } from './styled'
 
 export type TextFieldProps = {
   type?: 'default' | 'searchType'
@@ -17,6 +13,7 @@ export type TextFieldProps = {
   value?: string
   onChangeText?: (value: string) => void
   onEnter?: () => void
+  dataTestId?: string
 }
 
 export const TextField = ({
@@ -27,6 +24,7 @@ export const TextField = ({
   value,
   onEnter,
   onChangeText,
+  dataTestId,
   ...restProps
 }: TextFieldProps) => {
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {

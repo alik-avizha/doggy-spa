@@ -1,34 +1,42 @@
 'use client'
 
-import { TextAreaField } from '../../textarea'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { FormProvider, useForm } from 'react-hook-form'
 
 import { Button } from '@/components/button'
+import { ControlledTextarea } from '@/components/controlled-textarea'
+import { ControlledTextField } from '@/components/controlled-textfield'
 import { Gap } from '@/components/gap'
 import { Typography } from '@/components/typography'
 import { CONTACT_US_DEFAULT_VALUES } from '@/contstants/constants'
 import type { ValidationContactUsSchemaType } from '@/contstants/types'
 import { validationContactUsSchema } from '@/contstants/validation'
-import { useForm } from '@/hooks'
 import { contactUsService } from '@/services'
 
 import {
   Border,
   Description,
-  StyledLink,
-  Wrapper,
   FieldBlock,
-  SubmitForm,
+  StyledLink,
   SubmitAction,
-  TextFieldsStyled,
+  SubmitForm,
+  Wrapper,
 } from './styled'
 
 export const ContactUsPage = () => {
-  const { formAction, register, errors } =
-    useForm<ValidationContactUsSchemaType>(
-      contactUsService,
-      CONTACT_US_DEFAULT_VALUES,
-      validationContactUsSchema
-    )
+  const methods = useForm<ValidationContactUsSchemaType>({
+    defaultValues: CONTACT_US_DEFAULT_VALUES,
+    mode: 'onChange',
+    resolver: yupResolver(validationContactUsSchema),
+  })
+  const { handleSubmit, reset } = methods
+
+  const onSubmit = handleSubmit((formData: ValidationContactUsSchemaType) => {
+    contactUsService(formData).then(() => {
+      reset()
+      // нотификацию добавить
+    })
+  })
 
   return (
     <Wrapper>
@@ -46,44 +54,35 @@ export const ContactUsPage = () => {
         information details in your email.
       </Description>
       <Gap size={140} />
-      <SubmitForm action={formAction}>
-        <FieldBlock>
-          <TextFieldsStyled
-            {...register('firstName')}
-            errorMessage={errors.firstName}
-            placeholder="First Name"
+      <FormProvider {...methods}>
+        <SubmitForm onSubmit={onSubmit}>
+          <FieldBlock>
+            <ControlledTextField
+              fieldName="firstName"
+              placeholder="First Name"
+            />
+            <ControlledTextField fieldName="lastName" placeholder="Last Name" />
+          </FieldBlock>
+          <Gap size={70} />
+          <FieldBlock>
+            <ControlledTextField fieldName="email" placeholder="Email" />
+            <ControlledTextField
+              fieldName="phoneNumber"
+              placeholder="Phone Number"
+            />
+          </FieldBlock>
+          <Gap size={70} />
+          <ControlledTextarea
+            fieldName="message"
+            placeholder="Your message goes here ..."
+            height={317}
           />
-          <TextFieldsStyled
-            {...register('lastName')}
-            errorMessage={errors.lastName}
-            placeholder="Last Name"
-          />
-        </FieldBlock>
-        <Gap size={70} />
-        <FieldBlock>
-          <TextFieldsStyled
-            {...register('email')}
-            errorMessage={errors.email}
-            placeholder="Email"
-          />
-          <TextFieldsStyled
-            {...register('phoneNumber')}
-            errorMessage={errors.phoneNumber}
-            placeholder="Phone number"
-          />
-        </FieldBlock>
-        <Gap size={70} />
-        <TextAreaField
-          {...register('message')}
-          errorMessage={errors.message}
-          placeholder="Your message goes here ..."
-          height={317}
-        />
-        <Gap size={100} />
-        <SubmitAction>
-          <Button type="submit">Submit</Button>
-        </SubmitAction>
-      </SubmitForm>
+          <Gap size={100} />
+          <SubmitAction>
+            <Button type="submit">Submit</Button>
+          </SubmitAction>
+        </SubmitForm>
+      </FormProvider>
     </Wrapper>
   )
 }

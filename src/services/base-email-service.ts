@@ -1,13 +1,8 @@
 type ValidationSchemaType = Record<string, any>
 export async function baseEmailService<T extends ValidationSchemaType>(
   url: string,
-  data: T,
-  errors: Record<keyof T, string>
+  data: T
 ): Promise<void> {
-  if (Object.keys(errors).length > 0) {
-    return
-  }
-
   try {
     const response = await fetch(url, {
       method: 'POST',

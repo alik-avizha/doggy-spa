@@ -1,7 +1,5 @@
 import styled from '@emotion/styled'
 
-import { Typography } from '@/components/typography'
-
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -35,11 +33,4 @@ export const TextAreaStyled = styled.textarea<{
     color: red;
     border-color: red;
   `}
-`
-
-export const ErrorMessage = styled(Typography)`
-  color: red;
-  margin: 4px 0 0 0;
-  font-size: 14px;
-  font-weight: 400;
 `

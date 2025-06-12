@@ -1,45 +1,48 @@
-import GoogleMapReact from 'google-map-react'
+import 'leaflet/dist/leaflet.css'
 
-import { MarkerIcon } from '@/components/icons'
+import type { LatLngExpression } from 'leaflet'
+import { Icon } from 'leaflet'
+import { Marker, Popup, TileLayer } from 'react-leaflet'
+
 import { Typography } from '@/components/typography'
+import { COORDINATES, MAP_INFO_CENTER } from '@/contstants/constants'
 
 import {
   AddressInfoBlock,
   Container,
   Description,
   LeftInfoBlock,
+  Map,
   MapWrapper,
   RightInfoBlock,
 } from './styled'
 
-const DEFAULT_POSITION = {
-  center: {
-    lat: 53.9174,
-    lng: 27.5596,
-  },
-  zoom: 15,
-}
-
-const MAP_OPTIONS = {
-  fullscreenControl: false,
-  mapTypeControl: false,
-  keyboardShortcuts: false,
-}
-
+const icon = new Icon({
+  iconUrl: '/assets/marker.svg',
+  iconSize: [38, 95],
+  shadowSize: [50, 64],
+  iconAnchor: [22, 94],
+  popupAnchor: [-3, -76],
+})
 export const MapInfo = () => (
   <Container>
     <MapWrapper>
-      <GoogleMapReact
-        defaultCenter={DEFAULT_POSITION.center}
-        defaultZoom={DEFAULT_POSITION.zoom}
-        yesIWantToUseGoogleMapApiInternals
-        options={MAP_OPTIONS}
+      <Map
+        center={MAP_INFO_CENTER as LatLngExpression}
+        zoom={17}
+        zoomControl={false}
+        attributionControl={false}
       >
-        <MarkerIcon
-          lat={DEFAULT_POSITION.center.lat}
-          lng={DEFAULT_POSITION.center.lng}
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-      </GoogleMapReact>
+        {COORDINATES.map(({ gps, popUp }) => (
+          <Marker position={gps as LatLngExpression} icon={icon} key={popUp}>
+            <Popup>{popUp}</Popup>
+          </Marker>
+        ))}
+      </Map>
     </MapWrapper>
     <AddressInfoBlock>
       <LeftInfoBlock>
