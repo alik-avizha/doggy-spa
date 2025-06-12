@@ -6,7 +6,9 @@ import {
   Cormorant,
   Poppins,
 } from 'next/font/google'
+import type { ReactNode } from 'react'
 
+import { ErrorBoundary } from '@/components/error-boundary'
 import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
 
@@ -38,7 +40,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: ReactNode
 }>) {
   return (
     <html lang="en">
@@ -46,7 +48,7 @@ export default function RootLayout({
         className={`${poppins.className} ${cinzelDecorative.className} ${tangerine.className} ${cormorant.className}`}
       >
         <Header />
-        {children}
+        <ErrorBoundary>{children}</ErrorBoundary>
         <Footer />
       </body>
     </html>
