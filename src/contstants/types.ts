@@ -54,3 +54,9 @@ export type ValidationBookingSchemaType = yup.InferType<
 export type BookInfo = Omit<ValidationBookingSchemaType, 'date'> & {
   date: string
 }
+
+export type NotificationState = {
+  visible: boolean
+  type: 'success' | 'error'
+  message: string
+}

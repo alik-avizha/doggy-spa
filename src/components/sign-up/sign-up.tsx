@@ -1,13 +1,17 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import React from 'react'
+import React, { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 
 import { Button } from '@/components/button'
 import { Card } from '@/components/card'
 import { Gap } from '@/components/gap'
+import { Notification } from '@/components/notification'
 import { Typography } from '@/components/typography'
 import { SUBSCRIBE_TO_LETTER_DEFAULT_VALUES } from '@/contstants/constants'
-import type { ValidationSubscribeToLettersSchemaType } from '@/contstants/types'
+import type {
+  NotificationState,
+  ValidationSubscribeToLettersSchemaType,
+} from '@/contstants/types'
 import { validationSubscribeToLetterSchema } from '@/contstants/validation'
 import { subscribeToNewsletterService } from '@/services'
 
@@ -28,14 +32,37 @@ export const SignUp = () => {
   })
   const { handleSubmit, reset } = methods
 
-  const onSubmit = handleSubmit(
-    (formData: ValidationSubscribeToLettersSchemaType) => {
-      subscribeToNewsletterService(formData).then(() => {
-        reset()
-        // нотификацию добавить
+  const [loading, setLoading] = useState(false)
+  const [notification, setNotification] = useState<NotificationState>({
+    visible: false,
+    type: 'success',
+    message: '',
+  })
+
+  const onSubmit = handleSubmit(async formData => {
+    try {
+      setLoading(true)
+      await subscribeToNewsletterService(formData)
+      reset()
+      setNotification({
+        visible: true,
+        type: 'success',
+        message: 'You have successfully subscribed!',
       })
+    } catch (error) {
+      console.error(error)
+      setNotification({
+        visible: true,
+        type: 'error',
+        message: 'Subscription failed. Please try again.',
+      })
+    } finally {
+      setLoading(false)
     }
-  )
+  })
+  const onCloseNotification = () => {
+    setNotification(prev => ({ ...prev, visible: false }))
+  }
 
   return (
     <Wrapper>
@@ -54,7 +81,9 @@ export const SignUp = () => {
           <FormBlock onSubmit={onSubmit}>
             <StyledTextField fieldName="email" placeholder="Email" />
             <Gap size={40} />
-            <Button type="submit">Sign Up</Button>
+            <Button type="submit" isLoading={loading}>
+              Sign Up
+            </Button>
             <Gap size={40} />
             <DescriptionBlock>
               <Typography variant="size_14" textAlign="center">
@@ -66,6 +95,13 @@ export const SignUp = () => {
         </FormProvider>
       </LeftBlock>
       <Card width={466} height={430} url="/images/kisa.webp" />
+      {notification.visible && (
+        <Notification
+          message={notification.message}
+          type={notification.type}
+          onClose={onCloseNotification}
+        />
+      )}
     </Wrapper>
   )
 }

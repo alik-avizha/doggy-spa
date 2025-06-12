@@ -1,7 +1,7 @@
 'use client'
 
 import { yupResolver } from '@hookform/resolvers/yup'
-import React from 'react'
+import React, { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 
 import { Button } from '@/components/button'
@@ -13,10 +13,14 @@ import {
   SnapchatIcon,
   TwitterIcon,
 } from '@/components/icons'
+import { Notification } from '@/components/notification'
 import { Typography } from '@/components/typography'
 import { SUBSCRIBE_TO_LETTER_DEFAULT_VALUES } from '@/contstants/constants'
 import { Routes } from '@/contstants/routes'
-import type { ValidationSubscribeToLettersSchemaType } from '@/contstants/types'
+import type {
+  ValidationSubscribeToLettersSchemaType,
+  NotificationState,
+} from '@/contstants/types'
 import { validationSubscribeToLetterSchema } from '@/contstants/validation'
 import { subscribeToNewsletterService } from '@/services'
 
@@ -43,15 +47,37 @@ export const Footer = () => {
   })
   const { handleSubmit, reset } = methods
 
-  const onSubmit = handleSubmit(
-    (formData: ValidationSubscribeToLettersSchemaType) => {
-      subscribeToNewsletterService(formData).then(() => {
-        reset()
-        // нотификацию добавить
-        // лоадеры добавить
+  const [loading, setLoading] = useState(false)
+  const [notification, setNotification] = useState<NotificationState>({
+    visible: false,
+    type: 'success',
+    message: '',
+  })
+
+  const onSubmit = handleSubmit(async formData => {
+    try {
+      setLoading(true)
+      await subscribeToNewsletterService(formData)
+      reset()
+      setNotification({
+        visible: true,
+        type: 'success',
+        message: 'You have successfully subscribed!',
       })
+    } catch (error) {
+      console.error(error)
+      setNotification({
+        visible: true,
+        type: 'error',
+        message: 'Subscription failed. Please try again.',
+      })
+    } finally {
+      setLoading(false)
     }
-  )
+  })
+  const onCloseNotification = () => {
+    setNotification(prev => ({ ...prev, visible: false }))
+  }
 
   return (
     <Wrapper>
@@ -73,7 +99,9 @@ export const Footer = () => {
           <FormProvider {...methods}>
             <SubmitForm onSubmit={onSubmit}>
               <ControlledTextField fieldName="email" placeholder="Email" />
-              <Button type="submit">Submit</Button>
+              <Button type="submit" isLoading={loading}>
+                Submit
+              </Button>
             </SubmitForm>
           </FormProvider>
           <Title variant="size_32">Connect With Us On Social Media</Title>
@@ -110,6 +138,13 @@ export const Footer = () => {
           <Typography variant="size_22">Security</Typography>
         </PrivacyBlock>
       </BottomBlock>
+      {notification.visible && (
+        <Notification
+          message={notification.message}
+          type={notification.type}
+          onClose={onCloseNotification}
+        />
+      )}
     </Wrapper>
   )
 }

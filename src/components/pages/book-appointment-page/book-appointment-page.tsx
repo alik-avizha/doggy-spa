@@ -2,7 +2,7 @@
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import dynamic from 'next/dynamic'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 
 import { BookingInfo } from '@/components/booking-info'
@@ -19,6 +19,7 @@ import {
   VisaIcon,
 } from '@/components/icons'
 import { Modal } from '@/components/modal'
+import { Notification } from '@/components/notification'
 import { Typography } from '@/components/typography'
 import {
   BOOKING_DEFAULT_VALUES,
@@ -53,6 +54,7 @@ const MapInfo = dynamic(() => import('@/components/map-info/map-info'), {
 })
 export const BookAppointmentPage = () => {
   const [isModalActive, setModalActive] = useState(false)
+  const [notification, setNotification] = useState(false)
 
   const methods = useForm<ValidationBookingSchemaType>({
     defaultValues: BOOKING_DEFAULT_VALUES,
@@ -73,9 +75,13 @@ export const BookAppointmentPage = () => {
   const onModalClose = () => {
     setModalActive(false)
   }
-  const onPaymentHandle = () => {
+  const onCloseNotification = () => {
+    setNotification(false)
+  }
+  const onPaymentHandler = () => {
     reset()
     setModalActive(false)
+    setNotification(true)
     removeFromLocalStorage(BOOKING_INFO)
   }
 
@@ -166,8 +172,15 @@ export const BookAppointmentPage = () => {
         </BookingBlock>
       </BookContainer>
       <Modal onClose={onModalClose} title="Booking Info" isOpen={isModalActive}>
-        <BookingInfo onPaymentSuccess={onPaymentHandle} />
+        <BookingInfo onPaymentSuccess={onPaymentHandler} />
       </Modal>
+      {notification && (
+        <Notification
+          message="Payment was successful"
+          type="success"
+          onClose={onCloseNotification}
+        />
+      )}
     </FormProvider>
   )
 }

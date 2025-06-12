@@ -12,9 +12,10 @@ export async function baseEmailService<T extends ValidationSchemaType>(
       body: JSON.stringify(data),
     })
     if (!response.ok) {
-      console.error('Ошибка при отправке сообщения')
+      throw new Error(`HTTP error! status: ${response.status}`)
     }
   } catch (error) {
-    console.error('Ошибка сети или сервера', error)
+    console.error('Network or server error:', error)
+    throw error
   }
 }
