@@ -1,11 +1,12 @@
 import styled from '@emotion/styled'
 
-export const StyledButton = styled.button`
+export const StyledButton = styled.button<{ isLoading?: boolean }>`
   border-radius: 30px;
   padding: 15px 30px;
   background-color: #e89b93;
   border: none;
   cursor: pointer;
+  min-width: 140px;
 
   font-family: Corporant, sans-serif;
   font-weight: 700;
@@ -22,4 +23,12 @@ export const StyledButton = styled.button`
     cursor: not-allowed;
     color: #666666;
   }
+
+  ${({ isLoading }) =>
+    isLoading &&
+    `
+      pointer-events: none;
+      cursor: not-allowed;
+      opacity: 0.7; 
+  `}
 `

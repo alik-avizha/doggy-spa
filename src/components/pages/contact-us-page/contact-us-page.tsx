@@ -1,15 +1,20 @@
 'use client'
 
 import { yupResolver } from '@hookform/resolvers/yup'
+import React, { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 
 import { Button } from '@/components/button'
 import { ControlledTextarea } from '@/components/controlled-textarea'
 import { ControlledTextField } from '@/components/controlled-textfield'
 import { Gap } from '@/components/gap'
+import { Notification } from '@/components/notification'
 import { Typography } from '@/components/typography'
 import { CONTACT_US_DEFAULT_VALUES } from '@/contstants/constants'
-import type { ValidationContactUsSchemaType } from '@/contstants/types'
+import type {
+  ValidationContactUsSchemaType,
+  NotificationState,
+} from '@/contstants/types'
 import { validationContactUsSchema } from '@/contstants/validation'
 import { contactUsService } from '@/services'
 
@@ -31,12 +36,38 @@ export const ContactUsPage = () => {
   })
   const { handleSubmit, reset } = methods
 
-  const onSubmit = handleSubmit((formData: ValidationContactUsSchemaType) => {
-    contactUsService(formData).then(() => {
-      reset()
-      // нотификацию добавить
-    })
+  const [loading, setLoading] = useState(false)
+  const [notification, setNotification] = useState<NotificationState>({
+    visible: false,
+    type: 'success',
+    message: '',
   })
+
+  const onSubmit = handleSubmit(async formData => {
+    try {
+      setLoading(true)
+      await contactUsService(formData)
+      reset()
+      setNotification({
+        visible: true,
+        type: 'success',
+        message: 'You have successfully subscribed!',
+      })
+    } catch (error) {
+      console.error(error)
+      setNotification({
+        visible: true,
+        type: 'error',
+        message: 'Subscription failed. Please try again.',
+      })
+    } finally {
+      setLoading(false)
+    }
+  })
+
+  const onCloseNotification = () => {
+    setNotification(prev => ({ ...prev, visible: false }))
+  }
 
   return (
     <Wrapper>
@@ -79,10 +110,19 @@ export const ContactUsPage = () => {
           />
           <Gap size={100} />
           <SubmitAction>
-            <Button type="submit">Submit</Button>
+            <Button type="submit" isLoading={loading}>
+              Submit
+            </Button>
           </SubmitAction>
         </SubmitForm>
       </FormProvider>
+      {notification.visible && (
+        <Notification
+          message={notification.message}
+          type={notification.type}
+          onClose={onCloseNotification}
+        />
+      )}
     </Wrapper>
   )
 }

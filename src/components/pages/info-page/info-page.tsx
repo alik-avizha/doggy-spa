@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react'
 
 import { Gap } from '@/components/gap/gap'
+import { Notification } from '@/components/notification'
+import { InfoContent } from '@/components/search-info'
 import { TextField } from '@/components/textfield'
 import { Typography } from '@/components/typography'
 import type { Dog } from '@/contstants/types'
@@ -11,9 +13,6 @@ import { getDogByNameService } from '@/services'
 
 import {
   Description,
-  DescriptionWrapper,
-  ImageStyled,
-  PhotoBlock,
   SearchBlock,
   SearchCurrentDog,
   SelectionBlock,
@@ -24,24 +23,34 @@ import {
 export const InfoPage = () => {
   const [data, setData] = useState<null | Dog>(null)
   const [search, setSearch] = useState('')
-  const debouncedSearch = useDebounce(search, 300)
+  const debouncedSearch = useDebounce(search, 500)
+  const [notification, setNotification] = useState(false)
+  const [hasSearched, setHasSearched] = useState(false)
 
   useEffect(() => {
     if (debouncedSearch.trim() === '') {
+      setData(null)
+      setHasSearched(false)
       return
     }
-
     const fetchDogs = async () => {
       const dog = await getDogByNameService(debouncedSearch)
       setData(dog)
+      setHasSearched(true)
     }
 
-    fetchDogs()
+    fetchDogs().catch(error => {
+      console.error('Some error by fetching info', error)
+      setNotification(true)
+      setHasSearched(true)
+    })
   }, [debouncedSearch])
 
   const handleChange = (value: string) => {
     setSearch(value)
   }
+
+  const onCloseNotify = () => setNotification(false)
 
   return (
     <Wrapper>
@@ -68,33 +77,13 @@ export const InfoPage = () => {
         </TextFieldWrapper>
       </SearchBlock>
       <Gap size={150} />
-      {data ? (
-        <>
-          <PhotoBlock>
-            <ImageStyled
-              src={data.image?.url}
-              alt={data.name}
-              width={200}
-              height={200}
-            />
-            <Gap size={30} />
-            <Typography variant="size_64">{data.name}</Typography>
-          </PhotoBlock>
-          <Gap size={100} />
-          <DescriptionWrapper>
-            <Typography variant="size_40">Bred for: {data.bred_for}</Typography>
-            <Typography variant="size_40">
-              Temperament: {data.temperament}
-            </Typography>
-            <Typography variant="size_40">
-              Life span: {data.life_span}
-            </Typography>
-          </DescriptionWrapper>
-        </>
-      ) : (
-        <Typography variant="size_40" textAlign="center">
-          Try to find dog
-        </Typography>
+      <InfoContent data={data} hasSearched={hasSearched} />
+      {notification && (
+        <Notification
+          message="An error occurred while searching for information. Please try again later."
+          type="error"
+          onClose={onCloseNotify}
+        />
       )}
     </Wrapper>
   )
