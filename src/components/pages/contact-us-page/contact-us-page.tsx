@@ -51,14 +51,14 @@ export const ContactUsPage = () => {
       setNotification({
         visible: true,
         type: 'success',
-        message: 'You have successfully subscribed!',
+        message: 'Thank you, we will contact you.',
       })
     } catch (error) {
       console.error(error)
       setNotification({
         visible: true,
         type: 'error',
-        message: 'Subscription failed. Please try again.',
+        message: 'Sorry, something went wrong. Please try again later.',
       })
     } finally {
       setLoading(false)

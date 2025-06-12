@@ -8,7 +8,7 @@ import type {
 
 export type AnimalItem = {
   id: number
-  url: string
+  url: string | string[]
   description: string
   category: string
   price: string
