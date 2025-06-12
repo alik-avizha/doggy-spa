@@ -24,7 +24,7 @@ const icon = new Icon({
   iconAnchor: [22, 94],
   popupAnchor: [-3, -76],
 })
-export const MapInfo = () => (
+const MapInfo = () => (
   <Container>
     <MapWrapper>
       <Map
@@ -65,3 +65,4 @@ export const MapInfo = () => (
     </AddressInfoBlock>
   </Container>
 )
+export default MapInfo

@@ -1,6 +1,7 @@
 'use client'
 
 import { yupResolver } from '@hookform/resolvers/yup'
+import dynamic from 'next/dynamic'
 import { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 
@@ -17,7 +18,6 @@ import {
   MasterCardIcon,
   VisaIcon,
 } from '@/components/icons'
-import { MapInfo } from '@/components/map-info'
 import { Modal } from '@/components/modal'
 import { Typography } from '@/components/typography'
 import {
@@ -48,6 +48,9 @@ import {
   Wrapper,
 } from './styled'
 
+const MapInfo = dynamic(() => import('@/components/map-info/map-info'), {
+  ssr: false,
+})
 export const BookAppointmentPage = () => {
   const [isModalActive, setModalActive] = useState(false)
 
