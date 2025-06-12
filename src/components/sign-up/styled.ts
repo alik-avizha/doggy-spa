@@ -1,5 +1,7 @@
 import styled from '@emotion/styled'
 
+import { ControlledTextField } from '@/components/controlled-textfield'
+
 export const Wrapper = styled.div`
   width: 970px;
   height: 650px;
@@ -18,6 +20,9 @@ export const FormBlock = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+`
+export const StyledTextField = styled(ControlledTextField)`
+  height: 40px;
 `
 export const LeftBlock = styled.div`
   display: flex;

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-import { TextField } from '@/components/textfield'
+import { ControlledTextField } from '@/components/controlled-textfield'
 import { Typography } from '@/components/typography'
 
 export const Wrapper = styled.div`
@@ -18,7 +18,7 @@ export const MainTitle = styled(Typography)`
   width: 478px;
   color: white;
 `
-export const BookContainer = styled.div`
+export const BookContainer = styled.form`
   padding: 100px 50px;
 `
 export const BookingBlock = styled.div`
@@ -36,9 +36,18 @@ export const TextFieldsBlock = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 50px;
 `
-export const TextFieldsStyled = styled(TextField)`
+export const TextFieldsStyled = styled(ControlledTextField)`
   height: 60px;
 `
+export const DateTimeContainer = styled.div`
+  margin-top: 50px;
+  margin-bottom: 50px;
+`
+export const DateBlock = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
 export const PaymentsContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -49,9 +58,8 @@ export const PaymentsBlock = styled.div`
   align-items: center;
   width: 486px;
 `
-export const TextFieldPayment = styled(TextField)`
+export const TextFieldPayment = styled(ControlledTextField)`
   height: 45px;
-  margin-bottom: 20px;
 `
 export const ExpiredCvvBlock = styled.div`
   display: flex;

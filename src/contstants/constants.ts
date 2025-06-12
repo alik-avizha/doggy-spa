@@ -2,6 +2,7 @@ import type {
   AnimalItem,
   ValidationSubscribeToLettersSchemaType,
   ValidationContactUsSchemaType,
+  ValidationBookingSchemaType,
 } from './types'
 
 export const DOG_COLLARS: AnimalItem[] = [
@@ -64,6 +65,53 @@ export const CONTACT_US_DEFAULT_VALUES: ValidationContactUsSchemaType = {
   phoneNumber: '',
   message: '',
 }
+
+export const BOOKING_DEFAULT_VALUES: ValidationBookingSchemaType = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  phoneNumber: '',
+  time: [],
+  date: '',
+  message: '',
+  creditNumber: '',
+  expiryDate: '',
+  cvv: '',
+  nameOnCard: '',
+}
+
+export const TIMESLOTS = [
+  '11 am - 12 pm',
+  '12 pm - 1 pm',
+  '1 pm - 2 pm',
+  '3 pm - 4 pm',
+  '4 pm - 5 pm',
+]
+
+export const BOOKING_INFO = 'bookingInfo'
+
+export const PAYPAL_OPTIONS = {
+  clientId: process.env.NEXT_PUBLIC_PAYPAL_CREDS ?? '',
+  currency: 'USD',
+  intent: 'capture',
+}
+
+export const MAP_INFO_CENTER = [53.9, 27.56]
+
+export const COORDINATES = [
+  {
+    gps: [53.9, 27.56],
+    popUp: 'Doggy Spa 1',
+  },
+  {
+    gps: [53.9007, 27.561],
+    popUp: 'Doggy Spa 2',
+  },
+  {
+    gps: [53.8995, 27.5615],
+    popUp: 'Doggy Spa 3',
+  },
+]
 
 // export const commonTheme = {
 //   dimensions: {

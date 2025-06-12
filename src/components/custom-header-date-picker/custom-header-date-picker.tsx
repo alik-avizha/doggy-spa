@@ -28,11 +28,11 @@ export const CustomHeaderDatePicker: FC<Props> = ({
     <HeaderWrapper>
       <Typography variant="size_18">Select dates</Typography>
       <NavigationBlock>
-        <StyledButtonNavigation onClick={decreaseMonth}>
+        <StyledButtonNavigation onClick={decreaseMonth} type="button">
           <LeftIcon />
         </StyledButtonNavigation>
         <Typography variant="size_18">{formattedDate}</Typography>
-        <StyledButtonNavigation onClick={increaseMonth}>
+        <StyledButtonNavigation onClick={increaseMonth} type="button">
           <RightIcon />
         </StyledButtonNavigation>
       </NavigationBlock>

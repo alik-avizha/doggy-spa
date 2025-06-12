@@ -3,6 +3,7 @@ import type * as yup from 'yup'
 import type {
   validationSubscribeToLetterSchema,
   validationContactUsSchema,
+  validationBookingSchema,
 } from './validation'
 
 export type AnimalItem = {
@@ -45,3 +46,11 @@ export type ValidationSubscribeToLettersSchemaType = yup.InferType<
 export type ValidationContactUsSchemaType = yup.InferType<
   typeof validationContactUsSchema
 >
+
+export type ValidationBookingSchemaType = yup.InferType<
+  typeof validationBookingSchema
+>
+
+export type BookInfo = Omit<ValidationBookingSchemaType, 'date'> & {
+  date: string
+}

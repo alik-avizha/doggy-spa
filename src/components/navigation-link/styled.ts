@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
-import Link from 'next/link'
 
-export const DefaultLink = styled(Link)<{ isActive: boolean }>`
+export const StyledAnchor = styled.a<{ isActive: boolean }>`
   color: #4c4c4b;
   text-decoration: none;
   font-family: Cormorant, sans-serif;

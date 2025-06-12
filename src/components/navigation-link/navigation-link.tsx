@@ -1,6 +1,7 @@
+import Link from 'next/link'
 import type { FC, PropsWithChildren } from 'react'
 
-import { DefaultLink } from './styled'
+import { StyledAnchor } from './styled'
 
 type Props = {
   href: string
@@ -11,7 +12,7 @@ export const NavigationLink: FC<Props & PropsWithChildren> = ({
   isActive,
   children,
 }) => (
-  <DefaultLink href={href} isActive={isActive}>
-    {children}
-  </DefaultLink>
+  <Link href={href} passHref legacyBehavior>
+    <StyledAnchor isActive={isActive}>{children}</StyledAnchor>
+  </Link>
 )

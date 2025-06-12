@@ -1,9 +1,15 @@
 'use client'
 
-import { TextAreaField } from '../../textarea'
+import { yupResolver } from '@hookform/resolvers/yup'
+import dynamic from 'next/dynamic'
+import { useState } from 'react'
+import { FormProvider, useForm } from 'react-hook-form'
 
+import { BookingInfo } from '@/components/booking-info'
 import { Button } from '@/components/button'
-import { DateTimePicker } from '@/components/date-picker'
+import { ControlledCheckboxGroup } from '@/components/controlled-checkbox-group'
+import { ControlledDatePicker } from '@/components/controlled-date-picker'
+import { ControlledTextarea } from '@/components/controlled-textarea'
 import { Gap } from '@/components/gap'
 import {
   AmazonIcon,
@@ -12,12 +18,23 @@ import {
   MasterCardIcon,
   VisaIcon,
 } from '@/components/icons'
-import { MapInfo } from '@/components/map-info'
+import { Modal } from '@/components/modal'
 import { Typography } from '@/components/typography'
+import {
+  BOOKING_DEFAULT_VALUES,
+  BOOKING_INFO,
+  TIMESLOTS,
+} from '@/contstants/constants'
+import type { ValidationBookingSchemaType } from '@/contstants/types'
+import { validationBookingSchema } from '@/contstants/validation'
+import { formatDateToPresent } from '@/lib'
+import { removeFromLocalStorage, setInLocalStorage } from '@/lib/local-storage'
 
 import {
   BookContainer,
   BookingBlock,
+  DateBlock,
+  DateTimeContainer,
   ExpiredCvvBlock,
   LeftBlock,
   MainTitle,
@@ -31,63 +48,126 @@ import {
   Wrapper,
 } from './styled'
 
-export const BookAppointmentPage = () => (
-  <>
-    <Wrapper>
-      <MainTitle data-test-id="page-title" variant="size_70">
-        Book An Appointment With Our Groom Specialist Today!
-      </MainTitle>
-    </Wrapper>
-    <BookContainer>
-      <Typography variant="size_40">Enter your information here</Typography>
-      <Gap size={50} />
-      <BookingBlock>
-        <LeftBlock>
-          <TextFieldsBlock>
-            <TextFieldsStyled placeholder="First name" />
-            <TextFieldsStyled placeholder="Last name" />
-            <TextFieldsStyled placeholder="Email" />
-            <TextFieldsStyled placeholder="Phone number" />
-          </TextFieldsBlock>
-          <DateTimePicker />
-          <TextAreaField
-            height={80}
-            placeholder="Any special requests for your pet(s)..."
-          />
-          <Gap size={50} />
-          <PaymentsContainer>
-            <PaymentsBlock>
-              <Typography variant="size_20">
-                Enter your payment information
-              </Typography>
-              <Gap size={20} />
-              <TextFieldPayment placeholder="Credit Card Number" />
-              <ExpiredCvvBlock>
-                <TextFieldPayment placeholder="Expiry Date" />
-                <TextFieldPayment placeholder="CVV" />
-              </ExpiredCvvBlock>
-              <TextFieldPayment placeholder="Name on Card" />
-              <PaymentsTypesBlock>
-                <ApplePayIcon />
-                <GooglePayIcon />
-                <VisaIcon />
-                <MasterCardIcon />
-                <AmazonIcon />
-              </PaymentsTypesBlock>
-              <Gap size={20} />
-              <Typography variant="size_16" textAlign="center">
-                Please be advised cancelling within 24 hours of your scheduled
-                appointment will result in a cancellation fee of $300.00.
-              </Typography>
-              <Gap size={30} />
-              <Button>Book Appointment</Button>
-            </PaymentsBlock>
-          </PaymentsContainer>
-        </LeftBlock>
-        <RightBlock>
-          <MapInfo />
-        </RightBlock>
-      </BookingBlock>
-    </BookContainer>
-  </>
-)
+const MapInfo = dynamic(() => import('@/components/map-info/map-info'), {
+  ssr: false,
+})
+export const BookAppointmentPage = () => {
+  const [isModalActive, setModalActive] = useState(false)
+
+  const methods = useForm<ValidationBookingSchemaType>({
+    defaultValues: BOOKING_DEFAULT_VALUES,
+    mode: 'onChange',
+    resolver: yupResolver(validationBookingSchema),
+  })
+  const { handleSubmit, watch, reset } = methods
+
+  const date = watch('date')
+
+  const labelDate = date ? formatDateToPresent(date) : ''
+
+  const onSubmit = handleSubmit((formData: ValidationBookingSchemaType) => {
+    setInLocalStorage(BOOKING_INFO, JSON.stringify(formData))
+
+    setModalActive(true)
+  })
+  const onModalClose = () => {
+    setModalActive(false)
+  }
+  const onPaymentHandle = () => {
+    reset()
+    setModalActive(false)
+    removeFromLocalStorage(BOOKING_INFO)
+  }
+
+  return (
+    <FormProvider {...methods}>
+      <Wrapper>
+        <MainTitle data-test-id="page-title" variant="size_70">
+          Book An Appointment With Our Groom Specialist Today!
+        </MainTitle>
+      </Wrapper>
+      <BookContainer onSubmit={onSubmit}>
+        <Typography variant="size_40">Enter your information here</Typography>
+        <Gap size={50} />
+        <BookingBlock>
+          <LeftBlock>
+            <TextFieldsBlock>
+              <TextFieldsStyled
+                fieldName="firstName"
+                placeholder="First name"
+              />
+              <TextFieldsStyled fieldName="lastName" placeholder="Last name" />
+              <TextFieldsStyled fieldName="email" placeholder="Email" />
+              <TextFieldsStyled
+                fieldName="phoneNumber"
+                placeholder="Phone Number"
+              />
+            </TextFieldsBlock>
+            <DateTimeContainer>
+              <DateBlock>
+                <ControlledCheckboxGroup
+                  fieldName="time"
+                  label={`Choose a timeslot on ${labelDate}`}
+                  options={TIMESLOTS}
+                />
+                <ControlledDatePicker fieldName="date" />
+              </DateBlock>
+            </DateTimeContainer>
+            <ControlledTextarea
+              height={80}
+              fieldName="message"
+              placeholder="Any special requests for your pet(s)..."
+            />
+            <Gap size={50} />
+            <PaymentsContainer>
+              <PaymentsBlock>
+                <Typography variant="size_20">
+                  Enter your payment information
+                </Typography>
+                <Gap size={20} />
+                <TextFieldPayment
+                  fieldName="creditNumber"
+                  placeholder="Credit Card Number"
+                />
+                <Gap size={20} />
+                <ExpiredCvvBlock>
+                  <TextFieldPayment
+                    fieldName="expiryDate"
+                    placeholder="Expiry Date"
+                  />
+                  <TextFieldPayment fieldName="cvv" placeholder="CVV" />
+                </ExpiredCvvBlock>
+                <Gap size={20} />
+                <TextFieldPayment
+                  fieldName="nameOnCard"
+                  placeholder="Name on Card"
+                />
+                <Gap size={20} />
+                <PaymentsTypesBlock>
+                  <ApplePayIcon />
+                  <GooglePayIcon />
+                  <VisaIcon />
+                  <MasterCardIcon />
+                  <AmazonIcon />
+                </PaymentsTypesBlock>
+                <Gap size={20} />
+                <Typography variant="size_16" textAlign="center">
+                  Please be advised cancelling within 24 hours of your scheduled
+                  appointment will result in a cancellation fee of $300.00.
+                </Typography>
+                <Gap size={30} />
+                <Button type="submit">Book Appointment</Button>
+              </PaymentsBlock>
+            </PaymentsContainer>
+          </LeftBlock>
+          <RightBlock>
+            <MapInfo />
+          </RightBlock>
+        </BookingBlock>
+      </BookContainer>
+      <Modal onClose={onModalClose} title="Booking Info" isOpen={isModalActive}>
+        <BookingInfo onPaymentSuccess={onPaymentHandle} />
+      </Modal>
+    </FormProvider>
+  )
+}

@@ -1,14 +1,23 @@
 'use client'
 
+import { yupResolver } from '@hookform/resolvers/yup'
+import React from 'react'
+import { FormProvider, useForm } from 'react-hook-form'
+
 import { Button } from '@/components/button'
-import { InstagramIcon } from '@/components/icons'
-import { TextField } from '@/components/textfield'
+import { ControlledTextField } from '@/components/controlled-textfield'
+import {
+  FacebookIcon,
+  InstagramIcon,
+  NetworkIcon,
+  SnapchatIcon,
+  TwitterIcon,
+} from '@/components/icons'
 import { Typography } from '@/components/typography'
 import { SUBSCRIBE_TO_LETTER_DEFAULT_VALUES } from '@/contstants/constants'
 import { Routes } from '@/contstants/routes'
 import type { ValidationSubscribeToLettersSchemaType } from '@/contstants/types'
 import { validationSubscribeToLetterSchema } from '@/contstants/validation'
-import { useForm } from '@/hooks'
 import { subscribeToNewsletterService } from '@/services'
 
 import {
@@ -27,12 +36,22 @@ import {
 } from './styled'
 
 export const Footer = () => {
-  const { formAction, register, errors } =
-    useForm<ValidationSubscribeToLettersSchemaType>(
-      subscribeToNewsletterService,
-      SUBSCRIBE_TO_LETTER_DEFAULT_VALUES,
-      validationSubscribeToLetterSchema
-    )
+  const methods = useForm<ValidationSubscribeToLettersSchemaType>({
+    defaultValues: SUBSCRIBE_TO_LETTER_DEFAULT_VALUES,
+    mode: 'onBlur',
+    resolver: yupResolver(validationSubscribeToLetterSchema),
+  })
+  const { handleSubmit, reset } = methods
+
+  const onSubmit = handleSubmit(
+    (formData: ValidationSubscribeToLettersSchemaType) => {
+      subscribeToNewsletterService(formData).then(() => {
+        reset()
+        // нотификацию добавить
+        // лоадеры добавить
+      })
+    }
+  )
 
   return (
     <Wrapper>
@@ -51,21 +70,19 @@ export const Footer = () => {
         </LeftBlock>
         <CenterBlock>
           <Title variant="size_32">Subscribe to our Newsletter</Title>
-          <SubmitForm action={formAction}>
-            <TextField
-              placeholder="Email"
-              {...register('email')}
-              errorMessage={errors.email}
-            />
-            <Button type="submit">Submit</Button>
-          </SubmitForm>
+          <FormProvider {...methods}>
+            <SubmitForm onSubmit={onSubmit}>
+              <ControlledTextField fieldName="email" placeholder="Email" />
+              <Button type="submit">Submit</Button>
+            </SubmitForm>
+          </FormProvider>
           <Title variant="size_32">Connect With Us On Social Media</Title>
           <IconsBlock>
             <InstagramIcon />
-            <InstagramIcon />
-            <InstagramIcon />
-            <InstagramIcon />
-            <InstagramIcon />
+            <FacebookIcon />
+            <NetworkIcon />
+            <TwitterIcon />
+            <SnapchatIcon />
           </IconsBlock>
         </CenterBlock>
         <RightBlock>

@@ -1,7 +1,5 @@
 import styled from '@emotion/styled'
 
-import { Typography } from '@/components/typography'
-
 export const FieldContainer = styled.div`
   position: relative;
   width: 100%;
@@ -9,7 +7,7 @@ export const FieldContainer = styled.div`
 export const SearchIconWrapper = styled.span`
   position: absolute;
   top: 50%;
-  left: 0.75rem;
+  right: 0.75rem;
   transform: translateY(-50%);
   display: flex;
   align-items: center;
@@ -19,14 +17,13 @@ export const SearchIconWrapper = styled.span`
   }
 `
 
-interface FieldProps {
+export const InputField = styled.input<{
   hasError?: boolean
   typeStyle: 'default' | 'searchType'
-}
-
-export const InputField = styled.input<FieldProps>`
+}>`
   width: 100%;
   padding: 14px 12px;
+  height: 60px;
   font-size: 14px;
   font-weight: 400;
   color: #959fa8;
@@ -39,8 +36,8 @@ export const InputField = styled.input<FieldProps>`
   ${({ typeStyle }) =>
     typeStyle === 'searchType' &&
     `
-    padding-left: 2.56rem;
-    padding-right: 35px;
+    padding-left: 35px;
+    padding-right: 55px;
   `}
 
   &::placeholder {
@@ -53,11 +50,4 @@ export const InputField = styled.input<FieldProps>`
     color: red;
     border-color: red;
   `}
-`
-
-export const ErrorMessage = styled(Typography)`
-  color: red;
-  margin: 4px 0 0 0;
-  font-size: 14px;
-  font-weight: 400;
 `
