@@ -1,4 +1,4 @@
-import type { ValidationSubscribeToLettersSchemaType } from '@/contstants/types'
+import type { ValidationSubscribeToLettersSchemaType } from '@/types'
 
 import { baseEmailService } from './base-email-service'
 

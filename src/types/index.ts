@@ -1,10 +1,10 @@
 import type * as yup from 'yup'
 
 import type {
-  validationSubscribeToLetterSchema,
-  validationContactUsSchema,
   validationBookingSchema,
-} from './validation'
+  validationContactUsSchema,
+  validationSubscribeToLetterSchema,
+} from '@/constants/validation'
 
 export type AnimalItem = {
   id: number

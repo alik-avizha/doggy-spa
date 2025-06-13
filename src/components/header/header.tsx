@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation'
 
 import { NavigationLink } from '@/components/navigation-link'
 import { Typography } from '@/components/typography'
-import { Routes } from '@/contstants/routes'
+import { Routes } from '@/constants/routes'
 
 import { InfoPlateBlock, HeaderBlock } from './styled'
 
@@ -20,7 +20,7 @@ export function Header() {
         ))}
       </HeaderBlock>
       <InfoPlateBlock>
-        <Typography variant="size_26">
+        <Typography size={26}>
           Get 20% OFF When You Book A Spa Day For Your Animal Today!
         </Typography>
       </InfoPlateBlock>

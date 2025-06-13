@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes, FC, PropsWithChildren } from 'react'
 
-import { Loader } from '@/loader'
+import { Loader } from '@/components/loader'
 
 import { StyledButton } from './styled'
 

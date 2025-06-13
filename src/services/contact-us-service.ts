@@ -1,4 +1,4 @@
-import type { ValidationContactUsSchemaType } from '@/contstants/types'
+import type { ValidationContactUsSchemaType } from '@/types'
 
 import { baseEmailService } from './base-email-service'
 

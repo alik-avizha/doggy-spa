@@ -1,7 +1,5 @@
 import styled from '@emotion/styled'
 
-import { Typography } from '@/components/typography'
-
 export const Wrapper = styled.div`
   padding: 0 50px;
   display: flex;
@@ -22,8 +20,4 @@ export const CardWrapper = styled.div`
 export const InfoBlock = styled.div`
   display: flex;
   flex-direction: column;
-`
-export const Price = styled(Typography)`
-  font-weight: 700;
-  font-family: Cormorant, sans-serif;
 `

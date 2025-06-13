@@ -2,8 +2,8 @@ import type { ChangeEvent, FC } from 'react'
 import React from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
 
+import { CheckBox } from '@/components/checkbox'
 import { CheckboxGroup } from '@/components/checkbox-group'
-import { CheckBox } from '@/components/checkbox/checkbox'
 
 type ControlledCheckboxGroupProps = {
   fieldName: string

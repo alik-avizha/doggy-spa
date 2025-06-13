@@ -5,10 +5,10 @@ import { Button } from '@/components/button'
 import { Card } from '@/components/card'
 import { Gap } from '@/components/gap'
 import { Typography } from '@/components/typography'
-import { Routes } from '@/contstants/routes'
-import type { AnimalItem } from '@/contstants/types'
+import { Routes } from '@/constants/routes'
+import type { AnimalItem } from '@/types'
 
-import { CardWrapper, InfoBlock, List, Price, Wrapper } from './styled'
+import { CardWrapper, InfoBlock, List, Wrapper } from './styled'
 
 type Props = {
   title: string
@@ -17,13 +17,13 @@ type Props = {
 }
 export const AnimalInfoList: FC<Props> = ({ titleButton, title, items }) => {
   const router = useRouter()
-  const handle = () => {
+  const handleClick = () => {
     router.push(Routes[1].href)
   }
 
   return (
     <Wrapper>
-      <Typography as="h2" variant="size_66" textAlign="center">
+      <Typography as="h2" size={66} textAlign="center">
         {title}
       </Typography>
       <Gap size={50} />
@@ -32,17 +32,17 @@ export const AnimalInfoList: FC<Props> = ({ titleButton, title, items }) => {
           <CardWrapper key={id}>
             <Card width={435} height={445} url={url} border={6} />
             <InfoBlock>
-              <Typography variant="size_20">{description}</Typography>
+              <Typography size={20}>{description}</Typography>
               <Gap size={5} />
-              <Typography variant="size_20">{category}</Typography>
+              <Typography size={20}>{category}</Typography>
               <Gap size={15} />
-              <Price variant="size_30">{price}</Price>
+              <Typography size={30}>{price}</Typography>
             </InfoBlock>
           </CardWrapper>
         ))}
       </List>
       <Gap size={40} />
-      <Button onClick={handle}>{titleButton}</Button>
+      <Button onClick={handleClick}>{titleButton}</Button>
     </Wrapper>
   )
 }

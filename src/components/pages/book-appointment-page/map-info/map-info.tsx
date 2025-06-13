@@ -5,7 +5,7 @@ import { Icon } from 'leaflet'
 import { Marker, Popup, TileLayer } from 'react-leaflet'
 
 import { Typography } from '@/components/typography'
-import { COORDINATES, MAP_INFO_CENTER } from '@/contstants/constants'
+import { COORDINATES, MAP_INFO_CENTER } from '@/constants'
 
 import {
   AddressInfoBlock,
@@ -46,21 +46,21 @@ const MapInfo = () => (
     </MapWrapper>
     <AddressInfoBlock>
       <LeftInfoBlock>
-        <Typography variant="size_20">Our Address:</Typography>
-        <Description variant="size_20">Luxe Animal Spa</Description>
+        <Typography size={20}>Our Address:</Typography>
+        <Description size={20}>Luxe Animal Spa</Description>
         <Description variant="size_20">80 Smithe St</Description>
         <Description variant="size_20">Vancouver, BC</Description>
         <Description variant="size_20">V6B 1M7</Description>
       </LeftInfoBlock>
       <RightInfoBlock>
-        <Typography variant="size_20">Hours of Operation:</Typography>
-        <Description variant="size_20">Sunday - Closed</Description>
-        <Description variant="size_20">Monday 10 a.m.-5:30 p.m.</Description>
-        <Description variant="size_20">Tuesday 10 a.m.-5:30 p.m.</Description>
-        <Description variant="size_20">Wednesday 10 a.m.-5:30 p.m.</Description>
-        <Description variant="size_20">Thursday 10 a.m.-5:30 p.m.</Description>
-        <Description variant="size_20">Friday 10 a.m.-5:30 p.m.</Description>
-        <Description variant="size_20">Saturday 10 a.m.-5:30 p.m.</Description>
+        <Typography size={20}>Hours of Operation:</Typography>
+        <Description size={20}>Sunday - Closed</Description>
+        <Description size={20}>Monday 10 a.m.-5:30 p.m.</Description>
+        <Description size={20}>Tuesday 10 a.m.-5:30 p.m.</Description>
+        <Description size={20}>Wednesday 10 a.m.-5:30 p.m.</Description>
+        <Description size={20}>Thursday 10 a.m.-5:30 p.m.</Description>
+        <Description size={20}>Friday 10 a.m.-5:30 p.m.</Description>
+        <Description vsize={20}>Saturday 10 a.m.-5:30 p.m.</Description>
       </RightInfoBlock>
     </AddressInfoBlock>
   </Container>

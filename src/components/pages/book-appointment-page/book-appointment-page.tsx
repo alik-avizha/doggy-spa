@@ -5,11 +5,12 @@ import dynamic from 'next/dynamic'
 import React, { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 
-import { BookingInfo } from '@/components/booking-info'
 import { Button } from '@/components/button'
-import { ControlledCheckboxGroup } from '@/components/controlled-checkbox-group'
-import { ControlledDatePicker } from '@/components/controlled-date-picker'
-import { ControlledTextarea } from '@/components/controlled-textarea'
+import {
+  ControlledCheckboxGroup,
+  ControlledDatePicker,
+  ControlledTextarea,
+} from '@/components/controlled-fields'
 import { Gap } from '@/components/gap'
 import {
   AmazonIcon,
@@ -21,16 +22,13 @@ import {
 import { Modal } from '@/components/modal'
 import { Notification } from '@/components/notification'
 import { Typography } from '@/components/typography'
-import {
-  BOOKING_DEFAULT_VALUES,
-  BOOKING_INFO,
-  TIMESLOTS,
-} from '@/contstants/constants'
-import type { ValidationBookingSchemaType } from '@/contstants/types'
-import { validationBookingSchema } from '@/contstants/validation'
-import { formatDateToPresent } from '@/lib'
+import { BOOKING_DEFAULT_VALUES, BOOKING_INFO, TIMESLOTS } from '@/constants'
+import { validationBookingSchema } from '@/constants/validation'
+import { formatDateEn } from '@/lib'
 import { removeFromLocalStorage, setInLocalStorage } from '@/lib/local-storage'
+import type { ValidationBookingSchemaType } from '@/types'
 
+import { BookingInfo } from './booking-info'
 import {
   BookContainer,
   BookingBlock,
@@ -49,7 +47,7 @@ import {
   Wrapper,
 } from './styled'
 
-const MapInfo = dynamic(() => import('@/components/map-info/map-info'), {
+const MapInfo = dynamic(() => import('./map-info/map-info'), {
   ssr: false,
 })
 export const BookAppointmentPage = () => {
@@ -65,7 +63,7 @@ export const BookAppointmentPage = () => {
 
   const date = watch('date')
 
-  const labelDate = date ? formatDateToPresent(date) : ''
+  const labelDate = date ? formatDateEn(date) : ''
 
   const onSubmit = handleSubmit((formData: ValidationBookingSchemaType) => {
     setInLocalStorage(BOOKING_INFO, JSON.stringify(formData))
@@ -88,12 +86,12 @@ export const BookAppointmentPage = () => {
   return (
     <FormProvider {...methods}>
       <Wrapper>
-        <MainTitle data-test-id="page-title" variant="size_70">
+        <MainTitle data-test-id="page-title" size={70}>
           Book An Appointment With Our Groom Specialist Today!
         </MainTitle>
       </Wrapper>
       <BookContainer onSubmit={onSubmit}>
-        <Typography variant="size_40">Enter your information here</Typography>
+        <Typography size={40}>Enter your information here</Typography>
         <Gap size={50} />
         <BookingBlock>
           <LeftBlock>
@@ -127,7 +125,7 @@ export const BookAppointmentPage = () => {
             <Gap size={50} />
             <PaymentsContainer>
               <PaymentsBlock>
-                <Typography variant="size_20">
+                <Typography size={20}>
                   Enter your payment information
                 </Typography>
                 <Gap size={20} />
@@ -157,7 +155,7 @@ export const BookAppointmentPage = () => {
                   <AmazonIcon />
                 </PaymentsTypesBlock>
                 <Gap size={20} />
-                <Typography variant="size_16" textAlign="center">
+                <Typography size={16} fontWeight={400} textAlign="center">
                   Please be advised cancelling within 24 hours of your scheduled
                   appointment will result in a cancellation fee of $300.00.
                 </Typography>

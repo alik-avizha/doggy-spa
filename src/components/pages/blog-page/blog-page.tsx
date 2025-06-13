@@ -1,45 +1,45 @@
 'use client'
 
 import { Card } from '@/components/card'
-import { Gap } from '@/components/gap/gap'
+import { Gap } from '@/components/gap'
 import { Typography } from '@/components/typography'
 
-import {
-  CardTextWrapper,
-  Description,
-  Text,
-  TextBlock,
-  Wrapper,
-} from './styled'
+import { CardTextWrapper, TextBlock, Wrapper } from './styled'
 
 export const BlogPage = () => (
   <Wrapper>
-    <Typography variant="size_70" textAlign="center">
+    <Typography size={70} textAlign="center">
       The Bark Chronicles
     </Typography>
     <Gap size={20} />
-    <Description variant="size_40" as="h3" textAlign="center">
+    <Typography
+      fontWeight={400}
+      fontFamily="Tangerine"
+      size={40}
+      as="h3"
+      textAlign="center"
+    >
       The Bark Chronicles
-    </Description>
+    </Typography>
     <Gap size={40} />
-    <Typography variant="size_35">
+    <Typography size={35}>
       Rex, The Dog Who Never Stops Playing ... Ever
     </Typography>
     <Gap size={40} />
     <CardTextWrapper>
       <Card width={627} height={562} url="/images/darinka.webp" border={6} />
       <TextBlock>
-        <Text variant="size_30" textAlign="center">
+        <Typography size={30} fontWeight={400} textAlign="center">
           Sometimes it is difficult to get dogs interested in the toys you buy
           for them. .. Luckily for Rex, everything he sees is a potential toy
           for him! Never let him around your valuables or any socks. He will
           steal them and you will never see them again...
-        </Text>
+        </Typography>
       </TextBlock>
     </CardTextWrapper>
     <CardTextWrapper>
       <TextBlock>
-        <Text variant="size_30" textAlign="center">
+        <Typography size={30} fontWeight={400} textAlign="center">
           One day, we started noticing Rex was ripping apart all of our sheets
           when he was bored except for this blanket over here. Rex decided to
           spare this ugly white blanket that my grandmother gave me from her war
@@ -51,7 +51,7 @@ export const BlogPage = () => (
           <br />
           <br />
           We love you Rex.
-        </Text>
+        </Typography>
       </TextBlock>
       <Card width={644} height={584} url="/images/matthew.webp" border={6} />
     </CardTextWrapper>
