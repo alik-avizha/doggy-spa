@@ -5,22 +5,20 @@ import React, { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 
 import { Button } from '@/components/button'
-import { ControlledTextarea } from '@/components/controlled-textarea'
-import { ControlledTextField } from '@/components/controlled-textfield'
+import {
+  ControlledTextarea,
+  ControlledTextField,
+} from '@/components/controlled-fields'
 import { Gap } from '@/components/gap'
 import { Notification } from '@/components/notification'
 import { Typography } from '@/components/typography'
-import { CONTACT_US_DEFAULT_VALUES } from '@/contstants/constants'
-import type {
-  ValidationContactUsSchemaType,
-  NotificationState,
-} from '@/contstants/types'
-import { validationContactUsSchema } from '@/contstants/validation'
+import { CONTACT_US_DEFAULT_VALUES } from '@/constants'
+import { validationContactUsSchema } from '@/constants/validation'
 import { contactUsService } from '@/services'
+import type { NotificationState, ValidationContactUsSchemaType } from '@/types'
 
 import {
   Border,
-  Description,
   FieldBlock,
   StyledLink,
   SubmitAction,
@@ -71,19 +69,19 @@ export const ContactUsPage = () => {
 
   return (
     <Wrapper>
-      <Typography variant="size_70" textAlign="center">
+      <Typography size={70} textAlign="center">
         Contact
       </Typography>
       <Gap size={20} />
       <Border />
       <Gap size={40} />
-      <Description variant="size_30" as="h3" textAlign="center">
+      <Typography size={30} as="h3" textAlign="center">
         For customer service inquiries, please email us at{' '}
         <StyledLink>customerservice@luxeanimalspa.ca.</StyledLink> For spa
         inquiries, please include your animal’s name for faster service. For
         your protection, please do not include your credit card or banking
         information details in your email.
-      </Description>
+      </Typography>
       <Gap size={140} />
       <FormProvider {...methods}>
         <SubmitForm onSubmit={onSubmit}>

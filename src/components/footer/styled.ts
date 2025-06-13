@@ -1,8 +1,6 @@
 import styled from '@emotion/styled'
 import Link from 'next/link'
 
-import { Typography } from '@/components/typography'
-
 export const Wrapper = styled.div`
   height: 493px;
   background-color: #f3ded7;
@@ -19,10 +17,7 @@ export const MainBlock = styled.div`
 export const LeftBlock = styled.div`
   width: 346px;
 `
-export const Title = styled(Typography)`
-  margin-bottom: 30px;
-  font-weight: 700;
-`
+
 export const NavigationItem = styled(Link)`
   display: block;
   text-decoration: none;

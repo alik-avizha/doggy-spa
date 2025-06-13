@@ -1,8 +1,11 @@
 import styled from '@emotion/styled'
 
-import type { GapeType } from './types'
+import type { GapProps } from './gap'
 
-export const StyledGap = styled.div<GapeType>`
+export const StyledGap = styled.div<{
+  direction: NonNullable<GapProps['direction']>
+  size: NonNullable<GapProps['size']>
+}>`
   ${({ direction, size }) =>
     direction === 'vertical'
       ? {

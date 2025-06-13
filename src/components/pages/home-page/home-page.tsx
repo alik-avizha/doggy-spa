@@ -2,15 +2,15 @@
 
 import { useRouter } from 'next/navigation'
 
-import { AnimalInfoList } from '@/components/animal-info-list'
 import { Button } from '@/components/button'
 import { Card } from '@/components/card'
 import { Gap } from '@/components/gap'
-import { SignUp } from '@/components/sign-up'
 import { Typography } from '@/components/typography'
-import { ANIMAL_CARRY, DOG_COLLARS } from '@/contstants/constants'
-import { Routes } from '@/contstants/routes'
+import { ANIMAL_CARRY, DOG_COLLARS } from '@/constants'
+import { Routes } from '@/constants/routes'
 
+import { AnimalInfoList } from './animal-info-list'
+import { SignUp } from './sign-up'
 import { InfoBlock, SignUpWrapper, Wrapper } from './styled'
 
 export const HomePage = () => {
@@ -23,11 +23,7 @@ export const HomePage = () => {
     <>
       <Wrapper>
         <InfoBlock>
-          <Typography
-            data-test-id="page-title"
-            variant="size_63"
-            textAlign="center"
-          >
+          <Typography data-test-id="page-title" size={63} textAlign="center">
             Book your doggy spa day!
           </Typography>
           <Gap size={50} />

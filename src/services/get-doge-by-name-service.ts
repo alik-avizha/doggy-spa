@@ -1,4 +1,4 @@
-import type { Dog } from '@/contstants/types'
+import type { Dog } from '@/types'
 
 export async function getDogByNameService(name: string): Promise<Dog | null> {
   const res = await fetch(`/api/dogs?name=${name}`)

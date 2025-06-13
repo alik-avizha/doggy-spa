@@ -1,17 +1,13 @@
 import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js'
 import type { FC } from 'react'
 
-import {
-  BookingInfoBlock,
-  Container,
-  Description,
-} from '@/components/booking-info/styled'
 import { Gap } from '@/components/gap'
 import { Typography } from '@/components/typography'
-import { BOOKING_INFO, PAYPAL_OPTIONS } from '@/contstants/constants'
-import type { BookInfo } from '@/contstants/types'
-import { formatDate } from '@/lib'
-import { getObjectFromLocalStorage } from '@/lib/local-storage'
+import { BOOKING_INFO, PAYPAL_OPTIONS } from '@/constants'
+import { formatDateRu, getObjectFromLocalStorage } from '@/lib'
+import type { BookInfo } from '@/types'
+
+import { BookingInfoBlock, Container, Description } from './styled'
 
 type Props = {
   onPaymentSuccess: () => void
@@ -36,7 +32,7 @@ export const BookingInfo: FC<Props> = ({ onPaymentSuccess }) => {
   }
 
   const timeInfo = Array.isArray(data.time) ? data.time.join(', ') : ''
-  const dateInfo = formatDate(data.date)
+  const dateInfo = formatDateRu(data.date)
 
   const fields: { label: string; value: string }[] = [
     { label: 'First Name:', value: data.firstName },

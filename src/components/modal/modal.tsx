@@ -33,7 +33,7 @@ export const Modal: FC<Props> = ({ isOpen, onClose, children, title }) => {
   return createPortal(
     <ModalOverlay>
       <ModalBlock>
-        <Typography variant="size_40">{title}</Typography>
+        <Typography size={40}>{title}</Typography>
         <Gap size={20} />
         <CloseButton type="button" className="close-button" onClick={onClose}>
           <CloseIcon />

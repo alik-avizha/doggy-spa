@@ -2,15 +2,15 @@
 
 import { useEffect, useState } from 'react'
 
-import { Gap } from '@/components/gap/gap'
+import { Gap } from '@/components/gap'
 import { Notification } from '@/components/notification'
-import { InfoContent } from '@/components/search-info'
 import { TextField } from '@/components/textfield'
 import { Typography } from '@/components/typography'
-import type { Dog } from '@/contstants/types'
 import { useDebounce } from '@/hooks'
 import { getDogByNameService } from '@/services'
+import type { Dog } from '@/types'
 
+import { SearchInfo } from './search-info'
 import {
   Description,
   SearchBlock,
@@ -54,16 +54,26 @@ export const InfoPage = () => {
 
   return (
     <Wrapper>
-      <Typography variant="size_70" textAlign="center">
+      <Typography size={70} textAlign="center">
         INFO DOG
       </Typography>
       <Gap size={100} />
       <SearchBlock>
         <SelectionBlock>
-          <Description variant="size_30">Current Selection:</Description>
+          <Description
+            variant="size_30"
+            fontWeight={400}
+            fontFamily="Cinzel Decorative"
+          >
+            Current Selection:
+          </Description>
           <Gap direction="horizontal" size={10} />
           {data && (
-            <SearchCurrentDog variant="size_30">
+            <SearchCurrentDog
+              variant="size_30"
+              fontFamily="Cinzel Decorative"
+              fontWeight={400}
+            >
               {data?.breed_group}
             </SearchCurrentDog>
           )}
@@ -77,7 +87,7 @@ export const InfoPage = () => {
         </TextFieldWrapper>
       </SearchBlock>
       <Gap size={150} />
-      <InfoContent data={data} hasSearched={hasSearched} />
+      <SearchInfo data={data} hasSearched={hasSearched} />
       {notification && (
         <Notification
           message="An error occurred while searching for information. Please try again later."

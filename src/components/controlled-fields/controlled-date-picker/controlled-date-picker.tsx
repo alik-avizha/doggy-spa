@@ -5,9 +5,9 @@ import React, { useEffect, useState } from 'react'
 import DatePicker from 'react-datepicker'
 import { Controller, useFormContext } from 'react-hook-form'
 
-import { CustomHeaderDatePicker } from '@/components/custom-header-date-picker'
 import { ErrorMessage } from '@/components/errror-message'
 
+import { CustomHeaderDatePicker } from './custom-header-date-picker'
 import { DatePickerWrapper } from './styled'
 
 type ControlledDatePickerProps = {

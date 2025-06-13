@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-import { ControlledTextField } from '@/components/controlled-textfield'
+import { ControlledTextField } from '@/components/controlled-fields'
 
 export const Wrapper = styled.div`
   width: 970px;

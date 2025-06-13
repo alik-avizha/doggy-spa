@@ -7,13 +7,13 @@ import { Card } from '@/components/card'
 import { Gap } from '@/components/gap'
 import { Notification } from '@/components/notification'
 import { Typography } from '@/components/typography'
-import { SUBSCRIBE_TO_LETTER_DEFAULT_VALUES } from '@/contstants/constants'
+import { SUBSCRIBE_TO_LETTER_DEFAULT_VALUES } from '@/constants'
+import { validationSubscribeToLetterSchema } from '@/constants/validation'
+import { subscribeToNewsletterService } from '@/services'
 import type {
   NotificationState,
   ValidationSubscribeToLettersSchemaType,
-} from '@/contstants/types'
-import { validationSubscribeToLetterSchema } from '@/contstants/validation'
-import { subscribeToNewsletterService } from '@/services'
+} from '@/types'
 
 import {
   DescriptionBlock,
@@ -68,12 +68,17 @@ export const SignUp = () => {
     <Wrapper>
       <LeftBlock>
         <TitleBlock>
-          <Typography variant="size_30" textTransForm="uppercase">
+          <Typography
+            size={30}
+            fontFamily="Cinzel Decorative"
+            fontWeight={400}
+            textTransForm="uppercase"
+          >
             Sign Up to Bark Newsletter
           </Typography>
         </TitleBlock>
         <Gap size={40} />
-        <Typography variant="size_22">
+        <Typography size={22} fontWeight={400}>
           Get 10% Off Your First Spa Treatment{' '}
         </Typography>
         <Gap size={40} />
@@ -86,7 +91,7 @@ export const SignUp = () => {
             </Button>
             <Gap size={40} />
             <DescriptionBlock>
-              <Typography variant="size_14" textAlign="center">
+              <Typography size={14} fontWeight={400} textAlign="center">
                 *By completing this form you are signing up to receive our
                 emails and can unsubscribe at any time.
               </Typography>

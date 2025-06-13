@@ -1,4 +1,4 @@
-export const formatDate = (isoString: string): string => {
+export const formatDateRu = (isoString: string): string => {
   const date = new Date(isoString)
   return date.toLocaleDateString('ru-RU', {
     year: 'numeric',
@@ -7,7 +7,7 @@ export const formatDate = (isoString: string): string => {
   })
 }
 
-export const formatDateToPresent = (isoString: string): string => {
+export const formatDateEn = (isoString: string): string => {
   const date = new Date(isoString)
 
   return date.toLocaleDateString('en-US', {

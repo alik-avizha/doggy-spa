@@ -1,6 +1,6 @@
 import type { FC, ReactNode } from 'react'
 
-import { ErrorText } from '@/components/errror-message/styled'
+import { ErrorText } from './styled'
 
 type Props = {
   children: ReactNode

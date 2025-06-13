@@ -1,11 +1,12 @@
 'use client'
 
 import { yupResolver } from '@hookform/resolvers/yup'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 
 import { Button } from '@/components/button'
-import { ControlledTextField } from '@/components/controlled-textfield'
+import { ControlledTextField } from '@/components/controlled-fields'
+import { Gap } from '@/components/gap'
 import {
   FacebookIcon,
   InstagramIcon,
@@ -15,14 +16,14 @@ import {
 } from '@/components/icons'
 import { Notification } from '@/components/notification'
 import { Typography } from '@/components/typography'
-import { SUBSCRIBE_TO_LETTER_DEFAULT_VALUES } from '@/contstants/constants'
-import { Routes } from '@/contstants/routes'
-import type {
-  ValidationSubscribeToLettersSchemaType,
-  NotificationState,
-} from '@/contstants/types'
-import { validationSubscribeToLetterSchema } from '@/contstants/validation'
+import { SUBSCRIBE_TO_LETTER_DEFAULT_VALUES } from '@/constants'
+import { Routes } from '@/constants/routes'
+import { validationSubscribeToLetterSchema } from '@/constants/validation'
 import { subscribeToNewsletterService } from '@/services'
+import type {
+  NotificationState,
+  ValidationSubscribeToLettersSchemaType,
+} from '@/types'
 
 import {
   BottomBlock,
@@ -35,7 +36,6 @@ import {
   PrivacyBlock,
   RightBlock,
   SubmitForm,
-  Title,
   Wrapper,
 } from './styled'
 
@@ -83,7 +83,8 @@ export const Footer = () => {
     <Wrapper>
       <MainBlock>
         <LeftBlock>
-          <Title variant="size_32">Customer Service</Title>
+          <Typography size={32}>Customer Service</Typography>
+          <Gap size={30} />
           <NavigationItem href={Routes[4].href}>Blog</NavigationItem>
           <NavigationItem href={Routes[0].href}>Cancellations</NavigationItem>
           <NavigationItem href={Routes[0].href}>
@@ -95,7 +96,8 @@ export const Footer = () => {
           <NavigationItem href={Routes[0].href}>Payment Options</NavigationItem>
         </LeftBlock>
         <CenterBlock>
-          <Title variant="size_32">Subscribe to our Newsletter</Title>
+          <Typography size={32}>Subscribe to our Newsletter</Typography>
+          <Gap size={30} />
           <FormProvider {...methods}>
             <SubmitForm onSubmit={onSubmit}>
               <ControlledTextField fieldName="email" placeholder="Email" />
@@ -104,7 +106,8 @@ export const Footer = () => {
               </Button>
             </SubmitForm>
           </FormProvider>
-          <Title variant="size_32">Connect With Us On Social Media</Title>
+          <Typography size={32}>Connect With Us On Social Media</Typography>
+          <Gap size={30} />
           <IconsBlock>
             <InstagramIcon />
             <FacebookIcon />
@@ -114,7 +117,8 @@ export const Footer = () => {
           </IconsBlock>
         </CenterBlock>
         <RightBlock>
-          <Title variant="size_32">Navigation</Title>
+          <Typography size={32}>Navigation</Typography>
+          <Gap size={30} />
           <NavigationItem href={Routes[0].href}>Home</NavigationItem>
           <NavigationItem href={Routes[5].href}>About Us</NavigationItem>
           <NavigationItem href={Routes[6].href}>Contact Us</NavigationItem>
@@ -126,16 +130,26 @@ export const Footer = () => {
       </MainBlock>
       <BottomBlock>
         <CookiesBlock>
-          <Typography variant="size_22">Cookie Policy</Typography>
-          <Typography variant="size_22">Cookies Settings</Typography>
+          <Typography size={22} fontWeight={400}>
+            Cookie Policy
+          </Typography>
+          <Typography size={22} fontWeight={400}>
+            Cookies Settings
+          </Typography>
         </CookiesBlock>
-        <Typography variant="size_22">
+        <Typography size={22} fontWeight={400}>
           Copyright 2021 Luxe Animal Spa, LLC. All rights reserved.
         </Typography>
         <PrivacyBlock>
-          <Typography variant="size_22">Terms</Typography>
-          <Typography variant="size_22">Privacy</Typography>
-          <Typography variant="size_22">Security</Typography>
+          <Typography size={22} fontWeight={400}>
+            Terms
+          </Typography>
+          <Typography size={22} fontWeight={400}>
+            Privacy
+          </Typography>
+          <Typography size={22} fontWeight={400}>
+            Security
+          </Typography>
         </PrivacyBlock>
       </BottomBlock>
       {notification.visible && (

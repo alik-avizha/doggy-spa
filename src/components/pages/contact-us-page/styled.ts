@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
 
 import { TextField } from '@/components/textfield'
-import { Typography } from '@/components/typography'
 
 export const Wrapper = styled.div`
   padding: 70px 50px 200px 50px;
@@ -13,10 +12,7 @@ export const Border = styled.div`
   width: 592px;
   border: 1px solid #000000;
 `
-export const Description = styled(Typography)`
-  font-family: Cormorant, sans-serif;
-  font-weight: 700;
-`
+
 export const StyledLink = styled.span`
   color: #e89b93;
   text-decoration: underline;
