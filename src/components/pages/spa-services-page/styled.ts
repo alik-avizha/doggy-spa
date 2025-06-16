@@ -1,29 +1,18 @@
 import styled from '@emotion/styled'
 
-import { Typography } from '@/components/typography'
-
 export const Wrapper = styled.div`
-  padding: 70px 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: ${({ theme }) => theme.paddings.xxxl}px
+    ${({ theme }) => theme.paddings.xl}px;
 `
 export const Border = styled.div`
-  width: 737px;
-  border: 1px solid #000000;
+  width: 738px;
+  border: ${({ theme }) => theme.borders.xs}px solid
+    ${({ theme }) => theme.colors.black};
 `
 export const InfoWrapper = styled.div`
-  width: 1047px;
-`
-
-export const ServiceTitle = styled(Typography)`
-  margin-top: 50px;
-  margin-bottom: 10px;
-`
-export const ServicePrice = styled(Typography)`
-  margin-bottom: 30px;
-`
-export const ServiceDescription = styled(Typography)`
-  margin-bottom: 50px;
-  font-weight: 400;
+  width: 1048px;
+  margin: ${({ theme }) => theme.margins.xxl}px 0;
 `

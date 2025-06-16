@@ -7,17 +7,19 @@ export const Wrapper = styled.div`
   background-position: right;
   background-repeat: no-repeat;
   position: relative;
+  margin-bottom: ${({ theme }) => theme.margins.gigantic}px;
 `
 export const InfoBlock = styled.div`
   position: absolute;
   left: 40px;
   bottom: 20%;
-  width: 499px;
+  width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
 `
 export const SignUpWrapper = styled.div`
-  padding: 0 100px;
+  padding: 0 ${({ theme }) => theme.paddings.massive}px;
   position: relative;
+  margin-bottom: ${({ theme }) => theme.margins.xxl}px;
 `

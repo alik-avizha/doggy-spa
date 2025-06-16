@@ -11,6 +11,7 @@ import type { ReactNode } from 'react'
 import { ErrorBoundary } from '@/components/error-boundary'
 import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
+import { Providers } from '@/providers'
 
 const poppins = Poppins({
   weight: ['500'],
@@ -47,9 +48,11 @@ export default function RootLayout({
       <body
         className={`${poppins.className} ${cinzelDecorative.className} ${tangerine.className} ${cormorant.className}`}
       >
-        <Header />
-        <ErrorBoundary>{children}</ErrorBoundary>
-        <Footer />
+        <Providers>
+          <Header />
+          <ErrorBoundary>{children}</ErrorBoundary>
+          <Footer />
+        </Providers>
       </body>
     </html>
   )

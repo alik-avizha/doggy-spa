@@ -1,14 +1,14 @@
 import styled from '@emotion/styled'
 
 export const StyledAnchor = styled.a<{ isActive: boolean }>`
-  color: #4c4c4b;
+  color: ${({ theme }) => theme.colors.charCoal};
   text-decoration: none;
-  font-family: Cormorant, sans-serif;
-  font-weight: 700;
-  font-size: 26px;
+  font-family: ${({ theme }) => theme.fontFamilies.cormorant}, sans-serif;
+  font-weight: ${({ theme }) => theme.fontWeights.xl};
+  font-size: ${({ theme }) => theme.fontSizes.l}px;
   position: relative;
   display: inline-block;
-  padding-bottom: 10px;
+  padding-bottom: ${({ theme }) => theme.paddings.xs}px;
 
   &::after {
     content: '';
@@ -17,13 +17,13 @@ export const StyledAnchor = styled.a<{ isActive: boolean }>`
     bottom: 0;
     width: ${({ isActive }) => (isActive ? '100%' : '0')};
     height: 6px;
-    border-radius: 4px;
-    background-color: #e89b93;
+    border-radius: ${({ theme }) => theme.borderRadius.sm}px;
+    background-color: ${({ theme }) => theme.colors.pinkKisses};
     transition: width 0.3s ease;
   }
 
   &:hover {
-    color: #e89b93;
+    color: ${({ theme }) => theme.colors.pinkKisses};
     transition: color 0.3s ease;
   }
 `

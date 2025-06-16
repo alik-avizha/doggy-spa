@@ -1,11 +1,11 @@
 import styled from '@emotion/styled'
 
 export const HeaderWrapper = styled.div`
-  padding: 0 12px;
+  padding: 0 ${({ theme }) => theme.paddings.xs}px;
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
-  margin-bottom: 30px;
+  margin: ${({ theme }) => theme.margins.xs}px 0
+    ${({ theme }) => theme.margins.l}px 0;
 `
 export const NavigationBlock = styled.div`
   display: flex;
@@ -13,7 +13,6 @@ export const NavigationBlock = styled.div`
   justify-content: space-between;
   width: 150px;
 `
-
 export const StyledButtonNavigation = styled.button`
   background-color: transparent;
   border: none;

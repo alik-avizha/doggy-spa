@@ -9,7 +9,6 @@ import {
   ControlledTextarea,
   ControlledTextField,
 } from '@/components/controlled-fields'
-import { Gap } from '@/components/gap'
 import { Notification } from '@/components/notification'
 import { Typography } from '@/components/typography'
 import { CONTACT_US_DEFAULT_VALUES } from '@/constants'
@@ -69,20 +68,23 @@ export const ContactUsPage = () => {
 
   return (
     <Wrapper>
-      <Typography size={70} textAlign="center">
+      <Typography size="xxxxl" textAlign="center" marginBt="s" as="h2">
         Contact
       </Typography>
-      <Gap size={20} />
       <Border />
-      <Gap size={40} />
-      <Typography size={30} as="h3" textAlign="center">
+      <Typography
+        size="xl"
+        as="h3"
+        textAlign="center"
+        marginBt="huge"
+        marginTp="xl"
+      >
         For customer service inquiries, please email us at{' '}
         <StyledLink>customerservice@luxeanimalspa.ca.</StyledLink> For spa
         inquiries, please include your animal’s name for faster service. For
         your protection, please do not include your credit card or banking
         information details in your email.
       </Typography>
-      <Gap size={140} />
       <FormProvider {...methods}>
         <SubmitForm onSubmit={onSubmit}>
           <FieldBlock>
@@ -92,7 +94,6 @@ export const ContactUsPage = () => {
             />
             <ControlledTextField fieldName="lastName" placeholder="Last Name" />
           </FieldBlock>
-          <Gap size={70} />
           <FieldBlock>
             <ControlledTextField fieldName="email" placeholder="Email" />
             <ControlledTextField
@@ -100,15 +101,13 @@ export const ContactUsPage = () => {
               placeholder="Phone Number"
             />
           </FieldBlock>
-          <Gap size={70} />
           <ControlledTextarea
             fieldName="message"
             placeholder="Your message goes here ..."
             height={317}
           />
-          <Gap size={100} />
           <SubmitAction>
-            <Button type="submit" isLoading={loading}>
+            <Button type="submit" isLoading={loading} fullWidth>
               Submit
             </Button>
           </SubmitAction>

@@ -10,7 +10,6 @@ import { COORDINATES, MAP_INFO_CENTER } from '@/constants'
 import {
   AddressInfoBlock,
   Container,
-  Description,
   LeftInfoBlock,
   Map,
   MapWrapper,
@@ -46,21 +45,45 @@ const MapInfo = () => (
     </MapWrapper>
     <AddressInfoBlock>
       <LeftInfoBlock>
-        <Typography size={20}>Our Address:</Typography>
-        <Description size={20}>Luxe Animal Spa</Description>
-        <Description variant="size_20">80 Smithe St</Description>
-        <Description variant="size_20">Vancouver, BC</Description>
-        <Description variant="size_20">V6B 1M7</Description>
+        <Typography size="m" as="h5">
+          Our Address:
+        </Typography>
+        <Typography size="m" fontWeight="s" marginTp="xs">
+          Luxe Animal Spa
+        </Typography>
+        <Typography size="m" fontWeight="s" marginTp="xs">
+          80 Smithe St
+        </Typography>
+        <Typography size="m" fontWeight="s" marginTp="xs">
+          Vancouver, BC
+        </Typography>
+        <Typography size="m" fontWeight="s" marginTp="xs">
+          V6B 1M7
+        </Typography>
       </LeftInfoBlock>
       <RightInfoBlock>
-        <Typography size={20}>Hours of Operation:</Typography>
-        <Description size={20}>Sunday - Closed</Description>
-        <Description size={20}>Monday 10 a.m.-5:30 p.m.</Description>
-        <Description size={20}>Tuesday 10 a.m.-5:30 p.m.</Description>
-        <Description size={20}>Wednesday 10 a.m.-5:30 p.m.</Description>
-        <Description size={20}>Thursday 10 a.m.-5:30 p.m.</Description>
-        <Description size={20}>Friday 10 a.m.-5:30 p.m.</Description>
-        <Description vsize={20}>Saturday 10 a.m.-5:30 p.m.</Description>
+        <Typography size="m">Hours of Operation:</Typography>
+        <Typography size="m" fontWeight="s" marginTp="xs">
+          Sunday - Closed
+        </Typography>
+        <Typography size="m" fontWeight="s" marginTp="xs">
+          Monday 10 a.m.-5:30 p.m.
+        </Typography>
+        <Typography size="m" fontWeight="s" marginTp="xs">
+          Tuesday 10 a.m.-5:30 p.m.
+        </Typography>
+        <Typography size="m" fontWeight="s" marginTp="xs">
+          Wednesday 10 a.m.-5:30 p.m.
+        </Typography>
+        <Typography size="m" fontWeight="s" marginTp="xs">
+          Thursday 10 a.m.-5:30 p.m.
+        </Typography>
+        <Typography size="m" fontWeight="s" marginTp="xs">
+          Friday 10 a.m.-5:30 p.m.
+        </Typography>
+        <Typography size="m" fontWeight="s" marginTp="xs">
+          Saturday 10 a.m.-5:30 p.m.
+        </Typography>
       </RightInfoBlock>
     </AddressInfoBlock>
   </Container>

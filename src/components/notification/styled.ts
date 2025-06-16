@@ -19,8 +19,9 @@ export const NotificationContainer = styled.div<{
   top: 20px;
   right: 20px;
   min-width: 300px;
-  padding: 15px 20px;
-  border-radius: 8px;
+  padding: ${({ theme }) => theme.paddings.sm}px
+    ${({ theme }) => theme.paddings.m}px;
+  border-radius: ${({ theme }) => theme.borderRadius.md}px;
   color: white;
   background-color: ${({ background }) => background};
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);

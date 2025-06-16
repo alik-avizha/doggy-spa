@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 
-import { Gap } from '@/components/gap'
 import { Notification } from '@/components/notification'
 import { TextField } from '@/components/textfield'
 import { Typography } from '@/components/typography'
@@ -12,9 +11,7 @@ import type { Dog } from '@/types'
 
 import { SearchInfo } from './search-info'
 import {
-  Description,
   SearchBlock,
-  SearchCurrentDog,
   SelectionBlock,
   TextFieldWrapper,
   Wrapper,
@@ -54,28 +51,18 @@ export const InfoPage = () => {
 
   return (
     <Wrapper>
-      <Typography size={70} textAlign="center">
+      <Typography size="xxxxl" textAlign="center" marginBt="huge" as="h2">
         INFO DOG
       </Typography>
-      <Gap size={100} />
       <SearchBlock>
         <SelectionBlock>
-          <Description
-            variant="size_30"
-            fontWeight={400}
-            fontFamily="Cinzel Decorative"
-          >
+          <Typography size="xl" marginBt="xs">
             Current Selection:
-          </Description>
-          <Gap direction="horizontal" size={10} />
+          </Typography>
           {data && (
-            <SearchCurrentDog
-              variant="size_30"
-              fontFamily="Cinzel Decorative"
-              fontWeight={400}
-            >
+            <Typography size="xl" fontFamily="cormorant" color="pinkKisses">
               {data?.breed_group}
-            </SearchCurrentDog>
+            </Typography>
           )}
         </SelectionBlock>
         <TextFieldWrapper>
@@ -86,7 +73,6 @@ export const InfoPage = () => {
           />
         </TextFieldWrapper>
       </SearchBlock>
-      <Gap size={150} />
       <SearchInfo data={data} hasSearched={hasSearched} />
       {notification && (
         <Notification

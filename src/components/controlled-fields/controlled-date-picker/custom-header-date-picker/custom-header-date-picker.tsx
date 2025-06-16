@@ -26,12 +26,12 @@ export const CustomHeaderDatePicker: FC<Props> = ({
   const formattedDate = date.toLocaleDateString('en-US', options)
   return (
     <HeaderWrapper>
-      <Typography size={18}>Select dates</Typography>
+      <Typography size="m">Select dates</Typography>
       <NavigationBlock>
         <StyledButtonNavigation onClick={decreaseMonth} type="button">
           <LeftIcon />
         </StyledButtonNavigation>
-        <Typography size={18}>{formattedDate}</Typography>
+        <Typography size="m">{formattedDate}</Typography>
         <StyledButtonNavigation onClick={increaseMonth} type="button">
           <RightIcon />
         </StyledButtonNavigation>

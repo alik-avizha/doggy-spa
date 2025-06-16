@@ -1,35 +1,32 @@
 'use client'
 
 import { Card } from '@/components/card'
-import { Gap } from '@/components/gap'
 import { Typography } from '@/components/typography'
 
 import { CardTextWrapper, TextBlock, Wrapper } from './styled'
 
 export const BlogPage = () => (
   <Wrapper>
-    <Typography size={70} textAlign="center">
+    <Typography size="xxxxl" textAlign="center" marginBt="s" as="h2">
       The Bark Chronicles
     </Typography>
-    <Gap size={20} />
     <Typography
-      fontWeight={400}
-      fontFamily="Tangerine"
-      size={40}
+      fontWeight="s"
+      fontFamily="tangerine"
+      size="xxl"
       as="h3"
       textAlign="center"
+      marginBt="xxl"
     >
       The Bark Chronicles
     </Typography>
-    <Gap size={40} />
-    <Typography size={35}>
+    <Typography size="xl">
       Rex, The Dog Who Never Stops Playing ... Ever
     </Typography>
-    <Gap size={40} />
     <CardTextWrapper>
-      <Card width={627} height={562} url="/images/darinka.webp" border={6} />
+      <Card width={628} height={562} url="/images/darinka.webp" border={6} />
       <TextBlock>
-        <Typography size={30} fontWeight={400} textAlign="center">
+        <Typography size="l" fontWeight="s" textAlign="center">
           Sometimes it is difficult to get dogs interested in the toys you buy
           for them. .. Luckily for Rex, everything he sees is a potential toy
           for him! Never let him around your valuables or any socks. He will
@@ -39,7 +36,7 @@ export const BlogPage = () => (
     </CardTextWrapper>
     <CardTextWrapper>
       <TextBlock>
-        <Typography size={30} fontWeight={400} textAlign="center">
+        <Typography size="l" fontWeight="s" textAlign="center">
           One day, we started noticing Rex was ripping apart all of our sheets
           when he was bored except for this blanket over here. Rex decided to
           spare this ugly white blanket that my grandmother gave me from her war

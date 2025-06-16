@@ -1,35 +1,36 @@
 import styled from '@emotion/styled'
 
-import { TextField } from '@/components/textfield'
-
 export const Wrapper = styled.div`
-  padding: 70px 50px 200px 50px;
+  padding: ${({ theme }) => theme.paddings.xxxl}px
+    ${({ theme }) => theme.paddings.xl}px
+    ${({ theme }) => theme.paddings.massive}px
+    ${({ theme }) => theme.paddings.xl}px;
   display: flex;
   flex-direction: column;
   align-items: center;
 `
 export const Border = styled.div`
   width: 592px;
-  border: 1px solid #000000;
+  border: ${({ theme }) => theme.borders.xs}px solid
+    ${({ theme }) => theme.colors.black};
 `
-
 export const StyledLink = styled.span`
-  color: #e89b93;
+  color: ${({ theme }) => theme.colors.pinkKisses};
   text-decoration: underline;
 `
 export const SubmitForm = styled.form`
   width: 1285px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 export const FieldBlock = styled.div`
   display: flex;
   width: 100%;
-  gap: 50px;
+  gap: ${({ theme }) => theme.gap.xl}px;
+  margin-bottom: ${({ theme }) => theme.margins.xxxl}px;
 `
 export const SubmitAction = styled.div`
-  display: flex;
-  justify-content: center;
-`
-
-export const TextFieldsStyled = styled(TextField)`
-  height: 60px;
+  margin-top: ${({ theme }) => theme.margins.huge}px;
+  width: 220px;
 `

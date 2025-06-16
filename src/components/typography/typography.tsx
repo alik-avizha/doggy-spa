@@ -1,31 +1,26 @@
 import type { Property } from 'csstype'
 import type { ComponentPropsWithoutRef, ElementType } from 'react'
 
+import { commonTheme } from '@/constants'
+
 import { StyledTypography } from './styled'
+
+type FontSizeKey = keyof typeof commonTheme.fontSizes
+type FontWeightKey = keyof typeof commonTheme.fontWeights
+type FontFamilyKey = keyof typeof commonTheme.fontFamilies
+type ColorKey = keyof typeof commonTheme.colors
+type MarginKey = keyof typeof commonTheme.margins
 
 export type TypographyProps<T extends ElementType = 'p'> = {
   as?: T
-  size?:
-    | 26
-    | 63
-    | 64
-    | 30
-    | 32
-    | 22
-    | 14
-    | 66
-    | 20
-    | 70
-    | 40
-    | 35
-    | 15
-    | 18
-    | 16
+  size?: FontSizeKey
+  fontWeight?: FontWeightKey
+  fontFamily?: FontFamilyKey
+  color?: ColorKey
+  marginBt?: MarginKey
+  marginTp?: MarginKey
   textAlign?: Property.TextAlign
   textTransForm?: Property.TextTransform
-  fontWeight?: 400 | 700
-  color?: '#000000' | '#4C4C4B'
-  fontFamily?: 'Cinzel Decorative' | 'Cormorant' | 'Tangerine'
 } & ComponentPropsWithoutRef<T>
 
 export const Typography = <T extends ElementType = 'p'>(
@@ -34,24 +29,27 @@ export const Typography = <T extends ElementType = 'p'>(
 ) => {
   const {
     as: Component = 'p',
-    size = 26,
+    size = 'l',
+    fontWeight = 'xl',
+    fontFamily = 'cormorant',
+    color = 'charCoal',
     textAlign = 'left',
     textTransForm = 'inherit',
-    fontWeight = 700,
-    color = '#4C4C4B',
-    fontFamily = 'Cormorant',
+    marginBt = 'none',
+    marginTp = 'none',
     ...rest
   } = props
-
   return (
     <StyledTypography
       as={Component}
-      fontSize={size}
+      fontSize={commonTheme.fontSizes[size]}
       textAlign={textAlign}
       textTransForm={textTransForm}
-      fontWeight={fontWeight}
-      color={color}
-      fontFamily={fontFamily}
+      fontWeight={commonTheme.fontWeights[fontWeight]}
+      color={commonTheme.colors[color]}
+      fontFamily={commonTheme.fontFamilies[fontFamily]}
+      marginTp={commonTheme.margins[marginTp]}
+      marginBt={commonTheme.margins[marginBt]}
       {...rest}
     />
   )

@@ -11,7 +11,6 @@ import {
   ControlledDatePicker,
   ControlledTextarea,
 } from '@/components/controlled-fields'
-import { Gap } from '@/components/gap'
 import {
   AmazonIcon,
   ApplePayIcon,
@@ -41,6 +40,7 @@ import {
   PaymentsContainer,
   PaymentsTypesBlock,
   RightBlock,
+  SubmitBlock,
   TextFieldPayment,
   TextFieldsBlock,
   TextFieldsStyled,
@@ -50,6 +50,7 @@ import {
 const MapInfo = dynamic(() => import('./map-info/map-info'), {
   ssr: false,
 })
+
 export const BookAppointmentPage = () => {
   const [isModalActive, setModalActive] = useState(false)
   const [notification, setNotification] = useState(false)
@@ -86,13 +87,14 @@ export const BookAppointmentPage = () => {
   return (
     <FormProvider {...methods}>
       <Wrapper>
-        <MainTitle data-test-id="page-title" size={70}>
+        <MainTitle data-test-id="page-title" color="white" size="xxxxl" as="h1">
           Book An Appointment With Our Groom Specialist Today!
         </MainTitle>
       </Wrapper>
       <BookContainer onSubmit={onSubmit}>
-        <Typography size={40}>Enter your information here</Typography>
-        <Gap size={50} />
+        <Typography size="xxl" marginBt="xxl" as="h3">
+          Enter your information here
+        </Typography>
         <BookingBlock>
           <LeftBlock>
             <TextFieldsBlock>
@@ -122,18 +124,15 @@ export const BookAppointmentPage = () => {
               fieldName="message"
               placeholder="Any special requests for your pet(s)..."
             />
-            <Gap size={50} />
             <PaymentsContainer>
               <PaymentsBlock>
-                <Typography size={20}>
+                <Typography size="m" marginBt="s" as="h4">
                   Enter your payment information
                 </Typography>
-                <Gap size={20} />
                 <TextFieldPayment
                   fieldName="creditNumber"
                   placeholder="Credit Card Number"
                 />
-                <Gap size={20} />
                 <ExpiredCvvBlock>
                   <TextFieldPayment
                     fieldName="expiryDate"
@@ -141,12 +140,10 @@ export const BookAppointmentPage = () => {
                   />
                   <TextFieldPayment fieldName="cvv" placeholder="CVV" />
                 </ExpiredCvvBlock>
-                <Gap size={20} />
                 <TextFieldPayment
                   fieldName="nameOnCard"
                   placeholder="Name on Card"
                 />
-                <Gap size={20} />
                 <PaymentsTypesBlock>
                   <ApplePayIcon />
                   <GooglePayIcon />
@@ -154,13 +151,20 @@ export const BookAppointmentPage = () => {
                   <MasterCardIcon />
                   <AmazonIcon />
                 </PaymentsTypesBlock>
-                <Gap size={20} />
-                <Typography size={16} fontWeight={400} textAlign="center">
+                <Typography
+                  size="s"
+                  fontWeight="s"
+                  textAlign="center"
+                  marginBt="l"
+                >
                   Please be advised cancelling within 24 hours of your scheduled
                   appointment will result in a cancellation fee of $300.00.
                 </Typography>
-                <Gap size={30} />
-                <Button type="submit">Book Appointment</Button>
+                <SubmitBlock>
+                  <Button type="submit" fullWidth>
+                    Book Appointment
+                  </Button>
+                </SubmitBlock>
               </PaymentsBlock>
             </PaymentsContainer>
           </LeftBlock>

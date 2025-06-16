@@ -1,27 +1,24 @@
 import styled from '@emotion/styled'
 
-export const StyledButton = styled.button<{ isLoading?: boolean }>`
-  border-radius: 30px;
-  padding: 15px 30px;
-  background-color: #e89b93;
+export const StyledButton = styled.button<{
+  isLoading: boolean
+  fullWidth: boolean
+}>`
+  min-width: 140px;
+  border-radius: ${({ theme }) => theme.borderRadius.lg}px;
+  padding: ${({ theme }) => theme.paddings.sm}px
+    ${({ theme }) => theme.paddings.l}px;
+  background-color: ${({ theme }) => theme.colors.pinkKisses};
   border: none;
   cursor: pointer;
-  min-width: 140px;
 
-  font-family: Corporant, sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 21px;
-  color: #ffffff;
+  font-family: ${({ theme }) => theme.fontFamilies.cormorant}, sans-serif;
+  font-weight: ${({ theme }) => theme.fontWeights.xl};
+  font-size: ${({ theme }) => theme.fontSizes.m}px;
+  color: ${({ theme }) => theme.colors.white};
 
   &:hover {
-    background-color: #e58e85;
-  }
-
-  &:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-    color: #666666;
+    background-color: ${({ theme }) => theme.colors.bronzedRose};
   }
 
   ${({ isLoading }) =>
@@ -30,5 +27,11 @@ export const StyledButton = styled.button<{ isLoading?: boolean }>`
       pointer-events: none;
       cursor: not-allowed;
       opacity: 0.7; 
+  `}
+
+  ${({ fullWidth }) =>
+    fullWidth &&
+    `
+      width: 100%;
   `}
 `

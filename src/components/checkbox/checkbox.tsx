@@ -24,7 +24,7 @@ export const CheckBox: FC<Props> = ({ label, checked, onChange, name }) => {
         id={id}
       />
       <CustomCheckbox checked={checked} htmlFor={id} />
-      <Typography size={15}>{label}</Typography>
+      <Typography size="s">{label}</Typography>
     </CheckBoxWithLabel>
   )
 }
