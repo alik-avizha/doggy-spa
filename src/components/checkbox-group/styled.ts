@@ -5,14 +5,13 @@ import { Typography } from '@/components/typography'
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: ${({ theme }) => theme.gap.s}px;
 `
 export const Label = styled(Typography)`
-  margin-bottom: 10px;
-  font-weight: 600;
+  margin-bottom: ${({ theme }) => theme.margins.xs}px;
 `
 export const Block = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: ${({ theme }) => theme.gap.xs}px;
 `

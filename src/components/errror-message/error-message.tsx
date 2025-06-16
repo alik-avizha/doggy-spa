@@ -6,5 +6,7 @@ type Props = {
   children: ReactNode
 }
 export const ErrorMessage: FC<Props> = ({ children }) => (
-  <ErrorText>{children}</ErrorText>
+  <ErrorText size="x" fontWeight="s">
+    {children}
+  </ErrorText>
 )

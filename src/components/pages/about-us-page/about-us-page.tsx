@@ -1,36 +1,33 @@
 'use client'
 
 import { Card } from '@/components/card'
-import { Gap } from '@/components/gap/gap'
 import { Typography } from '@/components/typography'
 
 import { CardTextWrapper, TextBlock, Wrapper } from './styled'
 
 export const AboutUsPage = () => (
   <Wrapper>
-    <Typography size={70} textAlign="center">
+    <Typography size="xxxxl" textAlign="center" marginBt="m" as="h2">
       About Us
     </Typography>
-    <Gap size={20} />
     <Typography
-      fontWeight={400}
-      fontFamily="Tangerine"
-      size={40}
+      fontWeight="s"
+      fontFamily="tangerine"
+      size="xxl"
       as="h3"
       textAlign="center"
     >
       Our Owners Love Dogs and Cats Only
     </Typography>
-    <Gap size={140} />
     <CardTextWrapper>
       <Card
-        width={427}
+        width={428}
         height={460}
         url="/images/rectangle_224.webp"
         border={6}
       />
       <TextBlock>
-        <Typography size={30} fontWeight={400} textAlign="center">
+        <Typography size="l" fontWeight="s" textAlign="center">
           Here at Luxe Animal Spa we aim to provide you with the best service
           possible for both you and your pet! We pride ourselves in offering a
           true first-class experience.
@@ -43,7 +40,7 @@ export const AboutUsPage = () => (
     </CardTextWrapper>
     <CardTextWrapper>
       <TextBlock>
-        <Typography size={30} fontWeight={400} textAlign="center">
+        <Typography size="l" fontWeight="s" textAlign="center">
           All animals deserve a special spa pampering treatment, but mostly cats
           and dogs. Luxe Animal Spa offers the best spa treatments to leave your
           pets feeling amazing!
@@ -55,8 +52,8 @@ export const AboutUsPage = () => (
         </Typography>
       </TextBlock>
       <Card
-        width={507}
-        height={487}
+        width={508}
+        height={488}
         url="/images/rectangle_225.webp"
         border={6}
       />

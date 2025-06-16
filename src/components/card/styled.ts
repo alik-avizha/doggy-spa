@@ -10,19 +10,18 @@ export const CardContainer = styled.div<CardContainerProps>`
   height: ${({ height }) => height}px;
   position: relative;
   overflow: hidden;
-  border: ${({ border }) => border}px solid #dfb2a9;
+  border: ${({ border }) => border}px solid
+    ${({ theme }) => theme.colors.softRose};
 `
-
 export const ButtonsWrapper = styled.div`
   position: absolute;
   top: 45px;
   left: 15px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: ${({ theme }) => theme.gap.xs}px;
   z-index: 10;
 `
-
 export const CircleButton = styled.button<{ active: boolean }>`
   width: 30px;
   height: 30px;
@@ -31,12 +30,7 @@ export const CircleButton = styled.button<{ active: boolean }>`
   cursor: pointer;
   background-color: ${({ active }) => (active ? 'red' : 'black')};
   transition: background-color 0.3s ease;
-
-  &:focus {
-    outline: 2px solid #fff;
-  }
 `
-
 export const ImageWrapper = styled.div<{
   active: boolean
   width: number

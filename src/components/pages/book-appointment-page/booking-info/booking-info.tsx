@@ -1,7 +1,6 @@
 import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js'
 import type { FC } from 'react'
 
-import { Gap } from '@/components/gap'
 import { Typography } from '@/components/typography'
 import { BOOKING_INFO, PAYPAL_OPTIONS } from '@/constants'
 import { formatDateRu, getObjectFromLocalStorage } from '@/lib'
@@ -58,7 +57,6 @@ export const BookingInfo: FC<Props> = ({ onPaymentSuccess }) => {
           </BookingInfoBlock>
         ))}
       </Container>
-      <Gap size={20} />
       <PayPalButtons
         onApprove={async (data, actions) => {
           if (actions.order) {

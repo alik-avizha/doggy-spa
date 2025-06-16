@@ -1,6 +1,5 @@
 import type { FC } from 'react'
 
-import { Gap } from '@/components/gap'
 import { Typography } from '@/components/typography'
 import type { Dog } from '@/types'
 
@@ -22,16 +21,14 @@ export const SearchInfo: FC<Props> = ({ data, hasSearched }) => {
             width={200}
             height={200}
           />
-          <Gap size={30} />
-          <Typography size={64} color="#000000">
+          <Typography size="xxxl" color="black">
             {data.name}
           </Typography>
         </PhotoBlock>
-        <Gap size={100} />
         <DescriptionWrapper>
-          <Typography size={40}>Bred for: {data.bred_for}</Typography>
-          <Typography size={40}>Temperament: {data.temperament}</Typography>
-          <Typography size={40}>Life span: {data.life_span}</Typography>
+          <Typography size="xxl">Bred for: {data.bred_for}</Typography>
+          <Typography size="xxl">Temperament: {data.temperament}</Typography>
+          <Typography size="xxl">Life span: {data.life_span}</Typography>
         </DescriptionWrapper>
       </>
     )
@@ -39,14 +36,14 @@ export const SearchInfo: FC<Props> = ({ data, hasSearched }) => {
 
   if (hasSearched) {
     return (
-      <Typography size={40} textAlign="center">
+      <Typography size="xxl" textAlign="center">
         No results found
       </Typography>
     )
   }
 
   return (
-    <Typography size={40} textAlign="center">
+    <Typography size="xxl" textAlign="center">
       Try to find dog
     </Typography>
   )

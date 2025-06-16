@@ -20,7 +20,7 @@ export function Header() {
         ))}
       </HeaderBlock>
       <InfoPlateBlock>
-        <Typography size={26}>
+        <Typography size="l">
           Get 20% OFF When You Book A Spa Day For Your Animal Today!
         </Typography>
       </InfoPlateBlock>

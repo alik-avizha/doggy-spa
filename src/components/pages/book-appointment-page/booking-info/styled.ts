@@ -6,11 +6,12 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: ${({ theme }) => theme.gap.s}px;
+  margin: ${({ theme }) => theme.margins.s}px;
 `
 export const BookingInfoBlock = styled.div`
   display: flex;
-  gap: 10px;
+  gap: ${({ theme }) => theme.gap.xs}px;
 `
 export const Description = styled(Typography)`
   color: gray;

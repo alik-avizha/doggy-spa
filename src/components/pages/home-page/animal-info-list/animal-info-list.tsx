@@ -3,7 +3,6 @@ import type { FC } from 'react'
 
 import { Button } from '@/components/button'
 import { Card } from '@/components/card'
-import { Gap } from '@/components/gap'
 import { Typography } from '@/components/typography'
 import { Routes } from '@/constants/routes'
 import type { AnimalItem } from '@/types'
@@ -23,25 +22,25 @@ export const AnimalInfoList: FC<Props> = ({ titleButton, title, items }) => {
 
   return (
     <Wrapper>
-      <Typography as="h2" size={66} textAlign="center">
+      <Typography as="h2" size="xxxl" textAlign="center" marginBt="xxl">
         {title}
       </Typography>
-      <Gap size={50} />
       <List>
         {items.map(({ url, description, id, price, category }) => (
           <CardWrapper key={id}>
             <Card width={435} height={445} url={url} border={6} />
             <InfoBlock>
-              <Typography size={20}>{description}</Typography>
-              <Gap size={5} />
-              <Typography size={20}>{category}</Typography>
-              <Gap size={15} />
-              <Typography size={30}>{price}</Typography>
+              <Typography size="m" marginBt="xxs">
+                {description}
+              </Typography>
+              <Typography size="m" marginBt="xs">
+                {category}
+              </Typography>
+              <Typography size="xl">{price}</Typography>
             </InfoBlock>
           </CardWrapper>
         ))}
       </List>
-      <Gap size={40} />
       <Button onClick={handleClick}>{titleButton}</Button>
     </Wrapper>
   )

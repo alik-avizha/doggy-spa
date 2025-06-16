@@ -11,7 +11,6 @@ const fadeInScale = keyframes`
     transform: scale(1);
   }
 `
-
 export const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
@@ -24,11 +23,10 @@ export const ModalOverlay = styled.div`
   align-items: center;
   z-index: 1000;
 `
-
 export const ModalBlock = styled.div`
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
+  background-color: ${({ theme }) => theme.colors.white};
+  padding: ${({ theme }) => theme.paddings.m}px;
+  border-radius: ${({ theme }) => theme.borderRadius.sm}px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   max-width: 80%;
   position: relative;
@@ -36,10 +34,8 @@ export const ModalBlock = styled.div`
   flex-direction: column;
   align-items: center;
   width: 50%;
-
   animation: ${fadeInScale} 0.3s ease forwards;
 `
-
 export const CloseButton = styled.button`
   position: absolute;
   top: 0;

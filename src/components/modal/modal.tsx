@@ -2,7 +2,6 @@ import type { FC, ReactNode } from 'react'
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 
-import { Gap } from '@/components/gap'
 import { CloseIcon } from '@/components/icons'
 import { Typography } from '@/components/typography'
 
@@ -33,8 +32,9 @@ export const Modal: FC<Props> = ({ isOpen, onClose, children, title }) => {
   return createPortal(
     <ModalOverlay>
       <ModalBlock>
-        <Typography size={40}>{title}</Typography>
-        <Gap size={20} />
+        <Typography size="xxl" marginBt="s">
+          {title}
+        </Typography>
         <CloseButton type="button" className="close-button" onClick={onClose}>
           <CloseIcon />
         </CloseButton>

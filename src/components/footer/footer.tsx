@@ -6,7 +6,6 @@ import { FormProvider, useForm } from 'react-hook-form'
 
 import { Button } from '@/components/button'
 import { ControlledTextField } from '@/components/controlled-fields'
-import { Gap } from '@/components/gap'
 import {
   FacebookIcon,
   InstagramIcon,
@@ -33,7 +32,9 @@ import {
   LeftBlock,
   MainBlock,
   NavigationItem,
+  NetworkItem,
   PrivacyBlock,
+  PrivacyItem,
   RightBlock,
   SubmitForm,
   Wrapper,
@@ -83,8 +84,9 @@ export const Footer = () => {
     <Wrapper>
       <MainBlock>
         <LeftBlock>
-          <Typography size={32}>Customer Service</Typography>
-          <Gap size={30} />
+          <Typography size="xl" marginBt="l" as="h4">
+            Customer Service
+          </Typography>
           <NavigationItem href={Routes[4].href}>Blog</NavigationItem>
           <NavigationItem href={Routes[0].href}>Cancellations</NavigationItem>
           <NavigationItem href={Routes[0].href}>
@@ -96,8 +98,9 @@ export const Footer = () => {
           <NavigationItem href={Routes[0].href}>Payment Options</NavigationItem>
         </LeftBlock>
         <CenterBlock>
-          <Typography size={32}>Subscribe to our Newsletter</Typography>
-          <Gap size={30} />
+          <Typography size="xl" marginBt="l" as="h4">
+            Subscribe to our Newsletter
+          </Typography>
           <FormProvider {...methods}>
             <SubmitForm onSubmit={onSubmit}>
               <ControlledTextField fieldName="email" placeholder="Email" />
@@ -106,19 +109,31 @@ export const Footer = () => {
               </Button>
             </SubmitForm>
           </FormProvider>
-          <Typography size={32}>Connect With Us On Social Media</Typography>
-          <Gap size={30} />
+          <Typography size="xl" marginBt="l" as="h4">
+            Connect With Us On Social Media
+          </Typography>
           <IconsBlock>
-            <InstagramIcon />
-            <FacebookIcon />
-            <NetworkIcon />
-            <TwitterIcon />
-            <SnapchatIcon />
+            <NetworkItem href={Routes[0].href}>
+              <InstagramIcon />
+            </NetworkItem>
+            <NetworkItem href={Routes[0].href}>
+              <FacebookIcon />
+            </NetworkItem>
+            <NetworkItem href={Routes[0].href}>
+              <NetworkIcon />
+            </NetworkItem>
+            <NetworkItem href={Routes[0].href}>
+              <TwitterIcon />
+            </NetworkItem>
+            <NetworkItem href={Routes[0].href}>
+              <SnapchatIcon />
+            </NetworkItem>
           </IconsBlock>
         </CenterBlock>
         <RightBlock>
-          <Typography size={32}>Navigation</Typography>
-          <Gap size={30} />
+          <Typography size="xl" marginBt="l" as="h4">
+            Navigation
+          </Typography>
           <NavigationItem href={Routes[0].href}>Home</NavigationItem>
           <NavigationItem href={Routes[5].href}>About Us</NavigationItem>
           <NavigationItem href={Routes[6].href}>Contact Us</NavigationItem>
@@ -130,26 +145,16 @@ export const Footer = () => {
       </MainBlock>
       <BottomBlock>
         <CookiesBlock>
-          <Typography size={22} fontWeight={400}>
-            Cookie Policy
-          </Typography>
-          <Typography size={22} fontWeight={400}>
-            Cookies Settings
-          </Typography>
+          <PrivacyItem href={Routes[0].href}>Cookie Policy</PrivacyItem>
+          <PrivacyItem href={Routes[0].href}>Cookies Settings</PrivacyItem>
         </CookiesBlock>
-        <Typography size={22} fontWeight={400}>
+        <Typography size="m" fontWeight="s">
           Copyright 2021 Luxe Animal Spa, LLC. All rights reserved.
         </Typography>
         <PrivacyBlock>
-          <Typography size={22} fontWeight={400}>
-            Terms
-          </Typography>
-          <Typography size={22} fontWeight={400}>
-            Privacy
-          </Typography>
-          <Typography size={22} fontWeight={400}>
-            Security
-          </Typography>
+          <PrivacyItem href={Routes[0].href}>Terms</PrivacyItem>
+          <PrivacyItem href={Routes[0].href}>Privacy</PrivacyItem>
+          <PrivacyItem href={Routes[0].href}>Security</PrivacyItem>
         </PrivacyBlock>
       </BottomBlock>
       {notification.visible && (

@@ -4,7 +4,6 @@ import { FormProvider, useForm } from 'react-hook-form'
 
 import { Button } from '@/components/button'
 import { Card } from '@/components/card'
-import { Gap } from '@/components/gap'
 import { Notification } from '@/components/notification'
 import { Typography } from '@/components/typography'
 import { SUBSCRIBE_TO_LETTER_DEFAULT_VALUES } from '@/constants'
@@ -69,29 +68,26 @@ export const SignUp = () => {
       <LeftBlock>
         <TitleBlock>
           <Typography
-            size={30}
-            fontFamily="Cinzel Decorative"
-            fontWeight={400}
+            size="xl"
+            fontFamily="cinzelDecorative"
+            fontWeight="s"
             textTransForm="uppercase"
+            as="h3"
           >
             Sign Up to Bark Newsletter
           </Typography>
         </TitleBlock>
-        <Gap size={40} />
-        <Typography size={22} fontWeight={400}>
+        <Typography size="m" fontWeight="s" marginBt="xl">
           Get 10% Off Your First Spa Treatment{' '}
         </Typography>
-        <Gap size={40} />
         <FormProvider {...methods}>
           <FormBlock onSubmit={onSubmit}>
             <StyledTextField fieldName="email" placeholder="Email" />
-            <Gap size={40} />
             <Button type="submit" isLoading={loading}>
               Sign Up
             </Button>
-            <Gap size={40} />
             <DescriptionBlock>
-              <Typography size={14} fontWeight={400} textAlign="center">
+              <Typography size="x" fontWeight="s" textAlign="center">
                 *By completing this form you are signing up to receive our
                 emails and can unsubscribe at any time.
               </Typography>
