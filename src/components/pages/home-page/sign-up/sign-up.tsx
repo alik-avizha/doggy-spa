@@ -2,7 +2,6 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 
-import { Button } from '@/components/button'
 import { Card } from '@/components/card'
 import { Notification } from '@/components/notification'
 import { Typography } from '@/components/typography'
@@ -18,6 +17,7 @@ import {
   DescriptionBlock,
   FormBlock,
   LeftBlock,
+  StyledButton,
   StyledTextField,
   TitleBlock,
   Wrapper,
@@ -83,9 +83,9 @@ export const SignUp = () => {
         <FormProvider {...methods}>
           <FormBlock onSubmit={onSubmit}>
             <StyledTextField fieldName="email" placeholder="Email" />
-            <Button type="submit" isLoading={loading}>
+            <StyledButton type="submit" isLoading={loading}>
               Sign Up
-            </Button>
+            </StyledButton>
             <DescriptionBlock>
               <Typography size="x" fontWeight="s" textAlign="center">
                 *By completing this form you are signing up to receive our
