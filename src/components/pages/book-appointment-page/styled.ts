@@ -60,18 +60,18 @@ export const PaymentsBlock = styled.div`
 `
 export const TextFieldPayment = styled(ControlledTextField)`
   height: 45px;
-  margin-bottom: ${({ theme }) => theme.margins.s}px;
 `
 export const ExpiredCvvBlock = styled.div`
   display: flex;
   width: 100%;
   gap: ${({ theme }) => theme.gap.s}px;
+  margin: ${({ theme }) => theme.margins.s}px 0;
 `
 export const PaymentsTypesBlock = styled.div`
   display: flex;
   justify-content: center;
   gap: ${({ theme }) => theme.gap.xs}px;
-  margin-bottom: ${({ theme }) => theme.margins.s}px;
+  margin: ${({ theme }) => theme.margins.s}px 0;
 `
 export const SubmitBlock = styled.div`
   display: flex;

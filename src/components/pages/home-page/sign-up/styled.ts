@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 
+import { Button } from '@/components/button'
 import { ControlledTextField } from '@/components/controlled-fields'
 
 export const Wrapper = styled.div`
@@ -26,7 +27,9 @@ export const FormBlock = styled.form`
 `
 export const StyledTextField = styled(ControlledTextField)`
   height: 40px;
-  margin-bottom: ${({ theme }) => theme.margins.xl}px;
+`
+export const StyledButton = styled(Button)`
+  margin-top: ${({ theme }) => theme.margins.xl}px;
 `
 export const LeftBlock = styled.div`
   display: flex;
