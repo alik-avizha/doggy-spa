@@ -9,9 +9,16 @@ type Props = {
   checked: boolean
   onChange?: (value: ChangeEvent<HTMLInputElement>) => void
   name?: string
+  dataTestId: string
 }
 
-export const CheckBox: FC<Props> = ({ label, checked, onChange, name }) => {
+export const CheckBox: FC<Props> = ({
+  label,
+  checked,
+  onChange,
+  name,
+  dataTestId,
+}) => {
   const id = `checkbox-${label.replace(/\s+/g, '-').toLowerCase()}`
 
   return (
@@ -21,6 +28,7 @@ export const CheckBox: FC<Props> = ({ label, checked, onChange, name }) => {
         name={name}
         checked={checked}
         onChange={onChange}
+        data-test-id={dataTestId}
         id={id}
       />
       <CustomCheckbox checked={checked} htmlFor={id} />

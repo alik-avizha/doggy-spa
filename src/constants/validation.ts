@@ -38,7 +38,13 @@ const timeSchema = yup
   .min(1, 'validation.chooseMinimumOneTimeslot')
   .required('validation.required')
 
+const searchSchema = yup
+  .string()
+  .required('validation.required')
+  .matches(/^[A-Za-z]*$/, 'validation.onlyLatinLetters')
+
 const stringRequired = yup.string().required('validation.required')
+
 export const validationSubscribeToLetterSchema = yup.object({
   email: emailSchema,
 })
@@ -62,10 +68,6 @@ export const validationBookingSchema = yup.object({
   cvv: cvvSchema,
   nameOnCard: nameOnCardSchema,
 })
-
 export const validationSearchDogSchema = yup.object({
-  search: yup
-    .string()
-    .required('validation.required')
-    .matches(/^[A-Za-z]*$/, 'validation.onlyLatinLetters'),
+  search: searchSchema,
 })

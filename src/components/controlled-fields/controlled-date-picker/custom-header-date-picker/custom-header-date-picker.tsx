@@ -24,6 +24,7 @@ export const CustomHeaderDatePicker: FC<Props> = ({
   date,
 }) => {
   const { t, i18n } = useTranslation()
+
   const currentLang = i18n.language
   const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long' }
   const formattedDate = date.toLocaleDateString(currentLang, options)

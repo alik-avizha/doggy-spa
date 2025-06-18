@@ -1,5 +1,4 @@
 import type { ChangeEvent, FC } from 'react'
-import React from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
@@ -57,8 +56,10 @@ export const ControlledCheckboxGroup: FC<ControlledCheckboxGroupProps> = ({
                 name={option.value}
                 label={option.label}
                 checked={value.includes(option.value)}
-                data-test-id={
-                  dataTestId ? `${dataTestId}-${option.value}` : undefined
+                dataTestId={
+                  dataTestId
+                    ? `${dataTestId}-${option.value}`
+                    : `${fieldName}-${option.value}`
                 }
               />
             ))}

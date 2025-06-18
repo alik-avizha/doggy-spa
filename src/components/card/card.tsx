@@ -49,7 +49,7 @@ export const Card: FC<Props> = ({ width, height, url, border = 10 }) => {
           <Image
             src={url}
             alt={`Card Image ${idx + 1}`}
-            layout="fill"
+            fill
             objectFit="cover"
           />
         </ImageWrapper>

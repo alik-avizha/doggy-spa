@@ -12,6 +12,7 @@ export const CardTextWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   margin-top: ${({ theme }) => theme.margins.xxl}px;
 `
 export const TextBlock = styled.div`

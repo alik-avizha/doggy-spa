@@ -28,7 +28,7 @@ export const ControlledTextarea: FC<Props> = ({
           value={value}
           onChange={onChange}
           errorMessage={t(error?.message)}
-          data-test-id={dataTestId || `controlled-input-${fieldName}`}
+          dataTestId={dataTestId || `controlled-textarea-${fieldName}`}
           {...rest}
         />
       )}

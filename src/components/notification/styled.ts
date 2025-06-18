@@ -19,13 +19,14 @@ export const NotificationContainer = styled.div<{
   top: 20px;
   right: 20px;
   min-width: 300px;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+
   padding: ${({ theme }) => theme.paddings.sm}px
     ${({ theme }) => theme.paddings.m}px;
   border-radius: ${({ theme }) => theme.borderRadius.md}px;
-  color: white;
   background-color: ${({ background }) => background};
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   animation: ${({ visible }) => (visible ? fadeIn : fadeOut)} 0.3s forwards;
   pointer-events: ${({ visible }) => (visible ? 'auto' : 'none')};
-  z-index: 1000;
 `

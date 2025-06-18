@@ -1,9 +1,8 @@
 'use client'
 
-import { yupResolver } from '@hookform/resolvers/yup'
 import dynamic from 'next/dynamic'
-import React, { useState } from 'react'
-import { FormProvider, useForm } from 'react-hook-form'
+import React from 'react'
+import { FormProvider } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
 import { Button } from '@/components/button'
@@ -22,11 +21,7 @@ import {
 import { Modal } from '@/components/modal'
 import { Notification } from '@/components/notification'
 import { Typography } from '@/components/typography'
-import { BOOKING_DEFAULT_VALUES, BOOKING_INFO, TIMESLOTS } from '@/constants'
-import { validationBookingSchema } from '@/constants/validation'
-import { formatDateEn, formatDateRu } from '@/lib'
-import { removeFromLocalStorage, setInLocalStorage } from '@/lib/local-storage'
-import type { ValidationBookingSchemaType } from '@/types'
+import { useBookingForm } from '@/hooks'
 
 import { BookingInfo } from './booking-info'
 import {
@@ -53,47 +48,18 @@ const MapInfo = dynamic(() => import('./map-info/map-info'), {
 })
 
 export const BookAppointmentPage = () => {
-  const { t, i18n } = useTranslation()
-
-  const [isModalActive, setModalActive] = useState(false)
-  const [notification, setNotification] = useState(false)
-
-  const methods = useForm<ValidationBookingSchemaType>({
-    defaultValues: BOOKING_DEFAULT_VALUES,
-    mode: 'onChange',
-    resolver: yupResolver(validationBookingSchema),
-  })
-  const { handleSubmit, watch, reset } = methods
-
-  const date = watch('date')
-
-  const currentLang = i18n.language
-
-  const formatDate = currentLang.startsWith('ru') ? formatDateRu : formatDateEn
-  const labelDate = date ? formatDate(date) : ''
-
-  const onSubmit = handleSubmit((formData: ValidationBookingSchemaType) => {
-    setInLocalStorage(BOOKING_INFO, JSON.stringify(formData))
-
-    setModalActive(true)
-  })
-  const onModalClose = () => {
-    setModalActive(false)
-  }
-  const onCloseNotification = () => {
-    setNotification(false)
-  }
-  const onPaymentHandler = () => {
-    reset()
-    setModalActive(false)
-    setNotification(true)
-    removeFromLocalStorage(BOOKING_INFO)
-  }
-
-  const localizedTimeSlots = TIMESLOTS.map(item => ({
-    ...item,
-    label: t(item.label),
-  }))
+  const { t } = useTranslation()
+  const {
+    methods,
+    isModalActive,
+    notification,
+    labelDate,
+    localizedTimeSlots,
+    onSubmit,
+    onModalClose,
+    onCloseNotification,
+    onPaymentHandler,
+  } = useBookingForm()
 
   return (
     <FormProvider {...methods}>

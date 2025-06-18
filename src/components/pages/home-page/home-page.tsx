@@ -7,7 +7,7 @@ import { Button } from '@/components/button'
 import { Card } from '@/components/card'
 import { Typography } from '@/components/typography'
 import { ANIMAL_CARRY, DOG_COLLARS } from '@/constants'
-import { Routes } from '@/constants/routes'
+import { Route } from '@/constants/routes'
 
 import { AnimalInfoList } from './animal-info-list'
 import { SignUp } from './sign-up'
@@ -17,7 +17,7 @@ export const HomePage = () => {
   const { t } = useTranslation()
   const router = useRouter()
   const handleBookClick = () => {
-    router.push(Routes[3].href)
+    router.push(Route.bookAppointment)
   }
 
   return (

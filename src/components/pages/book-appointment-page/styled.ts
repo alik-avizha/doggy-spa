@@ -33,6 +33,7 @@ export const RightBlock = styled.div`
 `
 export const TextFieldsBlock = styled.div`
   display: grid;
+
   grid-template-columns: repeat(2, 1fr);
   gap: ${({ theme }) => theme.gap.xl}px;
 `
@@ -50,6 +51,7 @@ export const DateBlock = styled.div`
 export const PaymentsContainer = styled.div`
   display: flex;
   justify-content: center;
+
   margin-top: ${({ theme }) => theme.margins.xxl}px;
 `
 export const PaymentsBlock = styled.div`
@@ -64,12 +66,14 @@ export const TextFieldPayment = styled(ControlledTextField)`
 export const ExpiredCvvBlock = styled.div`
   display: flex;
   width: 100%;
+
   gap: ${({ theme }) => theme.gap.s}px;
   margin: ${({ theme }) => theme.margins.s}px 0;
 `
 export const PaymentsTypesBlock = styled.div`
   display: flex;
   justify-content: center;
+
   gap: ${({ theme }) => theme.gap.xs}px;
   margin: ${({ theme }) => theme.margins.s}px 0;
 `

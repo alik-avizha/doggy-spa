@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react'
 import { NotificationContainer } from './styled'
 
 type NotificationType = 'success' | 'error'
-interface NotificationProps {
+
+type NotificationProps = {
   message: string
   type: NotificationType
   onClose?: () => void

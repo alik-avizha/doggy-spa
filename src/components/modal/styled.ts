@@ -24,16 +24,17 @@ export const ModalOverlay = styled.div`
   z-index: 1000;
 `
 export const ModalBlock = styled.div`
-  background-color: ${({ theme }) => theme.colors.white};
-  padding: ${({ theme }) => theme.paddings.m}px;
-  border-radius: ${({ theme }) => theme.borderRadius.sm}px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  max-width: 80%;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 80%;
   width: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+  background-color: ${({ theme }) => theme.colors.white};
+  padding: ${({ theme }) => theme.paddings.m}px;
+  border-radius: ${({ theme }) => theme.borderRadius.sm}px;
   animation: ${fadeInScale} 0.3s ease forwards;
 `
 export const CloseButton = styled.button`

@@ -10,11 +10,19 @@ export type TextAreaProps = {
   disabled?: boolean
   height: number
   onChange: (value: ChangeEvent<HTMLTextAreaElement>) => void
+  dataTestId: string
 }
 
 export const TextAreaField = (props: TextAreaProps) => {
-  const { errorMessage, placeholder, disabled, height, onChange, ...rest } =
-    props
+  const {
+    errorMessage,
+    placeholder,
+    disabled,
+    height,
+    onChange,
+    dataTestId,
+    ...rest
+  } = props
 
   return (
     <Container>
@@ -24,6 +32,7 @@ export const TextAreaField = (props: TextAreaProps) => {
         onChange={onChange}
         disabled={disabled}
         height={height}
+        data-test-id={dataTestId}
         {...rest}
       />
       <ErrorMessage>{errorMessage}</ErrorMessage>

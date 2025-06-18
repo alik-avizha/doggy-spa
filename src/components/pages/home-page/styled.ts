@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   background-position: right;
   background-repeat: no-repeat;
   position: relative;
+
   margin-bottom: ${({ theme }) => theme.margins.gigantic}px;
 `
 export const InfoBlock = styled.div`
@@ -19,7 +20,8 @@ export const InfoBlock = styled.div`
   align-items: center;
 `
 export const SignUpWrapper = styled.div`
-  padding: 0 ${({ theme }) => theme.paddings.massive}px;
   position: relative;
+
+  padding: 0 ${({ theme }) => theme.paddings.massive}px;
   margin-bottom: ${({ theme }) => theme.margins.xxl}px;
 `

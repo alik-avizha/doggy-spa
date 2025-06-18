@@ -2,9 +2,10 @@ import styled from '@emotion/styled'
 
 export const SwitcherWrapper = styled.div`
   display: inline-flex;
+  user-select: none;
+
   gap: ${({ theme }) => theme.gap.xs}px;
   border-radius: ${({ theme }) => theme.borderRadius.sm}px;
-  user-select: none;
 `
 export const LangButton = styled.button<{ active?: boolean }>`
   cursor: pointer;

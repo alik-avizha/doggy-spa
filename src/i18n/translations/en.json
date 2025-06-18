@@ -151,5 +151,8 @@
     "invalidEmail": "Invalid email",
     "chooseMinimumOneTimeslot": "Choose minimum one timeslot",
     "onlyLatinLetters": "Only Latin letters are allowed"
+  },
+  "notFound": {
+    "goToMainPage": "Go to main page"
   }
 }

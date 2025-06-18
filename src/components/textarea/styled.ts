@@ -12,21 +12,19 @@ export const TextAreaStyled = styled.textarea<{
   hasError: boolean
 }>`
   resize: none;
+  width: 100%;
+  background-color: transparent;
+  outline: none;
 
   height: ${({ height }) => height}px;
   padding: ${({ theme }) => theme.paddings.m}px;
-  width: 100%;
-
   font-size: ${({ theme }) => theme.fontSizes.x}px;
   font-weight: ${({ theme }) => theme.fontWeights.s};
   font-family: ${({ theme }) => theme.fontFamilies.cormorant}, sans-serif;
   color: ${({ theme }) => theme.colors.charCoal};
-
-  background-color: transparent;
   border: ${({ theme }) => theme.borders.xs}px solid
     ${({ theme }) => theme.colors.lightGray};
   border-radius: ${({ theme }) => theme.borderRadius.md}px;
-  outline: none;
 
   ${({ hasError, theme }) =>
     hasError &&

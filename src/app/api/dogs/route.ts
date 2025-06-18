@@ -1,8 +1,12 @@
+import type { SearchResponse } from '@elastic/elasticsearch/api/types'
 import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
 
 import { esClient } from '../../../lib/elasticsearch'
 
-export async function GET(request) {
+import type { Dog } from '@/types'
+
+export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
   const name = searchParams.get('name')
 
@@ -14,7 +18,7 @@ export async function GET(request) {
   }
 
   try {
-    const result = await esClient.search({
+    const result = await esClient.search<SearchResponse<Dog>>({
       index: 'dogs',
       body: {
         query: {
@@ -29,9 +33,12 @@ export async function GET(request) {
     })
 
     // eslint-disable-next-line no-underscore-dangle
-    const dogs = result.body.hits.hits.map(hit => hit._source)
+    const dogs = result.body.hits.hits.map(hit => hit._source as Dog)
+
     return NextResponse.json(dogs)
-  } catch (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 })
+  } catch (error: unknown) {
+    const message =
+      error instanceof Error ? error.message : 'Unknown error occurred'
+    return NextResponse.json({ error: message }, { status: 500 })
   }
 }
