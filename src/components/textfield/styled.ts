@@ -1,6 +1,9 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
+export const Wrapper = styled.div`
+  width: 100%;
+`
 export const FieldContainer = styled.div`
   position: relative;
   width: 100%;

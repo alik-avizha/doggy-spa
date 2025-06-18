@@ -1,5 +1,6 @@
 import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js'
 import type { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { Typography } from '@/components/typography'
 import { BOOKING_INFO, PAYPAL_OPTIONS } from '@/constants'
@@ -12,6 +13,7 @@ type Props = {
   onPaymentSuccess: () => void
 }
 export const BookingInfo: FC<Props> = ({ onPaymentSuccess }) => {
+  const { t } = useTranslation()
   const storedData = getObjectFromLocalStorage(BOOKING_INFO) as
     | BookInfo
     | undefined
@@ -34,17 +36,17 @@ export const BookingInfo: FC<Props> = ({ onPaymentSuccess }) => {
   const dateInfo = formatDateRu(data.date)
 
   const fields: { label: string; value: string }[] = [
-    { label: 'First Name:', value: data.firstName },
-    { label: 'Last Name:', value: data.lastName },
-    { label: 'Email:', value: data.email },
-    { label: 'Phone Number:', value: data.phoneNumber },
-    { label: 'Date:', value: dateInfo },
-    { label: 'Time:', value: timeInfo },
-    { label: 'Message:', value: data.message },
-    { label: 'Credit Card Number:', value: data.creditNumber },
-    { label: 'Expiry Date:', value: data.expiryDate },
-    { label: 'CVV:', value: data.cvv },
-    { label: 'Name on Card:', value: data.nameOnCard },
+    { label: t('inputs.firstName'), value: data.firstName },
+    { label: t('inputs.lastName'), value: data.lastName },
+    { label: t('inputs.email'), value: data.email },
+    { label: t('inputs.phoneNumber'), value: data.phoneNumber },
+    { label: t('bookAppointment.date'), value: dateInfo },
+    { label: t('bookAppointment.time'), value: timeInfo },
+    { label: t('bookAppointment.message'), value: data.message },
+    { label: t('inputs.creditCard'), value: data.creditNumber },
+    { label: t('inputs.expiryDate'), value: data.expiryDate },
+    { label: t('inputs.cvv'), value: data.cvv },
+    { label: t('inputs.nameOnCard'), value: data.nameOnCard },
   ]
 
   return (

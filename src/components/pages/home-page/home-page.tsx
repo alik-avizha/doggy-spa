@@ -1,6 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 
 import { Button } from '@/components/button'
 import { Card } from '@/components/card'
@@ -13,6 +14,7 @@ import { SignUp } from './sign-up'
 import { InfoBlock, SignUpWrapper, Wrapper } from './styled'
 
 export const HomePage = () => {
+  const { t } = useTranslation()
   const router = useRouter()
   const handleBookClick = () => {
     router.push(Routes[3].href)
@@ -29,9 +31,9 @@ export const HomePage = () => {
             marginBt="xxl"
             as="h1"
           >
-            Book your doggy spa day!
+            {t('home.bookYour')}
           </Typography>
-          <Button onClick={handleBookClick}>Book Appointment</Button>
+          <Button onClick={handleBookClick}>{t('home.bookAppointment')}</Button>
         </InfoBlock>
       </Wrapper>
       <SignUpWrapper>
@@ -39,13 +41,13 @@ export const HomePage = () => {
         <SignUp />
       </SignUpWrapper>
       <AnimalInfoList
-        title="Dog Collars"
-        titleButton="See More Dog Collars"
+        title={t('home.dogCollars')}
+        titleButton={t('home.seeMoreDogCollars')}
         items={DOG_COLLARS}
       />
       <AnimalInfoList
-        title="Animal Carry Ons"
-        titleButton="See More Carry Ons"
+        title={t('home.animalCarry')}
+        titleButton={t('home.seeMoreCarryOns')}
         items={ANIMAL_CARRY}
       />
     </>

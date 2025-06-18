@@ -3,6 +3,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 
 import { Button } from '@/components/button'
 import { ControlledTextField } from '@/components/controlled-fields'
@@ -13,6 +14,7 @@ import {
   SnapchatIcon,
   TwitterIcon,
 } from '@/components/icons'
+import { LanguageSwitcher } from '@/components/language-switcher'
 import { Notification } from '@/components/notification'
 import { Typography } from '@/components/typography'
 import { SUBSCRIBE_TO_LETTER_DEFAULT_VALUES } from '@/constants'
@@ -41,6 +43,7 @@ import {
 } from './styled'
 
 export const Footer = () => {
+  const { t } = useTranslation()
   const methods = useForm<ValidationSubscribeToLettersSchemaType>({
     defaultValues: SUBSCRIBE_TO_LETTER_DEFAULT_VALUES,
     mode: 'onBlur',
@@ -63,14 +66,14 @@ export const Footer = () => {
       setNotification({
         visible: true,
         type: 'success',
-        message: 'You have successfully subscribed!',
+        message: t('notification.successfullySubscribed'),
       })
     } catch (error) {
       console.error(error)
       setNotification({
         visible: true,
         type: 'error',
-        message: 'Subscription failed. Please try again.',
+        message: t('notification.subscriptionFailed'),
       })
     } finally {
       setLoading(false)
@@ -85,32 +88,41 @@ export const Footer = () => {
       <MainBlock>
         <LeftBlock>
           <Typography size="xl" marginBt="l" as="h4">
-            Customer Service
+            {t('footer.customerService')}
           </Typography>
-          <NavigationItem href={Routes[4].href}>Blog</NavigationItem>
-          <NavigationItem href={Routes[0].href}>Cancellations</NavigationItem>
-          <NavigationItem href={Routes[0].href}>
-            Track Your Animal
+          <NavigationItem href={Routes[4].href}>
+            {t('footer.blog')}
           </NavigationItem>
           <NavigationItem href={Routes[0].href}>
-            Luxe’s Annual Spa Day 2021
+            {t('footer.cancellations')}
           </NavigationItem>
-          <NavigationItem href={Routes[0].href}>Payment Options</NavigationItem>
+          <NavigationItem href={Routes[0].href}>
+            {t('footer.trackYourAnimal')}
+          </NavigationItem>
+          <NavigationItem href={Routes[0].href}>
+            {t('footer.luxesAnnualSpaDay')}
+          </NavigationItem>
+          <NavigationItem href={Routes[0].href}>
+            {t('footer.paymentOptions')}
+          </NavigationItem>
         </LeftBlock>
         <CenterBlock>
           <Typography size="xl" marginBt="l" as="h4">
-            Subscribe to our Newsletter
+            {t('footer.subscribeToOurNewsletter')}
           </Typography>
           <FormProvider {...methods}>
             <SubmitForm onSubmit={onSubmit}>
-              <ControlledTextField fieldName="email" placeholder="Email" />
+              <ControlledTextField
+                fieldName="email"
+                placeholder={t('inputs.email')}
+              />
               <Button type="submit" isLoading={loading}>
-                Submit
+                {t('footer.submit')}
               </Button>
             </SubmitForm>
           </FormProvider>
           <Typography size="xl" marginBt="l" as="h4">
-            Connect With Us On Social Media
+            {t('footer.connectWithUs')}
           </Typography>
           <IconsBlock>
             <NetworkItem href={Routes[0].href}>
@@ -132,30 +144,45 @@ export const Footer = () => {
         </CenterBlock>
         <RightBlock>
           <Typography size="xl" marginBt="l" as="h4">
-            Navigation
+            {t('footer.navigation')}
           </Typography>
-          <NavigationItem href={Routes[0].href}>Home</NavigationItem>
-          <NavigationItem href={Routes[5].href}>About Us</NavigationItem>
-          <NavigationItem href={Routes[6].href}>Contact Us</NavigationItem>
-          <NavigationItem href={Routes[0].href}>FAQs</NavigationItem>
           <NavigationItem href={Routes[0].href}>
-            Help with navigation
+            {t('footer.home')}
+          </NavigationItem>
+          <NavigationItem href={Routes[5].href}>
+            {t('footer.aboutUs')}
+          </NavigationItem>
+          <NavigationItem href={Routes[6].href}>
+            {t('footer.contactUs')}
+          </NavigationItem>
+          <NavigationItem href={Routes[0].href}>
+            {t('footer.faqs')}
+          </NavigationItem>
+          <NavigationItem href={Routes[0].href}>
+            {t('footer.helpWithNavigation')}
           </NavigationItem>
         </RightBlock>
       </MainBlock>
       <BottomBlock>
         <CookiesBlock>
-          <PrivacyItem href={Routes[0].href}>Cookie Policy</PrivacyItem>
-          <PrivacyItem href={Routes[0].href}>Cookies Settings</PrivacyItem>
+          <PrivacyItem href={Routes[0].href}>
+            {t('footer.cookiePolicy')}
+          </PrivacyItem>
+          <PrivacyItem href={Routes[0].href}>
+            {t('footer.cookiesSettings')}
+          </PrivacyItem>
         </CookiesBlock>
         <Typography size="m" fontWeight="s">
-          Copyright 2021 Luxe Animal Spa, LLC. All rights reserved.
+          {t('footer.copyright')}
         </Typography>
         <PrivacyBlock>
-          <PrivacyItem href={Routes[0].href}>Terms</PrivacyItem>
-          <PrivacyItem href={Routes[0].href}>Privacy</PrivacyItem>
-          <PrivacyItem href={Routes[0].href}>Security</PrivacyItem>
+          <PrivacyItem href={Routes[0].href}>{t('footer.terms')}</PrivacyItem>
+          <PrivacyItem href={Routes[0].href}>{t('footer.privacy')}</PrivacyItem>
+          <PrivacyItem href={Routes[0].href}>
+            {t('footer.security')}
+          </PrivacyItem>
         </PrivacyBlock>
+        <LanguageSwitcher />
       </BottomBlock>
       {notification.visible && (
         <Notification

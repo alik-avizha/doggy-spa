@@ -2,6 +2,7 @@ import type {
   ValidationBookingSchemaType,
   ValidationContactUsSchemaType,
   ValidationSubscribeToLettersSchemaType,
+  ValidationSearchDogSchemaType,
 } from '@/types'
 
 export const SUBSCRIBE_TO_LETTER_DEFAULT_VALUES: ValidationSubscribeToLettersSchemaType =
@@ -29,4 +30,8 @@ export const BOOKING_DEFAULT_VALUES: ValidationBookingSchemaType = {
   expiryDate: '',
   cvv: '',
   nameOnCard: '',
+}
+
+export const SEARCH_DOG_DEFAULT_VALUES: ValidationSearchDogSchemaType = {
+  search: '',
 }

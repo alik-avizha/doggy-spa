@@ -4,6 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import dynamic from 'next/dynamic'
 import React, { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 
 import { Button } from '@/components/button'
 import {
@@ -23,7 +24,7 @@ import { Notification } from '@/components/notification'
 import { Typography } from '@/components/typography'
 import { BOOKING_DEFAULT_VALUES, BOOKING_INFO, TIMESLOTS } from '@/constants'
 import { validationBookingSchema } from '@/constants/validation'
-import { formatDateEn } from '@/lib'
+import { formatDateEn, formatDateRu } from '@/lib'
 import { removeFromLocalStorage, setInLocalStorage } from '@/lib/local-storage'
 import type { ValidationBookingSchemaType } from '@/types'
 
@@ -52,6 +53,8 @@ const MapInfo = dynamic(() => import('./map-info/map-info'), {
 })
 
 export const BookAppointmentPage = () => {
+  const { t, i18n } = useTranslation()
+
   const [isModalActive, setModalActive] = useState(false)
   const [notification, setNotification] = useState(false)
 
@@ -64,7 +67,10 @@ export const BookAppointmentPage = () => {
 
   const date = watch('date')
 
-  const labelDate = date ? formatDateEn(date) : ''
+  const currentLang = i18n.language
+
+  const formatDate = currentLang.startsWith('ru') ? formatDateRu : formatDateEn
+  const labelDate = date ? formatDate(date) : ''
 
   const onSubmit = handleSubmit((formData: ValidationBookingSchemaType) => {
     setInLocalStorage(BOOKING_INFO, JSON.stringify(formData))
@@ -84,37 +90,48 @@ export const BookAppointmentPage = () => {
     removeFromLocalStorage(BOOKING_INFO)
   }
 
+  const localizedTimeSlots = TIMESLOTS.map(item => ({
+    ...item,
+    label: t(item.label),
+  }))
+
   return (
     <FormProvider {...methods}>
       <Wrapper>
         <MainTitle data-test-id="page-title" color="white" size="xxxxl" as="h1">
-          Book An Appointment With Our Groom Specialist Today!
+          {t('bookAppointment.bookAnAppointment')}
         </MainTitle>
       </Wrapper>
       <BookContainer onSubmit={onSubmit}>
         <Typography size="xxl" marginBt="xxl" as="h3">
-          Enter your information here
+          {t('bookAppointment.enterYourPayment')}
         </Typography>
         <BookingBlock>
           <LeftBlock>
             <TextFieldsBlock>
               <TextFieldsStyled
                 fieldName="firstName"
-                placeholder="First name"
+                placeholder={t('inputs.firstName')}
               />
-              <TextFieldsStyled fieldName="lastName" placeholder="Last name" />
-              <TextFieldsStyled fieldName="email" placeholder="Email" />
+              <TextFieldsStyled
+                fieldName="lastName"
+                placeholder={t('inputs.lastName')}
+              />
+              <TextFieldsStyled
+                fieldName="email"
+                placeholder={t('inputs.email')}
+              />
               <TextFieldsStyled
                 fieldName="phoneNumber"
-                placeholder="Phone Number"
+                placeholder={t('inputs.phoneNumber')}
               />
             </TextFieldsBlock>
             <DateTimeContainer>
               <DateBlock>
                 <ControlledCheckboxGroup
                   fieldName="time"
-                  label={`Choose a timeslot on ${labelDate}`}
-                  options={TIMESLOTS}
+                  label={`${t('bookAppointment.chooseATimeslontOn')} ${labelDate}`}
+                  options={localizedTimeSlots}
                 />
                 <ControlledDatePicker fieldName="date" />
               </DateBlock>
@@ -122,27 +139,30 @@ export const BookAppointmentPage = () => {
             <ControlledTextarea
               height={80}
               fieldName="message"
-              placeholder="Any special requests for your pet(s)..."
+              placeholder={t('inputs.message')}
             />
             <PaymentsContainer>
               <PaymentsBlock>
                 <Typography size="m" marginBt="s" as="h4">
-                  Enter your payment information
+                  {t('bookAppointment.enterYourPaymentInformation')}
                 </Typography>
                 <TextFieldPayment
                   fieldName="creditNumber"
-                  placeholder="Credit Card Number"
+                  placeholder={t('inputs.creditCard')}
                 />
                 <ExpiredCvvBlock>
                   <TextFieldPayment
                     fieldName="expiryDate"
-                    placeholder="Expiry Date"
+                    placeholder={t('inputs.expiryDate')}
                   />
-                  <TextFieldPayment fieldName="cvv" placeholder="CVV" />
+                  <TextFieldPayment
+                    fieldName="cvv"
+                    placeholder={t('inputs.cvv')}
+                  />
                 </ExpiredCvvBlock>
                 <TextFieldPayment
                   fieldName="nameOnCard"
-                  placeholder="Name on Card"
+                  placeholder={t('inputs.nameOnCard')}
                 />
                 <PaymentsTypesBlock>
                   <ApplePayIcon />
@@ -157,12 +177,11 @@ export const BookAppointmentPage = () => {
                   textAlign="center"
                   marginBt="l"
                 >
-                  Please be advised cancelling within 24 hours of your scheduled
-                  appointment will result in a cancellation fee of $300.00.
+                  {t('bookAppointment.pleaseBe')}
                 </Typography>
                 <SubmitBlock>
                   <Button type="submit" fullWidth>
-                    Book Appointment
+                    {t('bookAppointment.book')}
                   </Button>
                 </SubmitBlock>
               </PaymentsBlock>
@@ -173,12 +192,16 @@ export const BookAppointmentPage = () => {
           </RightBlock>
         </BookingBlock>
       </BookContainer>
-      <Modal onClose={onModalClose} title="Booking Info" isOpen={isModalActive}>
+      <Modal
+        onClose={onModalClose}
+        title={t('bookAppointment.bookingInfo')}
+        isOpen={isModalActive}
+      >
         <BookingInfo onPaymentSuccess={onPaymentHandler} />
       </Modal>
       {notification && (
         <Notification
-          message="Payment was successful"
+          message={t('notification.paymentWasSuccessful')}
           type="success"
           onClose={onCloseNotification}
         />

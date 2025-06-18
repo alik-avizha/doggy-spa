@@ -27,6 +27,7 @@ export const commonTheme = {
     s: 16,
     m: 20,
     l: 26,
+    mL: 30,
     xl: 32,
     xxl: 40,
     xxxl: 64,

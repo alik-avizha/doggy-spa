@@ -51,7 +51,7 @@ export const PrivacyItem = styled(Link)`
   transition: transform 0.3s ease;
 
   &:hover {
-    transform: translateX(10px);
+    transform: translateY(-5px);
   }
 `
 export const RightBlock = styled.div`
@@ -78,15 +78,15 @@ export const BottomBlock = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 ${({ theme }) => theme.paddings.massive}px;
+  padding: 0 0 0 ${({ theme }) => theme.paddings.xl}px;
 `
 export const CookiesBlock = styled.div`
-  width: 310px;
+  width: 350px;
   display: flex;
   justify-content: space-between;
 `
 export const PrivacyBlock = styled.div`
-  width: 300px;
+  width: 400px;
   display: flex;
   justify-content: space-between;
 `

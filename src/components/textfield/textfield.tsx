@@ -3,7 +3,12 @@ import type { ChangeEvent, KeyboardEvent } from 'react'
 import { ErrorMessage } from '@/components/errror-message'
 import { SearchIcon } from '@/components/icons'
 
-import { FieldContainer, InputField, SearchIconWrapper } from './styled'
+import {
+  FieldContainer,
+  InputField,
+  SearchIconWrapper,
+  Wrapper,
+} from './styled'
 
 export type TextFieldProps = {
   type?: 'default' | 'searchType'
@@ -38,23 +43,25 @@ export const TextField = ({
   }
 
   return (
-    <FieldContainer>
-      {type === 'searchType' && (
-        <SearchIconWrapper>
-          <SearchIcon />
-        </SearchIconWrapper>
-      )}
-      <InputField
-        placeholder={placeholder}
-        disabled={disableValue}
-        onChange={onChangeHandler}
-        onKeyDown={onKeyDownCallback}
-        value={value}
-        hasError={!!errorMessage}
-        typeStyle={type}
-        {...restProps}
-      />
+    <Wrapper>
+      <FieldContainer>
+        {type === 'searchType' && (
+          <SearchIconWrapper>
+            <SearchIcon />
+          </SearchIconWrapper>
+        )}
+        <InputField
+          placeholder={placeholder}
+          disabled={disableValue}
+          onChange={onChangeHandler}
+          onKeyDown={onKeyDownCallback}
+          value={value}
+          hasError={!!errorMessage}
+          typeStyle={type}
+          {...restProps}
+        />
+      </FieldContainer>
       {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-    </FieldContainer>
+    </Wrapper>
   )
 }

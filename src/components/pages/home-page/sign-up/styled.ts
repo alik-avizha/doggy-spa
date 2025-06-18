@@ -37,7 +37,6 @@ export const LeftBlock = styled.div`
   width: 280px;
 `
 export const TitleBlock = styled.div`
-  width: 200px;
   margin-bottom: ${({ theme }) => theme.margins.xl}px;
 `
 export const DescriptionBlock = styled.div`

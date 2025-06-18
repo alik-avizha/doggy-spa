@@ -4,7 +4,7 @@ export const StyledButton = styled.button<{
   isLoading: boolean
   fullWidth: boolean
 }>`
-  min-width: 140px;
+  min-width: 154px;
   border-radius: ${({ theme }) => theme.borderRadius.lg}px;
   padding: ${({ theme }) => theme.paddings.sm}px
     ${({ theme }) => theme.paddings.l}px;
