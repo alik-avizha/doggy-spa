@@ -1,58 +1,71 @@
 import * as yup from 'yup'
 
-const emailSchema = yup.string().email('Invalid email').required('Required')
+const emailSchema = yup
+  .string()
+  .email('validation.invalidEmail')
+  .required('validation.required')
 
 const phoneNumberSchema = yup
   .string()
-  .required('Required')
-  .matches(
-    /^(\+?\d{10,15})$/,
-    'Invalid phone number. Must be 10 to 15 digits, can start with +'
-  )
+  .required('validation.required')
+  .matches(/^(\+?\d{10,15})$/, 'validation.invalidPhoneNumber')
 
 const creditNumberSchema = yup
   .string()
-  .required('Required')
-  .matches(/^\d{13,19}$/, 'Invalid credit card number')
+  .required('validation.required')
+  .matches(/^\d{13,19}$/, 'validation.invalidCreditCardNumber')
 
 const expiryDateSchema = yup
   .string()
-  .required('Required')
+  .required('validation.required')
   .matches(
     /^(0[1-9]|1[0-2])\/?([0-9]{2}|[0-9]{4})$/,
-    'Invalid expiry date. Format MM/YY or MM/YYYY'
+    'validation.invalidExpiryDate'
   )
 
 const cvvSchema = yup
   .string()
-  .required('Required')
-  .matches(/^\d{3,4}$/, 'Invalid CVV')
+  .required('validation.required')
+  .matches(/^\d{3,4}$/, 'validation.invalidCVV')
 
 const nameOnCardSchema = yup
   .string()
-  .required('Required')
-  .matches(/^[a-zA-Z\s]{2,}$/, 'Invalid name on card')
+  .required('validation.required')
+  .matches(/^[a-zA-Z\s]{2,}$/, 'validation.invalidNameOnCard')
+
+const timeSchema = yup
+  .array()
+  .min(1, 'validation.chooseMinimumOneTimeslot')
+  .required('validation.required')
+
+const stringRequired = yup.string().required('validation.required')
 export const validationSubscribeToLetterSchema = yup.object({
   email: emailSchema,
 })
 export const validationContactUsSchema = yup.object({
-  firstName: yup.string().required('Required'),
-  lastName: yup.string().required('Required'),
+  firstName: stringRequired,
+  lastName: stringRequired,
   phoneNumber: phoneNumberSchema,
-  message: yup.string().required('Required'),
-  email: yup.string().email('Invalid email').required('Required'),
+  message: stringRequired,
+  email: emailSchema,
 })
-
 export const validationBookingSchema = yup.object({
-  firstName: yup.string().required('Required'),
-  lastName: yup.string().required('Required'),
+  firstName: stringRequired,
+  lastName: stringRequired,
   email: emailSchema,
   phoneNumber: phoneNumberSchema,
-  time: yup.array().min(1, 'Choose minimum one timeslot').required('Required'),
-  date: yup.string().required('Required'),
-  message: yup.string().required('Required'),
+  time: timeSchema,
+  date: stringRequired,
+  message: stringRequired,
   creditNumber: creditNumberSchema,
   expiryDate: expiryDateSchema,
   cvv: cvvSchema,
   nameOnCard: nameOnCardSchema,
+})
+
+export const validationSearchDogSchema = yup.object({
+  search: yup
+    .string()
+    .required('validation.required')
+    .matches(/^[A-Za-z]*$/, 'validation.onlyLatinLetters'),
 })

@@ -1,5 +1,7 @@
 import styled from '@emotion/styled'
 
+import { Typography } from '@/components/typography'
+
 export const Wrapper = styled.div`
   padding: ${({ theme }) => theme.paddings.xxxl}px
     ${({ theme }) => theme.paddings.xl}px
@@ -14,4 +16,7 @@ export const CardTextWrapper = styled.div`
 `
 export const TextBlock = styled.div`
   width: 720px;
+`
+export const Description = styled(Typography)`
+  white-space: pre-line;
 `

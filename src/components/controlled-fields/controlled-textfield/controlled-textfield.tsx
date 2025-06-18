@@ -1,6 +1,7 @@
 import type { InputHTMLAttributes } from 'react'
 import { type ChangeEvent, type FC } from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 
 import { TextField } from '@/components/textfield'
 
@@ -24,6 +25,7 @@ export const ControlledTextField: FC<Props> = ({
   ...rest
 }) => {
   const { control } = useFormContext()
+  const { t } = useTranslation()
 
   return (
     <Controller
@@ -35,7 +37,7 @@ export const ControlledTextField: FC<Props> = ({
       }) => (
         <TextField
           value={value}
-          errorMessage={error?.message}
+          errorMessage={t(error?.message)}
           onBlur={onBlurWrapper ? onBlurWrapper(onBlur) : onBlur}
           onChange={onChangeWrapper ? onChangeWrapper(onChange) : onChange}
           data-test-id={dataTestId || `controlled-input-${fieldName}`}

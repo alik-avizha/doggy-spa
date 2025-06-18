@@ -1,5 +1,6 @@
 import { useRouter } from 'next/navigation'
 import type { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { Button } from '@/components/button'
 import { Card } from '@/components/card'
@@ -15,10 +16,17 @@ type Props = {
   items: AnimalItem[]
 }
 export const AnimalInfoList: FC<Props> = ({ titleButton, title, items }) => {
+  const { t } = useTranslation()
   const router = useRouter()
   const handleClick = () => {
     router.push(Routes[1].href)
   }
+
+  const localizedDogCollars = items.map(item => ({
+    ...item,
+    description: t(item.description),
+    category: t(item.category),
+  }))
 
   return (
     <Wrapper>
@@ -26,20 +34,22 @@ export const AnimalInfoList: FC<Props> = ({ titleButton, title, items }) => {
         {title}
       </Typography>
       <List>
-        {items.map(({ url, description, id, price, category }) => (
-          <CardWrapper key={id}>
-            <Card width={435} height={445} url={url} border={6} />
-            <InfoBlock>
-              <Typography size="m" marginBt="xxs">
-                {description}
-              </Typography>
-              <Typography size="m" marginBt="xs">
-                {category}
-              </Typography>
-              <Typography size="xl">{price}</Typography>
-            </InfoBlock>
-          </CardWrapper>
-        ))}
+        {localizedDogCollars.map(
+          ({ url, description, id, price, category }) => (
+            <CardWrapper key={id}>
+              <Card width={435} height={445} url={url} border={6} />
+              <InfoBlock>
+                <Typography size="m" marginBt="xxs">
+                  {description}
+                </Typography>
+                <Typography size="m" marginBt="xs">
+                  {category}
+                </Typography>
+                <Typography size="xl">{price}</Typography>
+              </InfoBlock>
+            </CardWrapper>
+          )
+        )}
       </List>
       <Button onClick={handleClick}>{titleButton}</Button>
     </Wrapper>

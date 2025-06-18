@@ -3,6 +3,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 
 import { Button } from '@/components/button'
 import {
@@ -26,6 +27,7 @@ import {
 } from './styled'
 
 export const ContactUsPage = () => {
+  const { t } = useTranslation()
   const methods = useForm<ValidationContactUsSchemaType>({
     defaultValues: CONTACT_US_DEFAULT_VALUES,
     mode: 'onChange',
@@ -48,14 +50,14 @@ export const ContactUsPage = () => {
       setNotification({
         visible: true,
         type: 'success',
-        message: 'Thank you, we will contact you.',
+        message: t('notification.thankYou'),
       })
     } catch (error) {
       console.error(error)
       setNotification({
         visible: true,
         type: 'error',
-        message: 'Sorry, something went wrong. Please try again later.',
+        message: t('notification.sorrySomething'),
       })
     } finally {
       setLoading(false)
@@ -69,46 +71,50 @@ export const ContactUsPage = () => {
   return (
     <Wrapper>
       <Typography size="xxxxl" textAlign="center" marginBt="s" as="h2">
-        Contact
+        {t('contact.contact')}
       </Typography>
       <Border />
       <Typography
-        size="xl"
+        size="mL"
         as="h3"
         textAlign="center"
         marginBt="huge"
         marginTp="xl"
       >
-        For customer service inquiries, please email us at{' '}
-        <StyledLink>customerservice@luxeanimalspa.ca.</StyledLink> For spa
-        inquiries, please include your animal’s name for faster service. For
-        your protection, please do not include your credit card or banking
-        information details in your email.
+        {t('contact.forCustomer')}{' '}
+        <StyledLink>customerservice@luxeanimalspa.ca.</StyledLink>{' '}
+        {t('contact.forSpa')}
       </Typography>
       <FormProvider {...methods}>
         <SubmitForm onSubmit={onSubmit}>
           <FieldBlock>
             <ControlledTextField
               fieldName="firstName"
-              placeholder="First Name"
+              placeholder={t('inputs.firstName')}
             />
-            <ControlledTextField fieldName="lastName" placeholder="Last Name" />
+            <ControlledTextField
+              fieldName="lastName"
+              placeholder={t('inputs.lastName')}
+            />
           </FieldBlock>
           <FieldBlock>
-            <ControlledTextField fieldName="email" placeholder="Email" />
+            <ControlledTextField
+              fieldName="email"
+              placeholder={t('inputs.email')}
+            />
             <ControlledTextField
               fieldName="phoneNumber"
-              placeholder="Phone Number"
+              placeholder={t('inputs.phoneNumber')}
             />
           </FieldBlock>
           <ControlledTextarea
             fieldName="message"
-            placeholder="Your message goes here ..."
+            placeholder={t('inputs.contactMessage')}
             height={317}
           />
           <SubmitAction>
             <Button type="submit" isLoading={loading} fullWidth>
-              Submit
+              {t('contact.submit')}
             </Button>
           </SubmitAction>
         </SubmitForm>

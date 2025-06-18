@@ -1,4 +1,5 @@
 import type { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { Typography } from '@/components/typography'
 import type { Dog } from '@/types'
@@ -11,6 +12,8 @@ type Props = {
 }
 
 export const SearchInfo: FC<Props> = ({ data, hasSearched }) => {
+  const { t } = useTranslation()
+
   if (data) {
     return (
       <>
@@ -26,9 +29,15 @@ export const SearchInfo: FC<Props> = ({ data, hasSearched }) => {
           </Typography>
         </PhotoBlock>
         <DescriptionWrapper>
-          <Typography size="xxl">Bred for: {data.bred_for}</Typography>
-          <Typography size="xxl">Temperament: {data.temperament}</Typography>
-          <Typography size="xxl">Life span: {data.life_span}</Typography>
+          <Typography size="xxl">
+            {t('info.bredFor')} {data.bred_for}
+          </Typography>
+          <Typography size="xxl">
+            {t('info.temperament')} {data.temperament}
+          </Typography>
+          <Typography size="xxl">
+            {t('info.lifeSpan')} {data.life_span}
+          </Typography>
         </DescriptionWrapper>
       </>
     )
@@ -37,14 +46,14 @@ export const SearchInfo: FC<Props> = ({ data, hasSearched }) => {
   if (hasSearched) {
     return (
       <Typography size="xxl" textAlign="center">
-        No results found
+        {t('info.noResultsFound')}
       </Typography>
     )
   }
 
   return (
     <Typography size="xxl" textAlign="center">
-      Try to find dog
+      {t('info.tryToFindDog')}
     </Typography>
   )
 }

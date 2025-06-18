@@ -1,4 +1,5 @@
 import type { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { LeftIcon, RightIcon } from '@/components/icons'
 import { Typography } from '@/components/typography'
@@ -22,11 +23,14 @@ export const CustomHeaderDatePicker: FC<Props> = ({
   increaseMonth,
   date,
 }) => {
+  const { t, i18n } = useTranslation()
+  const currentLang = i18n.language
   const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long' }
-  const formattedDate = date.toLocaleDateString('en-US', options)
+  const formattedDate = date.toLocaleDateString(currentLang, options)
+
   return (
     <HeaderWrapper>
-      <Typography size="m">Select dates</Typography>
+      <Typography size="m">{t('bookAppointment.selectDates')}</Typography>
       <NavigationBlock>
         <StyledButtonNavigation onClick={decreaseMonth} type="button">
           <LeftIcon />

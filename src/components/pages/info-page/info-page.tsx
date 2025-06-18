@@ -1,13 +1,20 @@
 'use client'
 
+import { yupResolver } from '@hookform/resolvers/yup'
 import { useEffect, useState } from 'react'
+import { FormProvider, useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 
+import { ControlledTextField } from '@/components/controlled-fields'
 import { Notification } from '@/components/notification'
-import { TextField } from '@/components/textfield'
 import { Typography } from '@/components/typography'
+import {
+  SEARCH_DOG_DEFAULT_VALUES,
+  validationSearchDogSchema,
+} from '@/constants'
 import { useDebounce } from '@/hooks'
 import { getDogByNameService } from '@/services'
-import type { Dog } from '@/types'
+import type { Dog, ValidationSearchDogSchemaType } from '@/types'
 
 import { SearchInfo } from './search-info'
 import {
@@ -18,14 +25,27 @@ import {
 } from './styled'
 
 export const InfoPage = () => {
+  const { t } = useTranslation()
+
+  const methods = useForm<ValidationSearchDogSchemaType>({
+    defaultValues: SEARCH_DOG_DEFAULT_VALUES,
+    mode: 'onChange',
+    resolver: yupResolver(validationSearchDogSchema),
+  })
+
+  const {
+    watch,
+    formState: { errors },
+  } = methods
+  const searchValue = watch('search')
+
   const [data, setData] = useState<null | Dog>(null)
-  const [search, setSearch] = useState('')
-  const debouncedSearch = useDebounce(search, 500)
   const [notification, setNotification] = useState(false)
   const [hasSearched, setHasSearched] = useState(false)
+  const debouncedSearch = useDebounce(searchValue, 500)
 
   useEffect(() => {
-    if (debouncedSearch.trim() === '') {
+    if (errors.search || debouncedSearch.trim() === '') {
       setData(null)
       setHasSearched(false)
       return
@@ -41,46 +61,44 @@ export const InfoPage = () => {
       setNotification(true)
       setHasSearched(true)
     })
-  }, [debouncedSearch])
-
-  const handleChange = (value: string) => {
-    setSearch(value)
-  }
+  }, [errors.search, debouncedSearch])
 
   const onCloseNotify = () => setNotification(false)
 
   return (
-    <Wrapper>
-      <Typography size="xxxxl" textAlign="center" marginBt="huge" as="h2">
-        INFO DOG
-      </Typography>
-      <SearchBlock>
-        <SelectionBlock>
-          <Typography size="xl" marginBt="xs">
-            Current Selection:
-          </Typography>
-          {data && (
-            <Typography size="xl" fontFamily="cormorant" color="pinkKisses">
-              {data?.breed_group}
+    <FormProvider {...methods}>
+      <Wrapper>
+        <Typography size="xxxxl" textAlign="center" marginBt="huge" as="h2">
+          {t('info.infoDog')}
+        </Typography>
+        <SearchBlock>
+          <SelectionBlock>
+            <Typography size="xl" marginBt="xs">
+              {t('info.currentSelection')}
             </Typography>
-          )}
-        </SelectionBlock>
-        <TextFieldWrapper>
-          <TextField
-            placeholder="Search"
-            type="searchType"
-            onChangeText={handleChange}
+            {data && (
+              <Typography size="xl" fontFamily="cormorant" color="pinkKisses">
+                {data?.breed_group}
+              </Typography>
+            )}
+          </SelectionBlock>
+          <TextFieldWrapper>
+            <ControlledTextField
+              fieldName="search"
+              placeholder={t('inputs.search')}
+              type="searchType"
+            />
+          </TextFieldWrapper>
+        </SearchBlock>
+        <SearchInfo data={data} hasSearched={hasSearched} />
+        {notification && (
+          <Notification
+            message={t('notification.anErrorOccurred')}
+            type="error"
+            onClose={onCloseNotify}
           />
-        </TextFieldWrapper>
-      </SearchBlock>
-      <SearchInfo data={data} hasSearched={hasSearched} />
-      {notification && (
-        <Notification
-          message="An error occurred while searching for information. Please try again later."
-          type="error"
-          onClose={onCloseNotify}
-        />
-      )}
-    </Wrapper>
+        )}
+      </Wrapper>
+    </FormProvider>
   )
 }

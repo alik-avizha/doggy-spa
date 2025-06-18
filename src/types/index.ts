@@ -4,6 +4,7 @@ import type {
   validationBookingSchema,
   validationContactUsSchema,
   validationSubscribeToLetterSchema,
+  validationSearchDogSchema,
 } from '@/constants/validation'
 
 export type AnimalItem = {
@@ -49,6 +50,10 @@ export type ValidationContactUsSchemaType = yup.InferType<
 
 export type ValidationBookingSchemaType = yup.InferType<
   typeof validationBookingSchema
+>
+
+export type ValidationSearchDogSchemaType = yup.InferType<
+  typeof validationSearchDogSchema
 >
 
 export type BookInfo = Omit<ValidationBookingSchemaType, 'date'> & {

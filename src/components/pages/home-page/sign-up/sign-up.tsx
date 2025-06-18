@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 
 import { Card } from '@/components/card'
 import { Notification } from '@/components/notification'
@@ -24,6 +25,7 @@ import {
 } from './styled'
 
 export const SignUp = () => {
+  const { t } = useTranslation()
   const methods = useForm<ValidationSubscribeToLettersSchemaType>({
     defaultValues: SUBSCRIBE_TO_LETTER_DEFAULT_VALUES,
     mode: 'onChange',
@@ -46,14 +48,14 @@ export const SignUp = () => {
       setNotification({
         visible: true,
         type: 'success',
-        message: 'You have successfully subscribed!',
+        message: t('notification.successfullySubscribed'),
       })
     } catch (error) {
       console.error(error)
       setNotification({
         visible: true,
         type: 'error',
-        message: 'Subscription failed. Please try again.',
+        message: t('notification.subscriptionFailed'),
       })
     } finally {
       setLoading(false)
@@ -74,22 +76,24 @@ export const SignUp = () => {
             textTransForm="uppercase"
             as="h3"
           >
-            Sign Up to Bark Newsletter
+            {t('home.signUpTitle')}
           </Typography>
         </TitleBlock>
         <Typography size="m" fontWeight="s" marginBt="xl">
-          Get 10% Off Your First Spa Treatment{' '}
+          {t('home.get')}{' '}
         </Typography>
         <FormProvider {...methods}>
           <FormBlock onSubmit={onSubmit}>
-            <StyledTextField fieldName="email" placeholder="Email" />
+            <StyledTextField
+              fieldName="email"
+              placeholder={t('inputs.email')}
+            />
             <StyledButton type="submit" isLoading={loading}>
-              Sign Up
+              {t('home.signUpButton')}
             </StyledButton>
             <DescriptionBlock>
               <Typography size="x" fontWeight="s" textAlign="center">
-                *By completing this form you are signing up to receive our
-                emails and can unsubscribe at any time.
+                {t('home.byCompleting')}
               </Typography>
             </DescriptionBlock>
           </FormBlock>

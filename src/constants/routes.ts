@@ -1,9 +1,9 @@
 export const Routes = [
-  { href: '/', label: 'Home' },
-  { href: '/info', label: 'Info' },
-  { href: '/spa-services', label: 'Spa Services' },
-  { href: '/book-appointment', label: 'Book Appointment' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/about-us', label: 'About Us' },
-  { href: '/contact-us', label: 'Contact Us' },
+  { href: '/', label: 'header.home' },
+  { href: '/info', label: 'header.info' },
+  { href: '/spa-services', label: 'header.spaServices' },
+  { href: '/book-appointment', label: 'header.bookAppointment' },
+  { href: '/blog', label: 'header.blog' },
+  { href: '/about-us', label: 'header.aboutUs' },
+  { href: '/contact-us', label: 'header.contactUs' },
 ]
