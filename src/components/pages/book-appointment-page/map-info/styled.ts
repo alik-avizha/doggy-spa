@@ -4,11 +4,13 @@ import { MapContainer } from 'react-leaflet'
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+
   gap: ${({ theme }) => theme.gap.xl}px;
 `
 export const MapWrapper = styled.div`
   width: 100%;
   height: 500px;
+
   border: ${({ theme }) => theme.borders.lg}px solid
     ${({ theme }) => theme.colors.softRose};
 `

@@ -10,7 +10,8 @@ export const SpinnerWrapper = styled.div`
   width: 24px;
   height: 24px;
   border: 3px solid rgba(0, 0, 0, 0.1);
-  border-top-color: ${({ theme }) => theme.colors.white};
   border-radius: 50%;
   animation: ${spin} 1s linear infinite;
+
+  border-top-color: ${({ theme }) => theme.colors.white};
 `

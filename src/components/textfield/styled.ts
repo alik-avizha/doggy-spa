@@ -15,10 +15,6 @@ export const SearchIconWrapper = styled.span`
   transform: translateY(-50%);
   display: flex;
   align-items: center;
-
-  svg {
-    fill: ${({ theme }) => theme.colors.charCoal};
-  }
 `
 export const InputField = styled.input<{
   hasError?: boolean

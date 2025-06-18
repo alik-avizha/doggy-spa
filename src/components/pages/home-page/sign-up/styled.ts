@@ -6,18 +6,19 @@ import { ControlledTextField } from '@/components/controlled-fields'
 export const Wrapper = styled.div`
   width: 970px;
   height: 650px;
+  display: flex;
+  position: absolute;
+  z-index: 1;
+  top: -150px;
+  left: 250px;
+
+  background-color: ${({ theme }) => theme.colors.white};
   border: ${({ theme }) => theme.borders.xl}px solid
     ${({ theme }) => theme.colors.softRose};
   padding: ${({ theme }) => theme.paddings.huge}px
     ${({ theme }) => theme.paddings.l}px ${({ theme }) => theme.paddings.huge}px
     ${({ theme }) => theme.paddings.huge}px;
-  display: flex;
   gap: ${({ theme }) => theme.gap.xl}px;
-  position: absolute;
-  z-index: 1;
-  top: -150px;
-  left: 250px;
-  background-color: ${({ theme }) => theme.colors.white};
 `
 export const FormBlock = styled.form`
   width: 270px;
@@ -41,5 +42,6 @@ export const TitleBlock = styled.div`
 `
 export const DescriptionBlock = styled.div`
   width: 230px;
+
   margin-top: ${({ theme }) => theme.margins.xl}px;
 `

@@ -5,6 +5,7 @@ export const PhotoBlock = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   background-color: ${({ theme }) => theme.colors.tnHouse};
   padding: ${({ theme }) => theme.paddings.xl}px 0;
   margin-bottom: ${({ theme }) => theme.margins.huge}px;
@@ -12,10 +13,12 @@ export const PhotoBlock = styled.div`
 export const ImageStyled = styled(Image)`
   width: 730px;
   height: 486px;
+
   margin-bottom: ${({ theme }) => theme.margins.l}px;
 `
 export const DescriptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
+
   gap: ${({ theme }) => theme.gap.s}px;
 `

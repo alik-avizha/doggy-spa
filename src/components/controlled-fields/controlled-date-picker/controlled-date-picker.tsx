@@ -22,7 +22,6 @@ export const ControlledDatePicker: FC<ControlledDatePickerProps> = ({
   dataTestId,
 }) => {
   const { i18n, t } = useTranslation()
-
   const { control } = useFormContext()
 
   const [minDate, setMinDate] = useState<Date | null>(null)
@@ -67,7 +66,7 @@ export const ControlledDatePicker: FC<ControlledDatePickerProps> = ({
                 prevMonthButtonDisabled={prevMonthButtonDisabled}
               />
             )}
-            data-test-id={dataTestId}
+            data-test-id={dataTestId || fieldName}
           />
           {error?.message && <ErrorMessage>{t(error.message)}</ErrorMessage>}
         </DatePickerWrapper>

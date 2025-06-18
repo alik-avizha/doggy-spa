@@ -4,6 +4,7 @@ export const DatePickerWrapper = styled.div`
   .react-datepicker {
     border: none;
     width: 350px;
+
     font-family: ${({ theme }) => theme.fontFamilies.poppins}, sans-serif;
     font-size: ${({ theme }) => theme.fontSizes.x}px;
     font-weight: ${({ theme }) => theme.fontWeights.l}px;
@@ -47,6 +48,7 @@ export const DatePickerWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
     font-weight: ${({ theme }) => theme.fontWeights.l};
   }
 

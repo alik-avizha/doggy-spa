@@ -9,33 +9,35 @@ import type { BookInfo } from '@/types'
 
 import { BookingInfoBlock, Container, Description } from './styled'
 
+const DEFAULT_BOOKING_INFO: BookInfo = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  phoneNumber: '',
+  time: [],
+  date: '',
+  creditNumber: '',
+  expiryDate: '',
+  cvv: '',
+  nameOnCard: '',
+  message: '',
+}
+
 type Props = {
   onPaymentSuccess: () => void
 }
 export const BookingInfo: FC<Props> = ({ onPaymentSuccess }) => {
   const { t } = useTranslation()
+
   const storedData = getObjectFromLocalStorage(BOOKING_INFO) as
     | BookInfo
     | undefined
 
-  const data: BookInfo = storedData ?? {
-    firstName: '',
-    lastName: '',
-    email: '',
-    phoneNumber: '',
-    time: [],
-    date: '',
-    creditNumber: '',
-    expiryDate: '',
-    cvv: '',
-    nameOnCard: '',
-    message: '',
-  }
-
+  const data: BookInfo = storedData ?? DEFAULT_BOOKING_INFO
   const timeInfo = Array.isArray(data.time) ? data.time.join(', ') : ''
   const dateInfo = formatDateRu(data.date)
 
-  const fields: { label: string; value: string }[] = [
+  const fields = [
     { label: t('inputs.firstName'), value: data.firstName },
     { label: t('inputs.lastName'), value: data.lastName },
     { label: t('inputs.email'), value: data.email },

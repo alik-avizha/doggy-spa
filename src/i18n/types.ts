@@ -152,4 +152,7 @@ export type TranslationType = {
     chooseMinimumOneTimeslot: string
     onlyLatinLetters: string
   }
+  notFound: {
+    goToMainPage: string
+  }
 }

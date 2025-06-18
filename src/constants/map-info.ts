@@ -14,3 +14,26 @@ export const COORDINATES = [
     popUp: 'Doggy Spa 3',
   },
 ]
+
+export const ADDRESS_LINES = [
+  'bookAppointment.luxeAnimalSpa',
+  'bookAppointment.smitheSt',
+  'bookAppointment.vancouver',
+  'bookAppointment.v6b',
+]
+
+export const OPERATION_DAYS = [
+  'bookAppointment.sunday',
+  'bookAppointment.monday',
+  'bookAppointment.tuesday',
+  'bookAppointment.wednesday',
+  'bookAppointment.thursday',
+  'bookAppointment.friday',
+  'bookAppointment.saturday',
+]
+
+export const CONFIGURATION_MAP = {
+  attribution:
+    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+}

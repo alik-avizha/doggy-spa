@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 
 import { NavigationLink } from '@/components/navigation-link'
 import { Typography } from '@/components/typography'
-import { Routes } from '@/constants/routes'
+import { ROUTES_WITH_LABEL } from '@/constants/routes'
 
 import { InfoPlateBlock, HeaderBlock } from './styled'
 
@@ -13,17 +13,12 @@ export function Header() {
   const { t } = useTranslation()
   const pathname = usePathname()
 
-  const localizedDogCollars = Routes.map(item => ({
-    ...item,
-    label: t(item.label),
-  }))
-
   return (
     <>
       <HeaderBlock>
-        {localizedDogCollars.map(({ href, label }) => (
+        {ROUTES_WITH_LABEL.map(({ href, label }) => (
           <NavigationLink key={href} href={href} isActive={pathname === href}>
-            {label}
+            {t(label)}
           </NavigationLink>
         ))}
       </HeaderBlock>

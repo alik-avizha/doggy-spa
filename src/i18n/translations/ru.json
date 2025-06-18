@@ -151,5 +151,8 @@
     "invalidEmail": "Неверный email",
     "chooseMinimumOneTimeslot": "Выберите минимум один временной интервал",
     "onlyLatinLetters": "Разрешены только латинские буквы"
+  },
+  "notFound": {
+    "goToMainPage": "На главную"
   }
 }
