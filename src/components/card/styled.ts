@@ -12,6 +12,11 @@ export const CardContainer = styled.div<{
   height: ${({ height }) => height}px;
   border: ${({ border }) => border}px solid
     ${({ theme }) => theme.colors.softRose};
+
+  @media (max-width: ${({ theme }) => theme.dimensions.laptop}px) {
+    max-width: 100%;
+    max-height: 100%;
+  }
 `
 export const ButtonsWrapper = styled.div`
   display: flex;
@@ -46,4 +51,9 @@ export const ImageWrapper = styled.div<{
   opacity: ${({ active }) => (active ? 1 : 0)};
   pointer-events: ${({ active }) => (active ? 'auto' : 'none')};
   transition: opacity 0.5s ease;
+
+  @media (max-width: ${({ theme }) => theme.dimensions.mobile}px) {
+    max-width: 100%;
+    max-height: 100%;
+  }
 `

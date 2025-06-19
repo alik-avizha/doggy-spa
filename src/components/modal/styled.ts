@@ -36,6 +36,11 @@ export const ModalBlock = styled.div`
   padding: ${({ theme }) => theme.paddings.m}px;
   border-radius: ${({ theme }) => theme.borderRadius.sm}px;
   animation: ${fadeInScale} 0.3s ease forwards;
+
+  @media (max-width: ${({ theme }) => theme.dimensions.laptop}px) {
+    width: 90%;
+    max-width: 90%;
+  }
 `
 export const CloseButton = styled.button`
   position: absolute;

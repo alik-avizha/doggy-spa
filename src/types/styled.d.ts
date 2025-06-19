@@ -3,6 +3,7 @@ import '@emotion/react'
 declare module '@emotion/react' {
   export interface Theme {
     dimensions: {
+      desktop: number
       laptop: number
       mobile: number
     }
@@ -30,6 +31,7 @@ declare module '@emotion/react' {
       s: number
       m: number
       l: number
+      mL: number
       xl: number
       xxl: number
       xxxl: number

@@ -8,6 +8,10 @@ export const DatePickerWrapper = styled.div`
     font-family: ${({ theme }) => theme.fontFamilies.poppins}, sans-serif;
     font-size: ${({ theme }) => theme.fontSizes.x}px;
     font-weight: ${({ theme }) => theme.fontWeights.l}px;
+
+    @media (max-width: ${({ theme }) => theme.dimensions.mobile}px) {
+      width: 100%;
+    }
   }
 
   .react-datepicker__month-container {

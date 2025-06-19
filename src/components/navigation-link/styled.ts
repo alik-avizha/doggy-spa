@@ -29,4 +29,21 @@ export const StyledAnchor = styled.a<{ isActive: boolean }>`
 
     color: ${({ theme }) => theme.colors.pinkKisses};
   }
+
+  @media (max-width: ${({ theme }) => theme.dimensions.laptop}px) {
+    font-size: ${({ theme }) => theme.fontSizes.mL}px;
+    color: ${({ theme, isActive }) =>
+      isActive ? theme.colors.black : theme.colors.white};
+    transition: color 0.3s;
+
+    &::after {
+      width: 0;
+    }
+
+    &:hover {
+      color: ${({ theme, isActive }) =>
+        isActive ? theme.colors.black : theme.colors.white};
+      transition: none;
+    }
+  }
 `
