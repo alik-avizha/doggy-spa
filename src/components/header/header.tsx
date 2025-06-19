@@ -7,6 +7,7 @@ import { NavigationLink } from '@/components/navigation-link'
 import { Typography } from '@/components/typography'
 import { ROUTES_WITH_LABEL } from '@/constants/routes'
 
+import { BurgerMenu } from './burger-menu'
 import { InfoPlateBlock, HeaderBlock } from './styled'
 
 export function Header() {
@@ -25,6 +26,7 @@ export function Header() {
       <InfoPlateBlock>
         <Typography size="l">{t('header.getOff')}</Typography>
       </InfoPlateBlock>
+      <BurgerMenu />
     </>
   )
 }

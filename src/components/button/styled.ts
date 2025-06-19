@@ -34,5 +34,9 @@ export const StyledButton = styled.button<{
     fullWidth &&
     css`
       width: 100%;
-    `}
+    `};
+
+  @media (max-width: ${({ theme }) => theme.dimensions.mobile}px) {
+    width: 100%;
+  }
 `

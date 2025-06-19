@@ -1,5 +1,6 @@
 export const commonTheme = {
   dimensions: {
+    desktop: 1300,
     laptop: 1024,
     mobile: 600,
   },

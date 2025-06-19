@@ -9,6 +9,10 @@ export const Wrapper = styled.div`
   position: relative;
 
   margin-bottom: ${({ theme }) => theme.margins.gigantic}px;
+
+  @media (max-width: ${({ theme }) => theme.dimensions.desktop}px) {
+    margin-bottom: ${({ theme }) => theme.margins.l}px;
+  }
 `
 export const InfoBlock = styled.div`
   position: absolute;
@@ -18,10 +22,24 @@ export const InfoBlock = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: ${({ theme }) => theme.dimensions.mobile}px) {
+    width: 300px;
+    left: 20px;
+    bottom: 10%;
+  }
 `
 export const SignUpWrapper = styled.div`
   position: relative;
 
   padding: 0 ${({ theme }) => theme.paddings.massive}px;
   margin-bottom: ${({ theme }) => theme.margins.xxl}px;
+
+  @media (max-width: ${({ theme }) => theme.dimensions.desktop}px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: ${({ theme }) => theme.gap.l}px;
+    padding: 0 ${({ theme }) => theme.paddings.m}px;
+  }
 `

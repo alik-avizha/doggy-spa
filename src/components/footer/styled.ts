@@ -5,7 +5,6 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 492px;
 
   background-color: ${({ theme }) => theme.colors.tnHouse};
   border-top: ${({ theme }) => theme.borders.xxl}px solid
@@ -16,10 +15,32 @@ export const MainBlock = styled.div`
   justify-content: space-between;
 
   padding: ${({ theme }) => theme.paddings.xxl}px
-    ${({ theme }) => theme.paddings.m}px 0 ${({ theme }) => theme.paddings.m}px;
+    ${({ theme }) => theme.paddings.m}px ${({ theme }) => theme.paddings.xxl}px
+    ${({ theme }) => theme.paddings.m}px;
+
+  @media (max-width: ${({ theme }) => theme.dimensions.desktop}px) {
+    flex-wrap: wrap;
+    gap: ${({ theme }) => theme.gap.m}px;
+    & > :nth-child(1) {
+      order: 1;
+    }
+    & > :nth-child(2) {
+      order: 3;
+    }
+    & > :nth-child(3) {
+      order: 2;
+    }
+  }
 `
 export const LeftBlock = styled.div`
-  width: 346px;
+  width: 400px;
+
+  @media (max-width: ${({ theme }) => theme.dimensions.mobile}px) {
+    max-width: 100%;
+    & h4 {
+      text-align: center;
+    }
+  }
 `
 export const NavigationItem = styled(Link)`
   display: block;
@@ -56,12 +77,37 @@ export const PrivacyItem = styled(Link)`
   &:hover {
     transform: translateY(-5px);
   }
+
+  @media (max-width: ${({ theme }) => theme.dimensions.mobile}px) {
+    &:hover {
+      transform: none;
+    }
+  }
 `
 export const RightBlock = styled.div`
-  width: 250px;
+  width: 290px;
+
+  @media (max-width: ${({ theme }) => theme.dimensions.mobile}px) {
+    max-width: 100%;
+    & h4 {
+      text-align: center;
+    }
+  }
 `
 export const CenterBlock = styled.div`
   width: 650px;
+
+  @media (max-width: ${({ theme }) => theme.dimensions.desktop}px) {
+    max-width: 100%;
+  }
+
+  @media (max-width: ${({ theme }) => theme.dimensions.mobile}px) {
+    max-width: 100%;
+
+    & h4 {
+      text-align: center;
+    }
+  }
 `
 export const SubmitForm = styled.form`
   display: flex;
@@ -69,6 +115,10 @@ export const SubmitForm = styled.form`
 
   gap: ${({ theme }) => theme.gap.m}px;
   margin-bottom: ${({ theme }) => theme.margins.xxxl}px;
+
+  @media (max-width: ${({ theme }) => theme.dimensions.desktop}px) {
+    flex-wrap: wrap;
+  }
 `
 export const IconsBlock = styled.div`
   display: flex;
@@ -76,23 +126,46 @@ export const IconsBlock = styled.div`
   width: 450px;
 
   padding: 0 ${({ theme }) => theme.paddings.l}px;
+
+  @media (max-width: ${({ theme }) => theme.dimensions.mobile}px) {
+    width: 100%;
+  }
 `
 export const BottomBlock = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 52px;
 
   background-color: ${({ theme }) => theme.colors.softRose};
-  padding: 0 0 0 ${({ theme }) => theme.paddings.xl}px;
+  padding: ${({ theme }) => theme.paddings.xs}px 0
+    ${({ theme }) => theme.paddings.xs}px ${({ theme }) => theme.paddings.xl}px;
+
+  @media (max-width: ${({ theme }) => theme.dimensions.desktop}px) {
+    padding: ${({ theme }) => theme.paddings.xs}px;
+    gap: ${({ theme }) => theme.gap.s}px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 `
 export const CookiesBlock = styled.div`
   display: flex;
   justify-content: space-between;
   width: 350px;
+
+  @media (max-width: ${({ theme }) => theme.dimensions.desktop}px) {
+    gap: ${({ theme }) => theme.gap.s}px;
+    width: 100%;
+    flex-wrap: wrap;
+  }
 `
 export const PrivacyBlock = styled.div`
   display: flex;
-  justify-content: space-between;
   width: 400px;
+
+  @media (max-width: ${({ theme }) => theme.dimensions.desktop}px) {
+    width: 100%;
+    gap: ${({ theme }) => theme.gap.s}px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
 `

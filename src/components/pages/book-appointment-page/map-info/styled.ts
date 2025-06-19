@@ -6,6 +6,10 @@ export const Container = styled.div`
   flex-direction: column;
 
   gap: ${({ theme }) => theme.gap.xl}px;
+
+  @media (max-width: ${({ theme }) => theme.dimensions.mobile}px) {
+    gap: ${({ theme }) => theme.gap.m}px;
+  }
 `
 export const MapWrapper = styled.div`
   width: 100%;
@@ -21,10 +25,28 @@ export const Map = styled(MapContainer)`
 export const AddressInfoBlock = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: ${({ theme }) => theme.dimensions.mobile}px) {
+    & h5 {
+      font-size: ${({ theme }) => theme.fontSizes.s}px;
+    }
+
+    & p {
+      font-size: ${({ theme }) => theme.fontSizes.x}px;
+    }
+  }
 `
 export const LeftInfoBlock = styled.div`
   width: 140px;
+
+  @media (max-width: ${({ theme }) => theme.dimensions.mobile}px) {
+    width: 100%;
+  }
 `
 export const RightInfoBlock = styled.div`
   width: 240px;
+
+  @media (max-width: ${({ theme }) => theme.dimensions.mobile}px) {
+    width: 100%;
+  }
 `

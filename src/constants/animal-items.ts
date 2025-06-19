@@ -41,7 +41,7 @@ export const ANIMAL_CARRY: AnimalItem[] = [
   },
   {
     id: 3,
-    url: ['/images/Pet-Carrier.webp', '/images/fa017fc.webp'],
+    url: ['/images/3304288.webp', '/images/fa017fc.webp'],
     description: 'home.leatherDogCollars',
     category: 'home.luxeAnimalSpa',
     price: 'CA $95.00',

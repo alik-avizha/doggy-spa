@@ -70,7 +70,7 @@ const MapInfo = () => {
           ))}
         </LeftInfoBlock>
         <RightInfoBlock>
-          <Typography size="m">
+          <Typography size="m" as="h5">
             {t('bookAppointment.hoursOfOperation')}
           </Typography>
           {OPERATION_DAYS.map(day => (
