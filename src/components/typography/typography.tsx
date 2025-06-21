@@ -21,6 +21,7 @@ export type TypographyProps<T extends ElementType = 'p'> = {
   marginTp?: MarginKey
   textAlign?: Property.TextAlign
   textTransForm?: Property.TextTransform
+  dataTestId?: string
 } & ComponentPropsWithoutRef<T>
 
 export const Typography = <T extends ElementType = 'p'>(
@@ -37,6 +38,7 @@ export const Typography = <T extends ElementType = 'p'>(
     textTransForm = 'inherit',
     marginBt = 'none',
     marginTp = 'none',
+    dataTestId,
     ...rest
   } = props
   return (
@@ -50,6 +52,7 @@ export const Typography = <T extends ElementType = 'p'>(
       fontFamily={commonTheme.fontFamilies[fontFamily]}
       marginTp={commonTheme.margins[marginTp]}
       marginBt={commonTheme.margins[marginBt]}
+      data-testid={dataTestId}
       {...rest}
     />
   )

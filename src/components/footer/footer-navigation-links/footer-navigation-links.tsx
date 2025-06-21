@@ -17,7 +17,11 @@ export const FooterNavigationLinks: FC<Props> = ({
   return (
     <>
       {links.map(({ labelKey, href }) => (
-        <Component key={labelKey} href={href}>
+        <Component
+          key={labelKey}
+          href={href}
+          data-testid={`footer-link-${labelKey}`}
+        >
           {t(labelKey)}
         </Component>
       ))}

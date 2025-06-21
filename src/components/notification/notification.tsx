@@ -9,6 +9,7 @@ type NotificationProps = {
   message: string
   type: NotificationType
   onClose?: () => void
+  dataTestId?: string
 }
 
 const backgroundColors: Record<NotificationType, string> = {
@@ -19,6 +20,7 @@ export const Notification: FC<NotificationProps> = ({
   message,
   type = 'success',
   onClose,
+  dataTestId,
 }) => {
   const [visible, setVisible] = useState(true)
 
@@ -35,6 +37,7 @@ export const Notification: FC<NotificationProps> = ({
     <NotificationContainer
       visible={visible}
       background={backgroundColors[type]}
+      data-testid={dataTestId}
     >
       {message}
     </NotificationContainer>

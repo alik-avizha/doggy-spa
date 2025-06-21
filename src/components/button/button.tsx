@@ -9,9 +9,21 @@ export const Button: FC<
     ButtonHTMLAttributes<HTMLButtonElement> & {
       isLoading?: boolean
       fullWidth?: boolean
+      dataTestId?: string
     }
-> = ({ children, isLoading = false, fullWidth = false, ...buttonsProps }) => (
-  <StyledButton {...buttonsProps} isLoading={isLoading} fullWidth={fullWidth}>
+> = ({
+  children,
+  isLoading = false,
+  fullWidth = false,
+  dataTestId,
+  ...buttonsProps
+}) => (
+  <StyledButton
+    {...buttonsProps}
+    isLoading={isLoading}
+    fullWidth={fullWidth}
+    data-testid={dataTestId}
+  >
     {isLoading ? <Loader /> : children}
   </StyledButton>
 )

@@ -43,8 +43,13 @@ export const SignUp = () => {
             <StyledTextField
               fieldName="email"
               placeholder={t('inputs.email')}
+              dataTestId="sign-up-email-input"
             />
-            <StyledButton type="submit" isLoading={loading}>
+            <StyledButton
+              type="submit"
+              isLoading={loading}
+              dataTestId="sign-up-submit-button"
+            >
               {t('home.signUpButton')}
             </StyledButton>
             <DescriptionBlock>

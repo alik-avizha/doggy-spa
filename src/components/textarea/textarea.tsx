@@ -32,7 +32,7 @@ export const TextAreaField = (props: TextAreaProps) => {
         onChange={onChange}
         disabled={disabled}
         height={height}
-        data-test-id={dataTestId}
+        data-testid={dataTestId}
         {...rest}
       />
       <ErrorMessage>{errorMessage}</ErrorMessage>

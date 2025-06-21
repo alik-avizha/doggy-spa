@@ -14,12 +14,10 @@ import { DatePickerWrapper } from './styled'
 
 type ControlledDatePickerProps = {
   fieldName: string
-  dataTestId?: string
 }
 
 export const ControlledDatePicker: FC<ControlledDatePickerProps> = ({
   fieldName,
-  dataTestId,
 }) => {
   const { i18n, t } = useTranslation()
   const { control } = useFormContext()
@@ -66,7 +64,6 @@ export const ControlledDatePicker: FC<ControlledDatePickerProps> = ({
                 prevMonthButtonDisabled={prevMonthButtonDisabled}
               />
             )}
-            data-test-id={dataTestId || fieldName}
           />
           {error?.message && <ErrorMessage>{t(error.message)}</ErrorMessage>}
         </DatePickerWrapper>

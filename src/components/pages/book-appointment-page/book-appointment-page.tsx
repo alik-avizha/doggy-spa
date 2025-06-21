@@ -64,12 +64,22 @@ export const BookAppointmentPage = () => {
   return (
     <FormProvider {...methods}>
       <Wrapper>
-        <MainTitle data-test-id="page-title" color="white" size="xxxxl" as="h1">
+        <MainTitle
+          dataTestId="book-appointment-page-title"
+          color="white"
+          size="xxxxl"
+          as="h1"
+        >
           {t('bookAppointment.bookAnAppointment')}
         </MainTitle>
       </Wrapper>
       <BookContainer onSubmit={onSubmit}>
-        <Typography size="xxl" marginBt="xxl" as="h3">
+        <Typography
+          size="xxl"
+          marginBt="xxl"
+          as="h3"
+          dataTestId="book-appointment-page-enter-payment"
+        >
           {t('bookAppointment.enterYourPayment')}
         </Typography>
         <BookingBlock>
@@ -78,18 +88,22 @@ export const BookAppointmentPage = () => {
               <TextFieldsStyled
                 fieldName="firstName"
                 placeholder={t('inputs.firstName')}
+                dataTestId="book-appointment-firstName-field"
               />
               <TextFieldsStyled
                 fieldName="lastName"
                 placeholder={t('inputs.lastName')}
+                dataTestId="book-appointment-lastName-field"
               />
               <TextFieldsStyled
                 fieldName="email"
                 placeholder={t('inputs.email')}
+                dataTestId="book-appointment-email-field"
               />
               <TextFieldsStyled
                 fieldName="phoneNumber"
                 placeholder={t('inputs.phoneNumber')}
+                dataTestId="book-appointment-phoneNumber-field"
               />
             </TextFieldsBlock>
             <DateTimeContainer>
@@ -98,6 +112,7 @@ export const BookAppointmentPage = () => {
                   fieldName="time"
                   label={`${t('bookAppointment.chooseATimeslontOn')} ${labelDate}`}
                   options={localizedTimeSlots}
+                  dataTestId="book-appointment-chooseATimeslontOn-field"
                 />
                 <ControlledDatePicker fieldName="date" />
               </DateBlock>
@@ -106,6 +121,7 @@ export const BookAppointmentPage = () => {
               height={80}
               fieldName="message"
               placeholder={t('inputs.message')}
+              dataTestId="book-appointment-message-field"
             />
             <PaymentsContainer>
               <PaymentsBlock>
@@ -115,20 +131,24 @@ export const BookAppointmentPage = () => {
                 <TextFieldPayment
                   fieldName="creditNumber"
                   placeholder={t('inputs.creditCard')}
+                  dataTestId="book-appointment-creditNumber-field"
                 />
                 <ExpiredCvvBlock>
                   <TextFieldPayment
                     fieldName="expiryDate"
                     placeholder={t('inputs.expiryDate')}
+                    dataTestId="book-appointment-expiryDate-field"
                   />
                   <TextFieldPayment
                     fieldName="cvv"
                     placeholder={t('inputs.cvv')}
+                    dataTestId="book-appointment-cvv-field"
                   />
                 </ExpiredCvvBlock>
                 <TextFieldPayment
                   fieldName="nameOnCard"
                   placeholder={t('inputs.nameOnCard')}
+                  dataTestId="book-appointment-nameOnCard-field"
                 />
                 <PaymentsTypesBlock>
                   <ApplePayIcon />
@@ -146,7 +166,11 @@ export const BookAppointmentPage = () => {
                   {t('bookAppointment.pleaseBe')}
                 </Typography>
                 <SubmitBlock>
-                  <Button type="submit" fullWidth>
+                  <Button
+                    type="submit"
+                    fullWidth
+                    dataTestId="book-appointment-book-button"
+                  >
                     {t('bookAppointment.book')}
                   </Button>
                 </SubmitBlock>
@@ -162,6 +186,7 @@ export const BookAppointmentPage = () => {
         onClose={onModalClose}
         title={t('bookAppointment.bookingInfo')}
         isOpen={isModalActive}
+        dataTestId="book-appointment-modal"
       >
         <BookingInfo onPaymentSuccess={onPaymentHandler} />
       </Modal>

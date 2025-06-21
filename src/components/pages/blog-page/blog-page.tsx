@@ -12,7 +12,13 @@ export const BlogPage = () => {
 
   return (
     <Wrapper>
-      <Typography size="xxxxl" textAlign="center" marginBt="s" as="h2">
+      <Typography
+        size="xxxxl"
+        textAlign="center"
+        marginBt="s"
+        as="h2"
+        dataTestId="blog-page-title"
+      >
         {t('blog.theBark')}
       </Typography>
       <Typography

@@ -18,13 +18,20 @@ export function Header() {
     <>
       <HeaderBlock>
         {ROUTES_WITH_LABEL.map(({ href, label }) => (
-          <NavigationLink key={href} href={href} isActive={pathname === href}>
+          <NavigationLink
+            key={href}
+            href={href}
+            isActive={pathname === href}
+            dataTestId={href}
+          >
             {t(label)}
           </NavigationLink>
         ))}
       </HeaderBlock>
       <InfoPlateBlock>
-        <Typography size="l">{t('header.getOff')}</Typography>
+        <Typography size="l" dataTestId="header-info-plate">
+          {t('header.getOff')}
+        </Typography>
       </InfoPlateBlock>
       <BurgerMenu />
     </>

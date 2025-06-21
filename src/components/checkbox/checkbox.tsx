@@ -28,7 +28,7 @@ export const CheckBox: FC<Props> = ({
         name={name}
         checked={checked}
         onChange={onChange}
-        data-test-id={dataTestId}
+        data-testid={dataTestId}
         id={id}
       />
       <CustomCheckbox checked={checked} htmlFor={id} />

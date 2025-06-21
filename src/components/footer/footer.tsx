@@ -50,8 +50,13 @@ export const Footer = () => {
               <ControlledTextField
                 fieldName="email"
                 placeholder={t('inputs.email')}
+                dataTestId="footer-email-field"
               />
-              <Button type="submit" isLoading={loading}>
+              <Button
+                type="submit"
+                isLoading={loading}
+                dataTestId="footer-submit-button"
+              >
                 {t('footer.submit')}
               </Button>
             </SubmitForm>
@@ -61,7 +66,12 @@ export const Footer = () => {
           </Typography>
           <IconsBlock>
             {NETWORK_LINKS.map(({ Icon, href }, index) => (
-              <NetworkItem key={index} href={href}>
+              <NetworkItem
+                key={index}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Icon />
               </NetworkItem>
             ))}
@@ -94,6 +104,7 @@ export const Footer = () => {
       </BottomBlock>
       {notification.visible && (
         <Notification
+          dataTestId="footer-notification"
           message={notification.message}
           type={notification.type}
           onClose={onCloseNotification}

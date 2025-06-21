@@ -14,8 +14,14 @@ type Props = {
   title: string
   titleButton: string
   items: AnimalItem[]
+  dataTestId?: string
 }
-export const AnimalInfoList: FC<Props> = ({ titleButton, title, items }) => {
+export const AnimalInfoList: FC<Props> = ({
+  titleButton,
+  title,
+  items,
+  dataTestId,
+}) => {
   const { t } = useTranslation()
   const router = useRouter()
   const handleClick = () => {
@@ -29,7 +35,7 @@ export const AnimalInfoList: FC<Props> = ({ titleButton, title, items }) => {
       </Typography>
       <List>
         {items.map(({ url, description, id, price, category }) => (
-          <CardWrapper key={id}>
+          <CardWrapper key={id} data-testid={`${dataTestId}-animal-card-${id}`}>
             <Card width={435} height={445} url={url} border={6} />
             <InfoBlock>
               <Typography size="m" marginBt="xxs">
@@ -43,7 +49,12 @@ export const AnimalInfoList: FC<Props> = ({ titleButton, title, items }) => {
           </CardWrapper>
         ))}
       </List>
-      <Button onClick={handleClick}>{titleButton}</Button>
+      <Button
+        onClick={handleClick}
+        dataTestId={`${dataTestId}-see-more-button`}
+      >
+        {titleButton}
+      </Button>
     </Wrapper>
   )
 }
