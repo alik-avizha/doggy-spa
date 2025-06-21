@@ -58,6 +58,7 @@ export const TextField = ({
           value={value}
           hasError={!!errorMessage}
           typeStyle={type}
+          data-testid={dataTestId}
           {...restProps}
         />
       </FieldContainer>

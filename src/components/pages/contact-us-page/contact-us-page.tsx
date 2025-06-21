@@ -29,7 +29,13 @@ export const ContactUsPage = () => {
 
   return (
     <Wrapper>
-      <Typography size="xxxxl" textAlign="center" marginBt="s" as="h2">
+      <Typography
+        size="xxxxl"
+        textAlign="center"
+        marginBt="s"
+        as="h2"
+        dataTestId="contact-us-page-title"
+      >
         {t('contact.contact')}
       </Typography>
       <Border />
@@ -39,6 +45,7 @@ export const ContactUsPage = () => {
         textAlign="center"
         marginBt="huge"
         marginTp="xl"
+        dataTestId="contact-us-description"
       >
         {t('contact.forCustomer')}{' '}
         <StyledLink>customerservice@luxeanimalspa.ca.</StyledLink>{' '}
@@ -50,29 +57,39 @@ export const ContactUsPage = () => {
             <ControlledTextField
               fieldName="firstName"
               placeholder={t('inputs.firstName')}
+              dataTestId="contact-us-firstName-field"
             />
             <ControlledTextField
               fieldName="lastName"
               placeholder={t('inputs.lastName')}
+              dataTestId="contact-us-lastName-field"
             />
           </FieldBlock>
           <FieldBlock>
             <ControlledTextField
               fieldName="email"
               placeholder={t('inputs.email')}
+              dataTestId="contact-us-email-field"
             />
             <ControlledTextField
               fieldName="phoneNumber"
               placeholder={t('inputs.phoneNumber')}
+              dataTestId="contact-us-phoneNumber-field"
             />
           </FieldBlock>
           <ControlledTextarea
             fieldName="message"
             placeholder={t('inputs.contactMessage')}
+            dataTestId="contact-us-message-field"
             height={317}
           />
           <SubmitAction>
-            <Button type="submit" isLoading={loading} fullWidth>
+            <Button
+              type="submit"
+              isLoading={loading}
+              fullWidth
+              dataTestId="contact-us-submit-button"
+            >
               {t('contact.submit')}
             </Button>
           </SubmitAction>
@@ -83,6 +100,7 @@ export const ContactUsPage = () => {
           message={notification.message}
           type={notification.type}
           onClose={onCloseNotification}
+          dataTestId="contact-us-notification"
         />
       )}
     </Wrapper>

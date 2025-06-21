@@ -53,9 +53,9 @@ export const NAVIGATION_LINKS = {
 }
 
 export const NETWORK_LINKS = [
-  { Icon: InstagramIcon, href: Route.home },
-  { Icon: FacebookIcon, href: Route.home },
-  { Icon: NetworkIcon, href: Route.home },
-  { Icon: TwitterIcon, href: Route.home },
-  { Icon: SnapchatIcon, href: Route.home },
+  { Icon: InstagramIcon, href: 'https://instagram.com' },
+  { Icon: FacebookIcon, href: 'https://facebook.com' },
+  { Icon: NetworkIcon, href: 'https://linkedin.com' },
+  { Icon: TwitterIcon, href: 'https://twitter.com' },
+  { Icon: SnapchatIcon, href: 'https://snapchat.com' },
 ]

@@ -24,16 +24,31 @@ export const InfoPage = () => {
   return (
     <FormProvider {...methods}>
       <Wrapper>
-        <Typography size="xxxxl" textAlign="center" marginBt="huge" as="h2">
+        <Typography
+          size="xxxxl"
+          textAlign="center"
+          marginBt="huge"
+          as="h2"
+          dataTestId="info-page-title"
+        >
           {t('info.infoDog')}
         </Typography>
         <SearchBlock>
           <SelectionBlock>
-            <Typography size="xl" marginBt="xs">
+            <Typography
+              size="xl"
+              marginBt="xs"
+              dataTestId="info-page-current-selection-label"
+            >
               {t('info.currentSelection')}
             </Typography>
             {data && (
-              <Typography size="xl" fontFamily="cormorant" color="pinkKisses">
+              <Typography
+                size="xl"
+                fontFamily="cormorant"
+                color="pinkKisses"
+                dataTestId="info-page-current-selection"
+              >
                 {data?.breed_group}
               </Typography>
             )}
@@ -43,6 +58,7 @@ export const InfoPage = () => {
               fieldName="search"
               placeholder={t('inputs.search')}
               type="searchType"
+              dataTestId="info-page-search-input"
             />
           </TextFieldWrapper>
         </SearchBlock>
@@ -52,6 +68,7 @@ export const InfoPage = () => {
             message={t('notification.anErrorOccurred')}
             type="error"
             onClose={onCloseNotify}
+            dataTestId="info-page-notification"
           />
         )}
       </Wrapper>

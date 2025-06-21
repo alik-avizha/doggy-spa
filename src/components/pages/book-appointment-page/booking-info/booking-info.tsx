@@ -53,7 +53,7 @@ export const BookingInfo: FC<Props> = ({ onPaymentSuccess }) => {
 
   return (
     <PayPalScriptProvider options={PAYPAL_OPTIONS}>
-      <Container>
+      <Container data-testid="booking-info-container">
         {fields.map(({ label, value }) => (
           <BookingInfoBlock key={label}>
             <Typography>{label}</Typography>
@@ -62,6 +62,7 @@ export const BookingInfo: FC<Props> = ({ onPaymentSuccess }) => {
         ))}
       </Container>
       <PayPalButtons
+        data-testid="booking-info-paypal-button"
         onApprove={async (data, actions) => {
           if (actions.order) {
             await actions.order.capture()

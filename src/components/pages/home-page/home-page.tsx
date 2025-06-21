@@ -25,7 +25,7 @@ export const HomePage = () => {
       <Wrapper>
         <InfoBlock>
           <Typography
-            data-test-id="page-title"
+            dataTestId="home-page-title"
             size="xxxl"
             textAlign="center"
             marginBt="xxl"
@@ -33,7 +33,12 @@ export const HomePage = () => {
           >
             {t('home.bookYour')}
           </Typography>
-          <Button onClick={handleBookClick}>{t('home.bookAppointment')}</Button>
+          <Button
+            onClick={handleBookClick}
+            dataTestId="book-appointment-button"
+          >
+            {t('home.bookAppointment')}
+          </Button>
         </InfoBlock>
       </Wrapper>
       <SignUpWrapper>
@@ -44,11 +49,13 @@ export const HomePage = () => {
         title={t('home.dogCollars')}
         titleButton={t('home.seeMoreDogCollars')}
         items={DOG_COLLARS}
+        dataTestId="dog"
       />
       <AnimalInfoList
         title={t('home.animalCarry')}
         titleButton={t('home.seeMoreCarryOns')}
         items={ANIMAL_CARRY}
+        dataTestId="carry"
       />
     </>
   )

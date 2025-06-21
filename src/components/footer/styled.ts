@@ -57,7 +57,7 @@ export const NavigationItem = styled(Link)`
     transform: translateX(10px);
   }
 `
-export const NetworkItem = styled(Link)`
+export const NetworkItem = styled.a`
   transition: transform 0.3s ease;
 
   &:hover {

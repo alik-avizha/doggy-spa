@@ -40,7 +40,7 @@ export const ControlledTextField: FC<Props> = ({
           errorMessage={t(error?.message)}
           onBlur={onBlurWrapper ? onBlurWrapper(onBlur) : onBlur}
           onChange={onChangeWrapper ? onChangeWrapper(onChange) : onChange}
-          data-test-id={dataTestId || `controlled-input-${fieldName}`}
+          dataTestId={dataTestId || `controlled-input-${fieldName}`}
           type={type}
           {...rest}
         />

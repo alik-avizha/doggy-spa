@@ -6,7 +6,6 @@ export const formatDateRu = (isoString: string): string => {
     day: '2-digit',
   })
 }
-
 export const formatDateEn = (isoString: string): string => {
   const date = new Date(isoString)
 

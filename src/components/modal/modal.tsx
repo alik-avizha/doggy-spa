@@ -12,9 +12,16 @@ type Props = {
   isOpen: boolean
   children: ReactNode
   title?: string
+  dataTestId?: string
 }
 
-export const Modal: FC<Props> = ({ isOpen, onClose, children, title }) => {
+export const Modal: FC<Props> = ({
+  isOpen,
+  onClose,
+  children,
+  title,
+  dataTestId,
+}) => {
   const [modalRoot, setModalRoot] = useState<HTMLElement | null>(null)
 
   useEffect(() => {
@@ -31,11 +38,16 @@ export const Modal: FC<Props> = ({ isOpen, onClose, children, title }) => {
 
   return createPortal(
     <ModalOverlay>
-      <ModalBlock>
+      <ModalBlock data-testid={dataTestId}>
         <Typography size="xxl" marginBt="s">
           {title}
         </Typography>
-        <CloseButton type="button" className="close-button" onClick={onClose}>
+        <CloseButton
+          type="button"
+          className="close-button"
+          onClick={onClose}
+          data-testid={`${dataTestId}-close-button`}
+        >
           <CloseIcon />
         </CloseButton>
         {children}

@@ -12,7 +12,13 @@ export const AboutUsPage = () => {
 
   return (
     <Wrapper>
-      <Typography size="xxxxl" textAlign="center" marginBt="m" as="h2">
+      <Typography
+        size="xxxxl"
+        textAlign="center"
+        marginBt="m"
+        as="h2"
+        dataTestId="about-us-page-title"
+      >
         {t('aboutUs.aboutUs')}
       </Typography>
       <Typography

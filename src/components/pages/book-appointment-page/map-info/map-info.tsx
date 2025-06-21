@@ -36,12 +36,13 @@ const MapInfo = () => {
 
   return (
     <Container>
-      <MapWrapper>
+      <MapWrapper data-testid="map-info-container">
         <Map
           center={MAP_INFO_CENTER as LatLngExpression}
           zoom={17}
           zoomControl={false}
           attributionControl={false}
+          data-testid="map-info-map"
         >
           <TileLayer
             attribution={CONFIGURATION_MAP.attribution}
@@ -58,7 +59,7 @@ const MapInfo = () => {
           ))}
         </Map>
       </MapWrapper>
-      <AddressInfoBlock>
+      <AddressInfoBlock data-testid="map-info-address-block">
         <LeftInfoBlock>
           <Typography size="m" as="h5">
             {t('bookAppointment.ourAddress')}
