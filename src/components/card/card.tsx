@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import type { FC } from 'react'
 import { useState } from 'react'
 
@@ -6,6 +5,7 @@ import {
   ButtonsWrapper,
   CardContainer,
   CircleButton,
+  ImageStyled,
   ImageWrapper,
 } from './styled'
 
@@ -46,12 +46,7 @@ export const Card: FC<Props> = ({ width, height, url, border = 10 }) => {
           width={width}
           height={height}
         >
-          <Image
-            src={url}
-            alt={`Card Image ${idx + 1}`}
-            fill
-            objectFit="cover"
-          />
+          <ImageStyled src={url} alt={`Card Image ${idx + 1}`} fill />
         </ImageWrapper>
       ))}
     </CardContainer>

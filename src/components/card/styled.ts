@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import Image from 'next/image'
 
 export const CardContainer = styled.div<{
   width: number
@@ -56,4 +57,8 @@ export const ImageWrapper = styled.div<{
     max-width: 100%;
     max-height: 100%;
   }
+`
+
+export const ImageStyled = styled(Image)`
+  object-fit: 'cover';
 `

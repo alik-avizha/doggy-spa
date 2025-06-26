@@ -21,13 +21,14 @@ export const MainBlock = styled.div`
   @media (max-width: ${({ theme }) => theme.dimensions.desktop}px) {
     flex-wrap: wrap;
     gap: ${({ theme }) => theme.gap.m}px;
-    & > :nth-child(1) {
+
+    & > div:nth-of-type(1) {
       order: 1;
     }
-    & > :nth-child(2) {
+    & > div:nth-of-type(2) {
       order: 3;
     }
-    & > :nth-child(3) {
+    & > div:nth-of-type(3) {
       order: 2;
     }
   }
@@ -160,12 +161,12 @@ export const CookiesBlock = styled.div`
 `
 export const PrivacyBlock = styled.div`
   display: flex;
+  justify-content: space-between;
   width: 400px;
 
   @media (max-width: ${({ theme }) => theme.dimensions.desktop}px) {
     width: 100%;
     gap: ${({ theme }) => theme.gap.s}px;
-    justify-content: space-between;
     flex-wrap: wrap;
   }
 `
