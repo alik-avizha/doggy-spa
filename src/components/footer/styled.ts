@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import Link from 'next/link'
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.footer`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
