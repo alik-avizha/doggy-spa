@@ -3,10 +3,7 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import {
-  LangButton,
-  SwitcherWrapper,
-} from '@/components/language-switcher/styled'
+import { LangButton, SwitcherWrapper } from './styled'
 
 export const LanguageSwitcher = () => {
   const { i18n } = useTranslation()
