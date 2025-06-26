@@ -97,10 +97,10 @@ export const DateBlock = styled.div`
     flex-direction: column;
     gap: ${({ theme }) => theme.gap.s}px;
 
-    & > :nth-child(1) {
+    & > div:nth-of-type(1) {
       order: 2;
     }
-    & > :nth-child(2) {
+    & > div:nth-of-type(2) {
       order: 1;
     }
   }

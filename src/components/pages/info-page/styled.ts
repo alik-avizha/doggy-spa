@@ -26,10 +26,10 @@ export const SearchBlock = styled.div`
     gap: ${({ theme }) => theme.gap.xl}px;
     margin-bottom: ${({ theme }) => theme.margins.xl}px;
 
-    & > :nth-child(1) {
+    & > div:nth-of-type(1) {
       order: 2;
     }
-    & > :nth-child(2) {
+    & > div:nth-of-type(2) {
       order: 1;
     }
   }

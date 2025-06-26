@@ -24,7 +24,7 @@ export const Wrapper = styled.div`
     height: 550px;
     padding: ${({ theme }) => theme.paddings.l}px;
     position: initial;
-    & > :nth-child(2) {
+    & > div:nth-of-type(2) {
       display: none;
     }
   }
