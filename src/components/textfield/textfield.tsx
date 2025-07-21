@@ -2,6 +2,7 @@ import type { ChangeEvent, KeyboardEvent } from 'react'
 
 import { ErrorMessage } from '@/components/errror-message'
 import { SearchIcon } from '@/components/icons'
+import { Loader } from '@/components/loader'
 
 import {
   FieldContainer,
@@ -19,6 +20,7 @@ export type TextFieldProps = {
   onChangeText?: (value: string) => void
   onEnter?: () => void
   dataTestId?: string
+  loading?: boolean
 }
 
 export const TextField = ({
@@ -30,6 +32,7 @@ export const TextField = ({
   onEnter,
   onChangeText,
   dataTestId,
+  loading = false,
   ...restProps
 }: TextFieldProps) => {
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +50,7 @@ export const TextField = ({
       <FieldContainer>
         {type === 'searchType' && (
           <SearchIconWrapper>
-            <SearchIcon />
+            {!loading ? <SearchIcon /> : <Loader />}
           </SearchIconWrapper>
         )}
         <InputField
