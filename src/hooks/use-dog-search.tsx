@@ -29,6 +29,7 @@ export const useDogSearch = () => {
   const [data, setData] = useState<Dog | null>(null)
   const [notification, setNotification] = useState(false)
   const [hasSearched, setHasSearched] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     if (errors.search || debouncedSearch.trim() === '') {
@@ -39,6 +40,7 @@ export const useDogSearch = () => {
 
     const fetchDogs = async () => {
       try {
+        setLoading(true)
         const dog = await getDogByNameService(debouncedSearch)
         setData(dog)
         setHasSearched(true)
@@ -46,6 +48,8 @@ export const useDogSearch = () => {
         console.error('Some error by fetching info', error)
         setNotification(true)
         setHasSearched(true)
+      } finally {
+        setLoading(false)
       }
     }
 
@@ -60,5 +64,6 @@ export const useDogSearch = () => {
     hasSearched,
     notification,
     onCloseNotify,
+    loading,
   }
 }

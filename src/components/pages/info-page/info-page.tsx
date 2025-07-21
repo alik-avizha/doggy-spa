@@ -18,7 +18,7 @@ import {
 
 export const InfoPage = () => {
   const { t } = useTranslation()
-  const { methods, data, hasSearched, notification, onCloseNotify } =
+  const { methods, data, hasSearched, notification, onCloseNotify, loading } =
     useDogSearch()
 
   return (
@@ -59,6 +59,7 @@ export const InfoPage = () => {
               placeholder={t('inputs.search')}
               type="searchType"
               dataTestId="info-page-search-input"
+              loading={loading}
             />
           </TextFieldWrapper>
         </SearchBlock>

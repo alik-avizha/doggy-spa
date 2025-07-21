@@ -14,6 +14,7 @@ type Props = InputHTMLAttributes<HTMLInputElement> & {
     onBlur: (value: string) => void
   ) => (evt: ChangeEvent<HTMLInputElement>) => void
   dataTestId?: string
+  loading?: boolean
   type?: 'default' | 'searchType'
 }
 export const ControlledTextField: FC<Props> = ({
@@ -22,6 +23,7 @@ export const ControlledTextField: FC<Props> = ({
   onBlurWrapper,
   dataTestId,
   type = 'default',
+  loading,
   ...rest
 }) => {
   const { control } = useFormContext()
@@ -42,6 +44,7 @@ export const ControlledTextField: FC<Props> = ({
           onChange={onChangeWrapper ? onChangeWrapper(onChange) : onChange}
           dataTestId={dataTestId || `controlled-input-${fieldName}`}
           type={type}
+          loading={loading}
           {...rest}
         />
       )}

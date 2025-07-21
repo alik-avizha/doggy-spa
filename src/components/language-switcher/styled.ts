@@ -11,7 +11,7 @@ export const LangButton = styled.button<{ active?: boolean }>`
   cursor: pointer;
   border: none;
   background: ${({ active, theme }) =>
-    active ? theme.colors.roseyCheek : 'transparent'};
+    active ? theme.colors.pinkKisses : 'transparent'};
   font-weight: ${({ theme }) => theme.fontWeights.xl};
   font-size: ${({ theme }) => theme.fontSizes.x}px;
   padding: ${({ theme }) => theme.paddings.xs}px
